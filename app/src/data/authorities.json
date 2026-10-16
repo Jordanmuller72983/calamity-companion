@@ -1,0 +1,89 @@
+{
+  "_readme": "Who to contact for each kind of report. Emails and numbers come from each body's official page (source), checked 2026-10-16. The app opens the person's own email app with these addresses filled in; nothing is sent by the app itself.",
+  "authorities": [
+    {
+      "id": "ndrrmc",
+      "name": "National Disaster Risk Reduction and Management Centre (NDRRMC)",
+      "handles": [
+        "flood",
+        "landslide",
+        "blocked",
+        "tree",
+        "other"
+      ],
+      "email": "disaster@govmu.org",
+      "phone": "207 3900",
+      "source": "https://ndrrmc.govmu.org/Pages/contactus.aspx"
+    },
+    {
+      "id": "lda",
+      "name": "Land Drainage Authority",
+      "handles": [
+        "flood"
+      ],
+      "email": "Secretariat@ldamu.com",
+      "phone": "260 3663",
+      "source": "https://lda.govmu.org/",
+      "notes": "Address published on the official site but on a non-government domain."
+    },
+    {
+      "id": "rda",
+      "name": "Road Development Authority",
+      "handles": [
+        "flood",
+        "blocked",
+        "landslide",
+        "tree"
+      ],
+      "email": "maintenance@rda.intnet.mu",
+      "phone": "467 2184",
+      "whatsapp": "57093032",
+      "source": "https://rda.govmu.org/",
+      "notes": "Motorways and main roads. RDA points complaints to the Citizen Support Unit (csu.mu)."
+    },
+    {
+      "id": "police",
+      "name": "Mauritius Police Force – Information & Operations Room",
+      "handles": [
+        "blocked"
+      ],
+      "email": "opsmain.mpf@govmu.org",
+      "phone": "999",
+      "source": "https://police.govmu.org/police/?page_id=3694"
+    },
+    {
+      "id": "ceb",
+      "name": "Central Electricity Board (CEB)",
+      "handles": [
+        "power"
+      ],
+      "email": "ceb@ceb.mu",
+      "phone": "130",
+      "source": "https://ceb.mu/contact-us",
+      "notes": "Faults and emergencies go to the 130 helpdesk (24/7). Email is for general enquiries."
+    },
+    {
+      "id": "cwa",
+      "name": "Central Water Authority (CWA)",
+      "handles": [
+        "water"
+      ],
+      "email": "infodesk@cwa.mu",
+      "phone": "170",
+      "whatsapp": "55000025",
+      "source": "https://cwa.govmu.org/cwa/?page_id=803",
+      "notes": "Hotline 170 for urgent matters; leaks can also be reported in the Korek app."
+    },
+    {
+      "id": "infrastructure",
+      "name": "Ministry of National Infrastructure (Landslide Management Unit)",
+      "handles": [
+        "landslide"
+      ],
+      "email": null,
+      "phone": "8920",
+      "source": "https://nationalinfrastructure.govmu.org",
+      "notes": "No email published for the Landslide Management Unit."
+    }
+  ]
+}

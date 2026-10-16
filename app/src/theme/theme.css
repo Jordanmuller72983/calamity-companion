@@ -1,0 +1,85 @@
+/* SWAN brand tokens (no SWAN logo: personal project).
+   :root:root so these win over antd-mobile's own :root defaults regardless of CSS load order. */
+:root:root {
+  --swan-blue: #003087;
+  --swan-blue-deep: #001f5c;
+  --swan-sky: #00a3e0;
+  --swan-grey: #5b6770;
+
+  --ink: #14202e;
+  --ink-2: #44515e;
+  --ink-3: #6b7783;
+  --surface: #ffffff;
+  --page: #f2f5fa;
+  --line: #e3e8ef;
+  --track: #e8eef6;
+
+  --adm-color-primary: var(--swan-blue);
+  --adm-color-text: var(--ink);
+  --adm-color-text-secondary: var(--ink-2);
+  --adm-color-background-body: var(--page);
+  --adm-font-family: 'Roboto', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --adm-font-size-main: 16px;
+  --adm-radius-s: 6px;
+  --adm-radius-m: 8px;
+  --adm-radius-l: 12px;
+
+  --radius-card: 16px;
+  --shadow-card: 0 1px 2px rgb(16 24 40 / 0.05), 0 4px 16px rgb(16 24 40 / 0.06);
+  --shadow-hero: 0 10px 30px -12px rgb(16 24 40 / 0.45);
+
+  /* Severity scale: separate from the brand. Always shown with an icon and a word, never colour alone. */
+  --sev-0-a: #003087; --sev-0-b: #0068b8; --sev-0-fg: #ffffff;
+  --sev-1-a: #fde047; --sev-1-b: #facc15; --sev-1-fg: #1f1a05;
+  --sev-2-a: #fbbf24; --sev-2-b: #f08a24; --sev-2-fg: #1f1405;
+  --sev-3-a: #d42a2a; --sev-3-b: #991b1b; --sev-3-fg: #ffffff;
+  --sev-4-a: #7a1424; --sev-4-b: #3d0710; --sev-4-fg: #ffffff;
+
+  /* Status (topic tiles, meters, alerts) */
+  --ok: #15803d;      --ok-soft: #e7f5ec;      --ok-ink: #14532d;
+  --caution: #b45309; --caution-soft: #fff3e0; --caution-ink: #7c2d12;
+  --stop: #b91c1c;    --stop-soft: #fdecec;    --stop-ink: #7f1d1d;
+  --info: #0b5cad;    --info-soft: #e8f1fb;    --info-ink: #0b3a6e;
+
+  /* Data marks */
+  --rain: #1d6fd1;
+  --rain-heavy: #b45309;
+  --rain-torrential: #b91c1c;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: var(--adm-font-family);
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100dvh;
+}
+
+a {
+  color: var(--info);
+}
+
+:focus-visible {
+  outline: 3px solid var(--swan-sky);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

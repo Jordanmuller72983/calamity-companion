@@ -1,0 +1,16 @@
+# Dependencies and build output
+node_modules/
+dist/
+
+# Local data (community reports, outbox) and secrets
+app/server/data/
+.env
+.env.*
+!.env.example
+*.local
+
+# Tooling
+.vercel/
+.DS_Store
+Thumbs.db
+*.log

@@ -1,0 +1,2936 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="icon" href="http://metservice.intnet.mu/images/favicon.jpg">
+
+<script type="text/javascript" src="http://metservice.intnet.mu/js/jquery.min.js"></script>
+<!-- CSS for meteo -->
+<!--[if IE]>
+<link href="css/ie.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+<link type="text/css" href="http://metservice.intnet.mu/css/common.css" rel="stylesheet">
+<link type="text/css" href="http://metservice.intnet.mu/css/style.css" rel="stylesheet">
+<link type="text/css" href="http://metservice.intnet.mu/css/menu.css" rel="stylesheet">
+
+<!-- vacoas // plaisance -->
+<link type="text/css" rel="stylesheet" href="http://metservice.intnet.mu/css/bjqs.css">
+<script type="text/javascript" src="http://metservice.intnet.mu/js/bjqs-1.3.min.js"></script>
+<script type="text/javascript" src="http://metservice.intnet.mu/js/stop.js"></script>
+<!-- CSS for slider -->
+<link rel="stylesheet" type="text/css" href="http://metservice.intnet.mu/css/slider.css">
+<link rel="stylesheet" type="text/css" href="http://metservice.intnet.mu/css/jquery.jscrollpane.css" media="all">
+
+<title>Mauritius Meteorological Services</title>
+<meta name="description" content="The Mauritius Meteorological Services website ...">
+<meta name="keywords" content="weather, mauritius, climate, cyclone, tsunami">
+</head>
+
+<script src="js/tabcontent.js" type="text/javascript"></script>
+<link href="css/tabcontent2.css" rel="stylesheet" type="text/css" />
+<style>
+
+.left_content {
+    float: left;
+    line-height: 18px;
+    padding-top: 15px;
+    width: 336px;
+}
+.infotable {
+    /*background-color: #f7f7f7;*/
+    border: 1px solid #e9e9e9;        
+    /*padding: 20px 22px 20px;*/
+	width: auto;
+	float:left;
+	margin-top:20px;
+}
+<!-- .table-container {
+    margin: 0 0 1em;
+    overflow-y: auto;
+    width: 100%;
+} -->
+table {
+    border-collapse: collapse;
+	border-radius:0px;
+	border:0px;
+	box-shadow:none;
+	text-shadow:none;
+}
+table tr td:first-child {
+    border-left: 0 none;
+    padding-left: 5px;
+}
+.tableau th {
+    border: 1px solid #ccc;
+    font-weight: bold;
+    padding: 10px;
+	background: #59C6D5 none repeat scroll 0 0;
+	color:#fff;
+}
+.tableau tr td {
+    padding:10px;
+}
+.tableau tr td.current{
+	/*background:#cccccc;*/
+	background:#a4cde7;
+    font-weight:bold;	
+}
+.current{
+	background-color:#cccccc; 
+}
+/*table tr:not(:nth-child()):hover td {
+    background: rgba(0, 0, 0, 0) -moz-linear-gradient(center top , #f2f2f2, #f0f0f0) no-repeat scroll 0 0;
+}*/
+table tr td{
+	background: white;      
+}
+table tr:hover td { 
+   background: white;        
+}
+[title] {
+	border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+	border-radius:2px;
+	position: relative;
+}
+body.touched [title] &gt; * {
+	user-select: none;
+}
+body.touched [title]:hover &gt; * {
+	user-select: auto
+}
+body.touched [title]:hover:after {
+	position: absolute;
+	top: 100%;
+	right: -10%;
+	content: attr(title);
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	background-color: white;
+	box-shadow: 1px 1px 3px;
+	padding: 0.3em;
+	z-index: 1;
+}
+
+</style>
+<body id="index">
+    
+<div id="main_menu"> <!-- MAIN Logo // menu -->
+    
+    		<div class="logo">
+			<a href="http://metservice.intnet.mu/index.php"><img src="http://metservice.intnet.mu/images/mms-logo.png" alt="meteo mauritius"/></a>
+			 <p class="isoheader"></p>
+		</div>
+		
+		<div class="slogan">
+			<p class="sloganmeteo">Mauritius Meteorological Services</p>
+			<p class="website_date"><img src="http://metservice.intnet.mu/images/mauritius_flag.png" alt="meteo mauritius" />&nbsp; Friday, October 16, 2026</p>
+			<p class="iso"><img src="http://metservice.intnet.mu/images/logo-1.png" alt="iso"></p>
+		</div>
+		
+		<!--<div class="army">
+			<img src="http://metservice.intnet.mu/images/costofarms.png" alt="meteo mauritius"/>
+		</div>-->
+		
+		<div class="clear"></div> <!-- Logo of meteo and slogan -->
+    
+    	    <div class="menu"> <!-- MENU -->
+        
+			
+            <ul>
+				<li><a href="http://metservice.intnet.mu/index.php"><img src="http://metservice.intnet.mu/images/home.png" alt="Meteo mauritius" style="padding-left: 6px;padding-right: 0px;padding-top: 0px; margin-top: -2px; float: left;"/></a></li>
+                <li>
+                    <a href="#" class="main">Weather</a>
+                     <ul>
+                        <li><a href="http://metservice.intnet.mu/maps.php">Weather Map</a></li>
+                        <li><a href="http://metservice.intnet.mu/forecast-bulletin-french-mauritius.php">Forecast Bulletin French</a></li>
+                        <li><a href="http://metservice.intnet.mu/forecast-bulletin-english-mauritius.php">Forecast Bulletin English</a></li>
+                        <li><a href="http://metservice.intnet.mu/forecast-bulletin-french-rodrigues.php">Forecast Bulletin Rodrigues</a></li>
+                        <li><a href="http://metservice.intnet.mu/forecast-bulletin-french-agalega.php">Forecast Bulletin Agalega</a></li>
+						<li><a href="http://metservice.intnet.mu/forecast-bulletin-french-stbrandon.php">Forecast Bulletin St Brandon</a></li>
+                        <li><a href="http://metservice.intnet.mu/probabilistic-forecast.php">7 Day Forecast</a></li>
+                        <li><a href="http://metservice.intnet.mu/latest-weather-data.php">Latest Weather Data</a></li>
+                        <li><a href="http://metservice.intnet.mu/warning-bulletin-special-weather.php">Special Weather Bulletin</a></li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <a href="#" class="main">Cyclone</a>
+						<ul>
+                        <!--<li><a href="http://metservice.intnet.mu/cyclone-track.php">Cyclone Track</a></li>-->
+						<li><a href="http://metservice.intnet.mu/current-cyclone.php">Current Storm/Cyclone</a></li>
+                        <li><a href="#">Cyclone Warning Bulletin Mauritius <span class="menumore"><img src="http://metservice.intnet.mu/images/menumore.png" alt="meteo mauritius"/></span></a>
+                            <ul>
+                                <li><a href="http://metservice.intnet.mu/cyclone-bulletin-english-mauritius.php">English</a></li>
+                                <li><a href="http://metservice.intnet.mu/cyclone-bulletin-french-mauritius.php">French</a></li>
+                                <li><a href="http://metservice.intnet.mu/cyclone-bulletin-creole-mauritius.php">Creole</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Cyclone Warning Bulletin Rodrigues <span class="menumore"><img src="http://metservice.intnet.mu/images/menumore.png" alt="meteo mauritius"/></span></a>
+                        <ul>
+								<li><a href="http://metservice.intnet.mu/cyclone-bulletin-english-rodrigues.php">English</a></li>
+                                <li><a href="http://metservice.intnet.mu/cyclone-bulletin-french-rodrigues.php">French</a></li>
+                                <li><a href="http://metservice.intnet.mu/cyclone-bulletin-creole-rodrigues.php">Creole</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="http://metservice.intnet.mu/tropical-cyclone/warning-system.php">Warning System and General Info</a></li>
+                        <li><a href="http://metservice.intnet.mu/tropical-cyclone/precautions.php">Precautions</a></li>
+                        <li><a href="http://metservice.intnet.mu/tropical-cyclone/cyclone-names.php">Cyclone Names</a></li>
+                    </ul>
+                </li>
+                
+                <li>
+                  <a href="#" class="main">Torrential Rain</a>
+                    <ul>
+                        <li><a href="http://metservice.intnet.mu/warning-bulletin-torrential-rain-warning.php">Torrential Rain Warning Bulletin</a></li>
+                        <li><a href="http://metservice.intnet.mu/torrential-rain/torrential-rain-warning-system.php">Warning System and General Info</a></li>
+                        <li><a href="http://metservice.intnet.mu/torrential-rain/precautions.php">Precautions</a></li>
+                    </ul>
+                </li>
+                
+                <li>
+                  <a href="#" class="main">High Waves</a>
+                    <ul>
+                        <li><a href="http://metservice.intnet.mu/warning-bulletin-heavy-swell-warning.php">Heavy Swell Warning Bulletin</a></li>
+                        <li><a href="http://metservice.intnet.mu/warning-bulletin-storm-surge-warning.php">Storm Surge Warning Bulletin</a></li>
+                        <li><a href="http://metservice.intnet.mu/high-waves/high-waves-warning-system.php">Warning System and General Info</a></li>
+                        <li><a href="http://metservice.intnet.mu/high-waves/precautions.php">Precautions</a></li>
+                    </ul>
+                </li>
+                
+                <li>
+                  <a href="#" class="main">Tsunami</a>
+                    <ul>
+                        <li><a href="http://metservice.intnet.mu/warning-bulletin-tsunami-warning.php">Tsunami Warning Bulletin</a></li>
+                        <li><a href="http://metservice.intnet.mu/tsunami/tsunami-warning-system.php">Warning System and General Info</a></li>
+                        <li><a href="http://metservice.intnet.mu/tsunami/precautions.php">Precautions</a></li>
+                    </ul>
+                </li>
+                
+                 <li>
+                  <a href="#" class="main">Climate Services</a>
+                    <ul>
+                        <li><a href="http://metservice.intnet.mu/climate-services/climate-info-and-data.php">Climate Info &amp; Data</a></li>
+                        <li><a href="http://metservice.intnet.mu/climate-services/climate-of-mauritius.php">Climate of Mauritius</a></li>
+                        <li><a href="http://metservice.intnet.mu/climate-services/climate-of-rodrigues-and-islands.php">Climate of Rodrigues &amp; Islands</a></li>
+                        <li><a href="http://metservice.intnet.mu/climate-services/climate-change.php">Climate Change</a></li>
+                        <li><a href="http://metservice.intnet.mu/climate-services/climate-info-for-water-resources.php">Climate Info for Water Resources</a></li>
+                        <li><a href="http://metservice.intnet.mu/climate-services/climate-info-for-agriculture.php">Climate Info for Agriculture</a></li>                    
+                        <li><a href="http://metservice.intnet.mu/climate-services/climate-info-for-fisheries-and-marine.php">Climate Info for Fisheries &amp; Marine</a></li>
+                        <li><a href="http://metservice.intnet.mu/climate-services/seasonal-climate-forecast.php">Seasonal Climate Forecast</a></li>
+                        <li><a href="http://metservice.intnet.mu/climate-services/monthly-rainfall-climatology.php">Monthly Rainfall Climatology</a></li>
+                    </ul>
+                </li>
+                
+                <li>
+                  <a href="#" class="main">Sun, Moon &amp; Tides</a>
+                    <ul>
+                        <li><a href="http://metservice.intnet.mu/sun-moon-and-tides-sunrise-sunset-mauritius.php">Sunrise Sunset Mauritius</a></li>
+                        <li><a href="http://metservice.intnet.mu/sun-moon-and-tides-sunrise-sunset-rodrigues.php">Sunrise Sunset Rodrigues</a></li>
+                        <li><a href="http://metservice.intnet.mu/sun-moon-and-tides-moonrise-moonset-mauritius.php">Moonrise Moonset Mauritius</a></li>
+                        <li><a href="http://metservice.intnet.mu/sun-moon-and-tides-moonrise-moonset-rodrigues.php">Moonrise Moonset Rodrigues</a></li>
+                        <li><a href="http://metservice.intnet.mu/sun-moon-and-tides-tides-mauritius.php">Tides Mauritius</a></li>
+                        <li><a href="http://metservice.intnet.mu/sun-moon-and-tides-tides-rodrigues.php">Tides Rodrigues</a></li>                    
+                        <li><a href="http://metservice.intnet.mu/sun-moon-and-tides-moon-phase.php">Moon Phase</a></li>
+                        <li><a href="http://metservice.intnet.mu/sun-moon-and-tides-info-eclipses.php">Info Eclipses</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                  <a href="#" class="main">Satellite &amp; Chart</a>
+                    <ul>
+                        <li><a href="http://metservice.intnet.mu/satellite-imagery.php">Satellite Imagery</a></li>
+                        <li><a href="http://metservice.intnet.mu/satellite-anim.php">Satellite Animation</a></li>
+                        <li><a href="http://metservice.intnet.mu/synoptic-chart.php">Synoptic Chart</a></li>
+                        <!--<li><a href="http://metservice.intnet.mu/radar-imagery.php">Radar Imagery </a></li>-->
+						<li><a href="http://radar.metservice.intnet.mu/radar-image-viewer" target="_blank">Radar Imagery</a></li>
+                        <!--<li><a href="http://metservice.intnet.mu/radar-anim.php">Radar Imagery Animation Provisional</a></li>-->
+                   </ul> 
+                </li>
+                              
+            </ul>
+		
+        </div> <!-- END MENU --><!-- Menu here -->
+    
+</div><!-- END MAIN Logo // menu -->
+
+<div class="clear"></div>  
+<div id="content" style="height: 1300px;"> <!-- CONTENT OF WEBSITE -->
+		
+		<div class="warning"> <!-- CYCLONE WARNING -->
+                <!-- no warning 
+                                -->
+                
+                                <p><span class="darkgrey"></span><marquee style="width: 630px; font-weight: bold;"><a href="https://metservice.intnet.mu/index.php"><span style="color: #0000ff">Impact/Action Based Forecast-WISER 12-16 Oct 2026</span></a>  </marquee></p>
+                                <!---->				
+
+        </div> <!-- END CYCLONE WARNING -->
+		
+		<div>		
+			<h1>Latest Weather Data</h1>
+		</div>	
+
+		<!--<div class="left_content" style="width: 200px;"> <!-- quicklinks, current condtions, news -->
+            
+            
+            
+            
+			
+		<!--</div>--><!-- END quicklinks, current condtions, news -->
+    
+	<!--<div class="right_content" style="width: 572px;"> <!-- LEFT part contents -->
+	<div class="right_content" style="float:left;width:auto;"> <!-- LEFT part contents -->
+            
+            <!--<div class="sep"></div>-->
+	    
+        <div class="map1" style="width:938px">
+		
+			<div style="width: 100%; margin: 0 auto; padding: 10px 0 40px;height: 100%;">
+				<ul class="tabs">
+                    <li><a href="#view1">24 hr Rainfall</a></li>
+                    <li><a href="#view2">3 hr Rainfall </a></li>
+                    <li><a href="#view3">Max &amp; Min Temp</a></li>
+                    <li><a href="#view4">Wind</a></li>
+                    <li><a href="#view5">Humidity</a></li>
+                    
+                </ul>
+				<div class="tabcontents" style="padding: 16px 7px 10px;">
+                    <div id="view1">
+					   <div style="font-family:Arial; font-size: 12px; background-image:url('maps/map-pl.jpg'); background-repeat: no-repeat;width:400px;height:511px;position:relative;float:left;">
+		<div id="Bell_Village" class="station" title="Bell Village" style="cursor: pointer; position: absolute; top: 158px; left: 80px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="23" class="Bell_Village" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;"><p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">
+									0.1
+							</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Champ_de_Mars" class="station" title="Champ de Mars" style="cursor: pointer; position: absolute; top: 140px; left: 212px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="19" class="Champ_de_Mars" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;"><p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">
+														 
+							</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Chitrakoot" class="station" title="Chitrakoot" style="cursor: pointer; position: absolute; top: 230px; left: 370px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="26" class="Chitrakoot" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;"><p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">
+														 
+							</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Domaine_les_Pailles" class="station" title="Domaine les Pailles" style="cursor: pointer; position: absolute; top: 266px; left: 100px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="17" class="Domaine_les_Pailles" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;"><p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">
+														 
+							</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Port_Louis_Line_Barracks" class="station" title="Port Louis (Line Barracks)" style="cursor: pointer; position: absolute; top: 120px; left: 145px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="10" class="Port_Louis_Line_Barracks" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;"><p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">
+									0
+							</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Riche_Terre" class="station" title="Riche Terre" style="cursor: pointer; position: absolute; top: 0px; left: 214px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="24" class="Riche_Terre" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;"><p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">
+									0.3
+							</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Signal_Mountain" class="station" title="Signal Mountain" style="cursor: pointer; position: absolute; top: 160px; left: 120px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="25" class="Signal_Mountain" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;"><p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">
+									0.2
+							</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+			
+</div>
+  	
+					   <div style="font-family:Arial; font-size: 12px; background-image:url('maps/map-mru.jpg'); background-repeat: no-repeat;width:510px;height:531px;position:relative;float:right;">
+		
+	<div id="Albion" class="station" title="Albion" style="cursor: pointer; position: absolute; top: 208px; left: 135px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="1" class="Albion" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;"><p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">				
+									0.2
+							</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		
+	<div id="Beau_Bassin" class="station" title="Beau Bassin" style="cursor: pointer; position: absolute; top: 221px; left: 175px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="6" class="Beau_Bassin" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;"><p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">				
+									1.4
+							</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		
+	<div id="Belle_Mare" class="station" title="Belle Mare" style="cursor: pointer; position: absolute; top: 194px; left: 408px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="4" class="Belle_Mare" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;"><p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">				
+									1
+							</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		
+	<div id="Grand_Bassin" class="station" title="Grand Bassin" style="cursor: pointer; position: absolute; top: 360px; left: 205px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="15" class="Grand_Bassin" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;"><p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">				
+														 
+							</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		
+	<div id="Le_Morne" class="station" title="Le Morne" style="cursor: pointer; position: absolute; top: 390px; left: 70px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="3" class="Le_Morne" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;"><p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">				
+									0.2
+							</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		
+	<div id="Mare_Aux_Vacoas" class="station" title="Mare Aux Vacoas" style="cursor: pointer; position: absolute; top: 341px; left: 180px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="5" class="Mare_Aux_Vacoas" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;"><p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">				
+									3.4
+							</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		
+	<div id="Moka" class="station" title="Moka" style="cursor: pointer; position: absolute; top: 223px; left: 240px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="9" class="Moka" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;"><p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">				
+									1.2
+							</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		
+	<div id="Mon_Loisir_Rouillard" class="station" title="Mon Loisir Rouillard" style="cursor: pointer; position: absolute; top: 75px; left: 307px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="14" class="Mon_Loisir_Rouillard" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;"><p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">				
+									0
+							</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		
+	<div id="Mon_Loisir_Sugar_Estate" class="station" title="Mon Loisir Sugar Estate" style="cursor: pointer; position: absolute; top: 128px; left: 327px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="18" class="Mon_Loisir_Sugar_Estate" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;"><p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">				
+														 
+							</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		
+	<div id="Nouvelle_Decouverte" class="station" title="Nouvelle Decouverte" style="cursor: pointer; position: absolute; top: 193px; left: 253px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="13" class="Nouvelle_Decouverte" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;"><p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">				
+														 
+							</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		
+	<div id="Plaisance_SSR_Int_Airport" class="station" title="Plaisance (SSR Int Airport)" style="cursor: pointer; position: absolute; top: 380px; left: 336px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="28" class="Plaisance_SSR_Int_Airport" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;"><p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">				
+														 
+							</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		
+	<div id="Port_Louis_Line_Barracks" class="station" title="Port Louis (Line Barracks)" style="cursor: pointer; position: absolute; top: 165px; left: 196px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="10" class="Port_Louis_Line_Barracks" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;"><p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">				
+									0
+							</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		
+	<div id="Quatre_Bornes" class="station" title="Quatre Bornes" style="cursor: pointer; position: absolute; top: 248px; left: 179px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="27" class="Quatre_Bornes" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;"><p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">				
+														 
+							</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		
+	<div id="Queen_Victoria" class="station" title="Queen Victoria" style="cursor: pointer; position: absolute; top: 230px; left: 354px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="16" class="Queen_Victoria" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;"><p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">				
+														 
+							</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		
+	<div id="Riche_en_Eau" class="station" title="Riche en Eau" style="cursor: pointer; position: absolute; top: 346px; left: 317px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="8" class="Riche_en_Eau" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;"><p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">				
+									1.4
+							</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		
+	<div id="Riviere_Noire" class="station" title="Riviere Noire" style="cursor: pointer; position: absolute; top: 296px; left: 118px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="20" class="Riviere_Noire" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;"><p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">				
+									0
+							</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		
+	<div id="Rose_Belle" class="station" title="Rose Belle" style="cursor: pointer; position: absolute; top: 380px; left: 272px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="2" class="Rose_Belle" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;"><p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">				
+									2.6
+							</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		
+	<div id="St_Felix" class="station" title="St.Felix" style="cursor: pointer; position: absolute; top: 430px; left: 187px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="21" class="St_Felix" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;"><p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">				
+									2.8
+							</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		
+	<div id="Vacoas" class="station" title="Vacoas" style="cursor: pointer; position: absolute; top: 276px; left: 184px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="22" class="Vacoas" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;"><p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">				
+									2.3
+							</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+	</div>
+<div class="clear"></div>
+<div class="weatherinfo">
+<p style="font-size:12px;margin-top:20px;margin-bottom:20px;text-align:center;">Rainfall in (mm) from 15 October 2026 07 AM  to 16 October 2026 07 AM
+</p>
+</div>
+<div class="clear"></div>
+<div class="infotable"> 
+	<div id="rainfalltotals">		
+					
+		<table class="tableau">
+				
+		<tr>
+				
+			<th>station</th>
+			<th>rainfall</th>
+				
+			<th>station</th>
+			<th>rainfall</th>
+				
+			<th>station</th>
+			<th>rainfall</th>
+				
+			<th>station</th>
+			<th>rainfall</th>
+				</tr>
+				
+				
+		<tr>
+				
+		<td class="Albion" style="text-align:left;">Albion</td>
+		<td class="Albion">
+					0.2
+				</td>
+				
+		<td class="Beau_Bassin" style="text-align:left;">Beau Bassin</td>
+		<td class="Beau_Bassin">
+					1.4
+				</td>
+				
+		<td class="Bell_Village" style="text-align:left;">Bell Village</td>
+		<td class="Bell_Village">
+					0.1
+				</td>
+				
+		<td class="Belle_Mare" style="text-align:left;">Belle Mare</td>
+		<td class="Belle_Mare">
+					1
+				</td>
+				</tr>
+				
+		<tr>
+				
+		<td class="Champ_de_Mars" style="text-align:left;">Champ de Mars</td>
+		<td class="Champ_de_Mars">
+								 
+				</td>
+				
+		<td class="Chitrakoot" style="text-align:left;">Chitrakoot</td>
+		<td class="Chitrakoot">
+								 
+				</td>
+				
+		<td class="Domaine_les_Pailles" style="text-align:left;">Domaine les Pailles</td>
+		<td class="Domaine_les_Pailles">
+								 
+				</td>
+				
+		<td class="Grand_Bassin" style="text-align:left;">Grand Bassin</td>
+		<td class="Grand_Bassin">
+								 
+				</td>
+				</tr>
+				
+		<tr>
+				
+		<td class="Le_Morne" style="text-align:left;">Le Morne</td>
+		<td class="Le_Morne">
+					0.2
+				</td>
+				
+		<td class="Mare_Aux_Vacoas" style="text-align:left;">Mare Aux Vacoas</td>
+		<td class="Mare_Aux_Vacoas">
+					3.4
+				</td>
+				
+		<td class="Moka" style="text-align:left;">Moka</td>
+		<td class="Moka">
+					1.2
+				</td>
+				
+		<td class="Mon_Loisir_Rouillard" style="text-align:left;">Mon Loisir Rouillard</td>
+		<td class="Mon_Loisir_Rouillard">
+					0
+				</td>
+				</tr>
+				
+		<tr>
+				
+		<td class="Mon_Loisir_Sugar_Estate" style="text-align:left;">Mon Loisir Sugar Estate</td>
+		<td class="Mon_Loisir_Sugar_Estate">
+								 
+				</td>
+				
+		<td class="Nouvelle_Decouverte" style="text-align:left;">Nouvelle Decouverte</td>
+		<td class="Nouvelle_Decouverte">
+								 
+				</td>
+				
+		<td class="Plaisance_SSR_Int_Airport" style="text-align:left;">Plaisance (SSR Int Airport)</td>
+		<td class="Plaisance_SSR_Int_Airport">
+								 
+				</td>
+				
+		<td class="Port_Louis_Line_Barracks" style="text-align:left;">Port Louis (Line Barracks)</td>
+		<td class="Port_Louis_Line_Barracks">
+					0
+				</td>
+				</tr>
+				
+		<tr>
+				
+		<td class="Quatre_Bornes" style="text-align:left;">Quatre Bornes</td>
+		<td class="Quatre_Bornes">
+								 
+				</td>
+				
+		<td class="Queen_Victoria" style="text-align:left;">Queen Victoria</td>
+		<td class="Queen_Victoria">
+								 
+				</td>
+				
+		<td class="Riche_en_Eau" style="text-align:left;">Riche en Eau</td>
+		<td class="Riche_en_Eau">
+					1.4
+				</td>
+				
+		<td class="Riche_Terre" style="text-align:left;">Riche Terre</td>
+		<td class="Riche_Terre">
+					0.3
+				</td>
+				</tr>
+				
+		<tr>
+				
+		<td class="Riviere_Noire" style="text-align:left;">Riviere Noire</td>
+		<td class="Riviere_Noire">
+					0
+				</td>
+				
+		<td class="Rose_Belle" style="text-align:left;">Rose Belle</td>
+		<td class="Rose_Belle">
+					2.6
+				</td>
+				
+		<td class="Signal_Mountain" style="text-align:left;">Signal Mountain</td>
+		<td class="Signal_Mountain">
+					0.2
+				</td>
+				
+		<td class="St_Felix" style="text-align:left;">St.Felix</td>
+		<td class="St_Felix">
+					2.8
+				</td>
+				</tr>
+				
+		<tr>
+				
+		<td class="Vacoas" style="text-align:left;">Vacoas</td>
+		<td class="Vacoas">
+					2.3
+				</td>
+				
+		<td class="" style="text-align:left;"> </td>
+		<td class="">
+					 
+				</td>
+				
+		<td class="" style="text-align:left;"> </td>
+		<td class="">
+					 
+				</td>
+				
+		<td class="" style="text-align:left;"> </td>
+		<td class="">
+					 
+				</td>
+				</tr>
+				</table>			
+			</div>	
+</div> 
+<div class="clear"></div>					 					   
+                    </div>
+                    
+                    <div id="view2">
+					   <div style="font-family:Arial; font-size: 12px; background-image:url('maps/map-pl.jpg'); background-repeat: no-repeat;width:400px;height:511px;padding: 10px 0px 0px 0px;position:relative;float:left;">
+		<div id="Bell_Village" class="station" title="Bell Village" style="cursor: pointer; position: absolute; top: 158px; left: 80px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="23" class="Bell_Village" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;"><p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">
+									0.0
+							</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Champ_de_Mars" class="station" title="Champ de Mars" style="cursor: pointer; position: absolute; top: 140px; left: 212px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="19" class="Champ_de_Mars" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;"><p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">
+									0.0
+							</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Chitrakoot" class="station" title="Chitrakoot" style="cursor: pointer; position: absolute; top: 230px; left: 370px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="26" class="Chitrakoot" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;"><p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">
+														 
+							</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Domaine_les_Pailles" class="station" title="Domaine les Pailles" style="cursor: pointer; position: absolute; top: 266px; left: 100px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="17" class="Domaine_les_Pailles" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;"><p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">
+									0.0
+							</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Port_Louis_Line_Barracks" class="station" title="Port Louis (Line Barracks)" style="cursor: pointer; position: absolute; top: 120px; left: 145px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="10" class="Port_Louis_Line_Barracks" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;"><p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">
+									0.0
+							</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Riche_Terre" class="station" title="Riche Terre" style="cursor: pointer; position: absolute; top: 0px; left: 214px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="24" class="Riche_Terre" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;"><p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">
+									0.0
+							</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Signal_Mountain" class="station" title="Signal Mountain" style="cursor: pointer; position: absolute; top: 160px; left: 120px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="25" class="Signal_Mountain" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;"><p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">
+									0.0
+							</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+			
+</div>
+  	
+                       <div style="font-family:Arial; font-size: 12px; background-image:url('maps/map-mru.jpg'); background-repeat: no-repeat;width:510px;height:531px;position:relative;float:right;">
+		<div id="Albion" class="station" title="Albion" style="cursor: pointer; position: absolute; top: 208px; left: 135px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="1" class="Albion" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;">
+				<p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">
+									0.0
+								</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Beau_Bassin" class="station" title="Beau Bassin" style="cursor: pointer; position: absolute; top: 221px; left: 175px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="6" class="Beau_Bassin" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;">
+				<p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">
+									0.2
+								</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Belle_Mare" class="station" title="Belle Mare" style="cursor: pointer; position: absolute; top: 194px; left: 408px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="4" class="Belle_Mare" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;">
+				<p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">
+									0.0
+								</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Grand_Bassin" class="station" title="Grand Bassin" style="cursor: pointer; position: absolute; top: 360px; left: 205px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="15" class="Grand_Bassin" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;">
+				<p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">
+														 
+								</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Le_Morne" class="station" title="Le Morne" style="cursor: pointer; position: absolute; top: 390px; left: 70px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="3" class="Le_Morne" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;">
+				<p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">
+									0.2
+								</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Mare_Aux_Vacoas" class="station" title="Mare Aux Vacoas" style="cursor: pointer; position: absolute; top: 341px; left: 180px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="5" class="Mare_Aux_Vacoas" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;">
+				<p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">
+									1.0
+								</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Moka" class="station" title="Moka" style="cursor: pointer; position: absolute; top: 223px; left: 240px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="9" class="Moka" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;">
+				<p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">
+									0.2
+								</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Mon_Loisir_Rouillard" class="station" title="Mon Loisir Rouillard" style="cursor: pointer; position: absolute; top: 75px; left: 307px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="14" class="Mon_Loisir_Rouillard" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;">
+				<p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">
+									0.0
+								</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Mon_Loisir_Sugar_Estate" class="station" title="Mon Loisir Sugar Estate" style="cursor: pointer; position: absolute; top: 128px; left: 327px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="18" class="Mon_Loisir_Sugar_Estate" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;">
+				<p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">
+														 
+								</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Nouvelle_Decouverte" class="station" title="Nouvelle Decouverte" style="cursor: pointer; position: absolute; top: 193px; left: 253px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="13" class="Nouvelle_Decouverte" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;">
+				<p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">
+														 
+								</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Plaisance_SSR_Int_Airport" class="station" title="Plaisance (SSR Int Airport)" style="cursor: pointer; position: absolute; top: 380px; left: 336px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="28" class="Plaisance_SSR_Int_Airport" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;">
+				<p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">
+									0
+								</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Port_Louis_Line_Barracks" class="station" title="Port Louis (Line Barracks)" style="cursor: pointer; position: absolute; top: 165px; left: 196px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="10" class="Port_Louis_Line_Barracks" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;">
+				<p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">
+									0.0
+								</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Quatre_Bornes" class="station" title="Quatre Bornes" style="cursor: pointer; position: absolute; top: 248px; left: 179px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="27" class="Quatre_Bornes" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;">
+				<p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">
+									0
+								</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Queen_Victoria" class="station" title="Queen Victoria" style="cursor: pointer; position: absolute; top: 230px; left: 354px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="16" class="Queen_Victoria" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;">
+				<p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">
+														 
+								</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Riche_en_Eau" class="station" title="Riche en Eau" style="cursor: pointer; position: absolute; top: 346px; left: 317px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="8" class="Riche_en_Eau" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;">
+				<p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">
+									0.2
+								</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Riviere_Noire" class="station" title="Riviere Noire" style="cursor: pointer; position: absolute; top: 296px; left: 118px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="20" class="Riviere_Noire" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;">
+				<p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">
+									0.0
+								</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Rose_Belle" class="station" title="Rose Belle" style="cursor: pointer; position: absolute; top: 380px; left: 272px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="2" class="Rose_Belle" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;">
+				<p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">
+									0.8
+								</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="St_Felix" class="station" title="St.Felix" style="cursor: pointer; position: absolute; top: 430px; left: 187px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="21" class="St_Felix" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;">
+				<p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">
+									1.2
+								</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Vacoas" class="station" title="Vacoas" style="cursor: pointer; position: absolute; top: 276px; left: 184px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rainfall.png" width="21" height="32"> -->
+			<div id="22" class="Vacoas" style="position: absolute;background-image:url('images/weathermaps/rainfall.png'); background-repeat: no-repeat;width:22px;height:32px;">
+				<p style="padding-top: 6px; padding-left: 5px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">
+									0.2
+								</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+	</div>
+<div class="clear"></div>
+<div class="weatherinfo">
+<p style="font-size:12px;margin-top:20px;margin-bottom:20px;text-align:center;"> Last 3hrs Rainfall in (mm) on 16 October 2026 07 AM. 
+</p>
+</div>
+<div class="clear"></div>
+<div class="infotable"> 
+	<div id="rainfalltotals">
+				
+		<table class="tableau">
+				
+		<tr>
+				
+			<th>station</th>
+			<th>rainfall</th>
+				
+			<th>station</th>
+			<th>rainfall</th>
+				
+			<th>station</th>
+			<th>rainfall</th>
+				
+			<th>station</th>
+			<th>rainfall</th>
+				</tr>
+				
+				
+		<tr>
+				
+		<td class="Albion" style="text-align:left;">Albion</td>
+		<td class="Albion">
+					0.0
+				</td>
+				
+		<td class="Beau_Bassin" style="text-align:left;">Beau Bassin</td>
+		<td class="Beau_Bassin">
+					0.2
+				</td>
+				
+		<td class="Bell_Village" style="text-align:left;">Bell Village</td>
+		<td class="Bell_Village">
+					0.0
+				</td>
+				
+		<td class="Belle_Mare" style="text-align:left;">Belle Mare</td>
+		<td class="Belle_Mare">
+					0.0
+				</td>
+				</tr>
+				
+		<tr>
+				
+		<td class="Champ_de_Mars" style="text-align:left;">Champ de Mars</td>
+		<td class="Champ_de_Mars">
+					0.0
+				</td>
+				
+		<td class="Chitrakoot" style="text-align:left;">Chitrakoot</td>
+		<td class="Chitrakoot">
+								 
+				</td>
+				
+		<td class="Domaine_les_Pailles" style="text-align:left;">Domaine les Pailles</td>
+		<td class="Domaine_les_Pailles">
+					0.0
+				</td>
+				
+		<td class="Grand_Bassin" style="text-align:left;">Grand Bassin</td>
+		<td class="Grand_Bassin">
+								 
+				</td>
+				</tr>
+				
+		<tr>
+				
+		<td class="Le_Morne" style="text-align:left;">Le Morne</td>
+		<td class="Le_Morne">
+					0.2
+				</td>
+				
+		<td class="Mare_Aux_Vacoas" style="text-align:left;">Mare Aux Vacoas</td>
+		<td class="Mare_Aux_Vacoas">
+					1.0
+				</td>
+				
+		<td class="Moka" style="text-align:left;">Moka</td>
+		<td class="Moka">
+					0.2
+				</td>
+				
+		<td class="Mon_Loisir_Rouillard" style="text-align:left;">Mon Loisir Rouillard</td>
+		<td class="Mon_Loisir_Rouillard">
+					0.0
+				</td>
+				</tr>
+				
+		<tr>
+				
+		<td class="Mon_Loisir_Sugar_Estate" style="text-align:left;">Mon Loisir Sugar Estate</td>
+		<td class="Mon_Loisir_Sugar_Estate">
+								 
+				</td>
+				
+		<td class="Nouvelle_Decouverte" style="text-align:left;">Nouvelle Decouverte</td>
+		<td class="Nouvelle_Decouverte">
+								 
+				</td>
+				
+		<td class="Plaisance_SSR_Int_Airport" style="text-align:left;">Plaisance (SSR Int Airport)</td>
+		<td class="Plaisance_SSR_Int_Airport">
+					0
+				</td>
+				
+		<td class="Port_Louis_Line_Barracks" style="text-align:left;">Port Louis (Line Barracks)</td>
+		<td class="Port_Louis_Line_Barracks">
+					0.0
+				</td>
+				</tr>
+				
+		<tr>
+				
+		<td class="Quatre_Bornes" style="text-align:left;">Quatre Bornes</td>
+		<td class="Quatre_Bornes">
+					0
+				</td>
+				
+		<td class="Queen_Victoria" style="text-align:left;">Queen Victoria</td>
+		<td class="Queen_Victoria">
+								 
+				</td>
+				
+		<td class="Riche_en_Eau" style="text-align:left;">Riche en Eau</td>
+		<td class="Riche_en_Eau">
+					0.2
+				</td>
+				
+		<td class="Riche_Terre" style="text-align:left;">Riche Terre</td>
+		<td class="Riche_Terre">
+					0.0
+				</td>
+				</tr>
+				
+		<tr>
+				
+		<td class="Riviere_Noire" style="text-align:left;">Riviere Noire</td>
+		<td class="Riviere_Noire">
+					0.0
+				</td>
+				
+		<td class="Rose_Belle" style="text-align:left;">Rose Belle</td>
+		<td class="Rose_Belle">
+					0.8
+				</td>
+				
+		<td class="Signal_Mountain" style="text-align:left;">Signal Mountain</td>
+		<td class="Signal_Mountain">
+					0.0
+				</td>
+				
+		<td class="St_Felix" style="text-align:left;">St.Felix</td>
+		<td class="St_Felix">
+					1.2
+				</td>
+				</tr>
+				
+		<tr>
+				
+		<td class="Vacoas" style="text-align:left;">Vacoas</td>
+		<td class="Vacoas">
+					0.2
+				</td>
+				
+		<td class="" style="text-align:left;"> </td>
+		<td class="">
+					
+				</td>
+				
+		<td class="" style="text-align:left;"> </td>
+		<td class="">
+					
+				</td>
+				
+		<td class="" style="text-align:left;"> </td>
+		<td class="">
+					
+				</td>
+				</tr>
+				</table>
+			</div>	
+</div> 
+<div class="clear"></div>	
+                    </div>
+                    
+                    <div id="view3"> 
+					   <div style="font-family:Arial; font-size: 12px; background-image:url('maps/map-pl.jpg'); background-repeat: no-repeat;width:400px;height:511px;padding: 10px 0px 0px 0px;position:relative;float:left;">
+		<div id="Bell_Village" class="station" title="Bell Village" style="cursor: pointer; position: absolute; top: 158px; left: 80px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="23" class="Bell_Village" style="position: absolute;background-image:url('images/weathermaps/rougebleu.png'); background-repeat: no-repeat;width:36px;height:36px;">
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">28</p>
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">22</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Champ_de_Mars" class="station" title="Champ de Mars" style="cursor: pointer; position: absolute; top: 140px; left: 212px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="19" class="Champ_de_Mars" style="position: absolute;background-image:url('images/weathermaps/rougebleu.png'); background-repeat: no-repeat;width:36px;height:36px;">
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">28</p>
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">22</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Chitrakoot" class="station" title="Chitrakoot" style="cursor: pointer; position: absolute; top: 230px; left: 370px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="26" class="Chitrakoot" style="position: absolute;background-image:url('images/weathermaps/rougebleu.png'); background-repeat: no-repeat;width:36px;height:36px;">
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Domaine_les_Pailles" class="station" title="Domaine les Pailles" style="cursor: pointer; position: absolute; top: 266px; left: 100px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="17" class="Domaine_les_Pailles" style="position: absolute;background-image:url('images/weathermaps/rougebleu.png'); background-repeat: no-repeat;width:36px;height:36px;">
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Port_Louis_Line_Barracks" class="station" title="Port Louis (Line Barracks)" style="cursor: pointer; position: absolute; top: 120px; left: 145px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="10" class="Port_Louis_Line_Barracks" style="position: absolute;background-image:url('images/weathermaps/rougebleu.png'); background-repeat: no-repeat;width:36px;height:36px;">
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">28</p>
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">22</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Riche_Terre" class="station" title="Riche Terre" style="cursor: pointer; position: absolute; top: 0px; left: 214px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="24" class="Riche_Terre" style="position: absolute;background-image:url('images/weathermaps/rougebleu.png'); background-repeat: no-repeat;width:36px;height:36px;">
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">27</p>
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">21</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Signal_Mountain" class="station" title="Signal Mountain" style="cursor: pointer; position: absolute; top: 160px; left: 120px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="25" class="Signal_Mountain" style="position: absolute;background-image:url('images/weathermaps/rougebleu.png'); background-repeat: no-repeat;width:36px;height:36px;">
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">29</p>
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">19</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+	</div>
+ 		
+					   <div style="font-family:Arial; font-size: 12px; background-image:url('maps/map-mru.jpg'); background-repeat: no-repeat;width:510px;height:531px;position:relative;float:right;">
+		<div id="Albion" class="station temp" title="Albion" style="cursor: pointer; position: absolute; top: 208px; left: 135px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="1" class="Albion" style="position: absolute;background-image:url('images/weathermaps/temp_icon.png'); background-repeat: no-repeat;width:36px;height:36px;">
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">28</p>
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">18</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Beau_Bassin" class="station temp" title="Beau Bassin" style="cursor: pointer; position: absolute; top: 221px; left: 175px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="6" class="Beau_Bassin" style="position: absolute;background-image:url('images/weathermaps/temp_icon.png'); background-repeat: no-repeat;width:36px;height:36px;">
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Belle_Mare" class="station temp" title="Belle Mare" style="cursor: pointer; position: absolute; top: 194px; left: 408px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="4" class="Belle_Mare" style="position: absolute;background-image:url('images/weathermaps/temp_icon.png'); background-repeat: no-repeat;width:36px;height:36px;">
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">27</p>
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">21</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Grand_Bassin" class="station temp" title="Grand Bassin" style="cursor: pointer; position: absolute; top: 360px; left: 205px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="15" class="Grand_Bassin" style="position: absolute;background-image:url('images/weathermaps/temp_icon.png'); background-repeat: no-repeat;width:36px;height:36px;">
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Le_Morne" class="station temp" title="Le Morne" style="cursor: pointer; position: absolute; top: 390px; left: 70px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="3" class="Le_Morne" style="position: absolute;background-image:url('images/weathermaps/temp_icon.png'); background-repeat: no-repeat;width:36px;height:36px;">
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">28</p>
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">21</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Mare_Aux_Vacoas" class="station temp" title="Mare Aux Vacoas" style="cursor: pointer; position: absolute; top: 341px; left: 180px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="5" class="Mare_Aux_Vacoas" style="position: absolute;background-image:url('images/weathermaps/temp_icon.png'); background-repeat: no-repeat;width:36px;height:36px;">
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Moka" class="station temp" title="Moka" style="cursor: pointer; position: absolute; top: 223px; left: 240px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="9" class="Moka" style="position: absolute;background-image:url('images/weathermaps/temp_icon.png'); background-repeat: no-repeat;width:36px;height:36px;">
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Mon_Loisir_Rouillard" class="station temp" title="Mon Loisir Rouillard" style="cursor: pointer; position: absolute; top: 75px; left: 307px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="14" class="Mon_Loisir_Rouillard" style="position: absolute;background-image:url('images/weathermaps/temp_icon.png'); background-repeat: no-repeat;width:36px;height:36px;">
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">27</p>
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">20</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Mon_Loisir_Sugar_Estate" class="station temp" title="Mon Loisir Sugar Estate" style="cursor: pointer; position: absolute; top: 128px; left: 327px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="18" class="Mon_Loisir_Sugar_Estate" style="position: absolute;background-image:url('images/weathermaps/temp_icon.png'); background-repeat: no-repeat;width:36px;height:36px;">
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Nouvelle_Decouverte" class="station temp" title="Nouvelle Decouverte" style="cursor: pointer; position: absolute; top: 193px; left: 253px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="13" class="Nouvelle_Decouverte" style="position: absolute;background-image:url('images/weathermaps/temp_icon.png'); background-repeat: no-repeat;width:36px;height:36px;">
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Plaisance_SSR_Int_Airport" class="station temp" title="Plaisance (SSR Int Airport)" style="cursor: pointer; position: absolute; top: 380px; left: 336px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="28" class="Plaisance_SSR_Int_Airport" style="position: absolute;background-image:url('images/weathermaps/temp_icon.png'); background-repeat: no-repeat;width:36px;height:36px;">
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">27</p>
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">19</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Port_Louis_Line_Barracks" class="station temp" title="Port Louis (Line Barracks)" style="cursor: pointer; position: absolute; top: 165px; left: 196px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="10" class="Port_Louis_Line_Barracks" style="position: absolute;background-image:url('images/weathermaps/temp_icon.png'); background-repeat: no-repeat;width:36px;height:36px;">
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">28</p>
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">22</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Quatre_Bornes" class="station temp" title="Quatre Bornes" style="cursor: pointer; position: absolute; top: 248px; left: 179px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="27" class="Quatre_Bornes" style="position: absolute;background-image:url('images/weathermaps/temp_icon.png'); background-repeat: no-repeat;width:36px;height:36px;">
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">26</p>
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">17</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Queen_Victoria" class="station temp" title="Queen Victoria" style="cursor: pointer; position: absolute; top: 230px; left: 354px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="16" class="Queen_Victoria" style="position: absolute;background-image:url('images/weathermaps/temp_icon.png'); background-repeat: no-repeat;width:36px;height:36px;">
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Riche_en_Eau" class="station temp" title="Riche en Eau" style="cursor: pointer; position: absolute; top: 346px; left: 317px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="8" class="Riche_en_Eau" style="position: absolute;background-image:url('images/weathermaps/temp_icon.png'); background-repeat: no-repeat;width:36px;height:36px;">
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Riviere_Noire" class="station temp" title="Riviere Noire" style="cursor: pointer; position: absolute; top: 296px; left: 118px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="20" class="Riviere_Noire" style="position: absolute;background-image:url('images/weathermaps/temp_icon.png'); background-repeat: no-repeat;width:36px;height:36px;">
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">30</p>
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">21</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Rose_Belle" class="station temp" title="Rose Belle" style="cursor: pointer; position: absolute; top: 380px; left: 272px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="2" class="Rose_Belle" style="position: absolute;background-image:url('images/weathermaps/temp_icon.png'); background-repeat: no-repeat;width:36px;height:36px;">
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">25</p>
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">18</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="St_Felix" class="station temp" title="St.Felix" style="cursor: pointer; position: absolute; top: 430px; left: 187px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="21" class="St_Felix" style="position: absolute;background-image:url('images/weathermaps/temp_icon.png'); background-repeat: no-repeat;width:36px;height:36px;">
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">28</p>
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">19</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Vacoas" class="station temp" title="Vacoas" style="cursor: pointer; position: absolute; top: 276px; left: 184px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="22" class="Vacoas" style="position: absolute;background-image:url('images/weathermaps/temp_icon.png'); background-repeat: no-repeat;width:36px;height:36px;">
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">24</p>
+			<p style="padding-top: 0px; padding-left: 8px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">17</p>
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+	</div>
+<div class="clear"></div>
+<div class="weatherinfo">
+<p style="font-size:12px;margin-top:20px;margin-bottom:20px;text-align:center;">Maximum and minimum temperatures for the last 24 hours until 
+16 October 2026 
+</p>
+</div>
+<div class="clear"></div>
+<div class="infotable"> 
+	<div id="temperaturesinfo">
+		<table class="tableau">
+				
+		<tr>
+				
+			<th>station</th>
+			<th>min temp</th>
+			<th>max temp</th>
+				
+			<th>station</th>
+			<th>min temp</th>
+			<th>max temp</th>
+				
+			<th>station</th>
+			<th>min temp</th>
+			<th>max temp</th>
+				
+			<th>station</th>
+			<th>min temp</th>
+			<th>max temp</th>
+				</tr>
+				
+				
+		<tr>
+				
+		<td class="Albion" style="text-align:left;">Albion</td>
+		<td class="Albion" >18</td>
+		<td class="Albion">28</td>
+				
+		<td class="Beau_Bassin" style="text-align:left;">Beau Bassin</td>
+		<td class="Beau_Bassin" > </td>
+		<td class="Beau_Bassin"> </td>
+				
+		<td class="Bell_Village" style="text-align:left;">Bell Village</td>
+		<td class="Bell_Village" >22</td>
+		<td class="Bell_Village">28</td>
+				
+		<td class="Belle_Mare" style="text-align:left;">Belle Mare</td>
+		<td class="Belle_Mare" >21</td>
+		<td class="Belle_Mare">27</td>
+				</tr>
+				
+		<tr>
+				
+		<td class="Champ_de_Mars" style="text-align:left;">Champ de Mars</td>
+		<td class="Champ_de_Mars" >22</td>
+		<td class="Champ_de_Mars">28</td>
+				
+		<td class="Chitrakoot" style="text-align:left;">Chitrakoot</td>
+		<td class="Chitrakoot" > </td>
+		<td class="Chitrakoot"> </td>
+				
+		<td class="Domaine_les_Pailles" style="text-align:left;">Domaine les Pailles</td>
+		<td class="Domaine_les_Pailles" > </td>
+		<td class="Domaine_les_Pailles"> </td>
+				
+		<td class="Grand_Bassin" style="text-align:left;">Grand Bassin</td>
+		<td class="Grand_Bassin" > </td>
+		<td class="Grand_Bassin"> </td>
+				</tr>
+				
+		<tr>
+				
+		<td class="Le_Morne" style="text-align:left;">Le Morne</td>
+		<td class="Le_Morne" >21</td>
+		<td class="Le_Morne">28</td>
+				
+		<td class="Mare_Aux_Vacoas" style="text-align:left;">Mare Aux Vacoas</td>
+		<td class="Mare_Aux_Vacoas" > </td>
+		<td class="Mare_Aux_Vacoas"> </td>
+				
+		<td class="Moka" style="text-align:left;">Moka</td>
+		<td class="Moka" > </td>
+		<td class="Moka"> </td>
+				
+		<td class="Mon_Loisir_Rouillard" style="text-align:left;">Mon Loisir Rouillard</td>
+		<td class="Mon_Loisir_Rouillard" >20</td>
+		<td class="Mon_Loisir_Rouillard">27</td>
+				</tr>
+				
+		<tr>
+				
+		<td class="Mon_Loisir_Sugar_Estate" style="text-align:left;">Mon Loisir Sugar Estate</td>
+		<td class="Mon_Loisir_Sugar_Estate" > </td>
+		<td class="Mon_Loisir_Sugar_Estate"> </td>
+				
+		<td class="Nouvelle_Decouverte" style="text-align:left;">Nouvelle Decouverte</td>
+		<td class="Nouvelle_Decouverte" > </td>
+		<td class="Nouvelle_Decouverte"> </td>
+				
+		<td class="Plaisance_SSR_Int_Airport" style="text-align:left;">Plaisance (SSR Int Airport)</td>
+		<td class="Plaisance_SSR_Int_Airport" >19</td>
+		<td class="Plaisance_SSR_Int_Airport">27</td>
+				
+		<td class="Port_Louis_Line_Barracks" style="text-align:left;">Port Louis (Line Barracks)</td>
+		<td class="Port_Louis_Line_Barracks" >22</td>
+		<td class="Port_Louis_Line_Barracks">28</td>
+				</tr>
+				
+		<tr>
+				
+		<td class="Quatre_Bornes" style="text-align:left;">Quatre Bornes</td>
+		<td class="Quatre_Bornes" >17</td>
+		<td class="Quatre_Bornes">26</td>
+				
+		<td class="Queen_Victoria" style="text-align:left;">Queen Victoria</td>
+		<td class="Queen_Victoria" > </td>
+		<td class="Queen_Victoria"> </td>
+				
+		<td class="Riche_en_Eau" style="text-align:left;">Riche en Eau</td>
+		<td class="Riche_en_Eau" > </td>
+		<td class="Riche_en_Eau"> </td>
+				
+		<td class="Riche_Terre" style="text-align:left;">Riche Terre</td>
+		<td class="Riche_Terre" >21</td>
+		<td class="Riche_Terre">27</td>
+				</tr>
+				
+		<tr>
+				
+		<td class="Riviere_Noire" style="text-align:left;">Riviere Noire</td>
+		<td class="Riviere_Noire" >21</td>
+		<td class="Riviere_Noire">30</td>
+				
+		<td class="Rose_Belle" style="text-align:left;">Rose Belle</td>
+		<td class="Rose_Belle" >18</td>
+		<td class="Rose_Belle">25</td>
+				
+		<td class="Signal_Mountain" style="text-align:left;">Signal Mountain</td>
+		<td class="Signal_Mountain" >19</td>
+		<td class="Signal_Mountain">29</td>
+				
+		<td class="St_Felix" style="text-align:left;">St.Felix</td>
+		<td class="St_Felix" >19</td>
+		<td class="St_Felix">28</td>
+				</tr>
+				
+		<tr>
+				
+		<td class="Vacoas" style="text-align:left;">Vacoas</td>
+		<td class="Vacoas" >17</td>
+		<td class="Vacoas">24</td>
+				
+		<td class="" style="text-align:left;"> </td>
+		<td class="" > </td>
+		<td class=""> </td>
+				
+		<td class="" style="text-align:left;"> </td>
+		<td class="" > </td>
+		<td class=""> </td>
+				
+		<td class="" style="text-align:left;"> </td>
+		<td class="" > </td>
+		<td class=""> </td>
+				</tr>
+				</table>			
+	</div>	
+</div> 
+<div class="clear"></div>
+                    </div>
+                    
+                    <div id="view4">
+						<div style="font-family:Arial; font-size: 12px; background-image:url('maps/map-pl.jpg'); background-repeat: no-repeat;width:400px;height:511px;padding: 10px 0px 0px 0px;position:relative;float:left;">
+		<div id="Bell_Village" class="station" title="Bell Village" style="cursor: pointer; position: absolute; top: 158px; left: 80px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/wind_icon.png" width="22" height="23"> -->
+			<div id="23" class="Bell_Village" style="position: absolute;background-image:url('images/weathermaps/wind_icon.png'); background-repeat: no-repeat;width:22px;height:23px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">37</p>	
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Champ_de_Mars" class="station" title="Champ de Mars" style="cursor: pointer; position: absolute; top: 140px; left: 212px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/wind_icon.png" width="22" height="23"> -->
+			<div id="19" class="Champ_de_Mars" style="position: absolute;background-image:url('images/weathermaps/wind_icon.png'); background-repeat: no-repeat;width:22px;height:23px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>	
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Chitrakoot" class="station" title="Chitrakoot" style="cursor: pointer; position: absolute; top: 230px; left: 370px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/wind_icon.png" width="22" height="23"> -->
+			<div id="26" class="Chitrakoot" style="position: absolute;background-image:url('images/weathermaps/wind_icon.png'); background-repeat: no-repeat;width:22px;height:23px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>	
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Domaine_les_Pailles" class="station" title="Domaine les Pailles" style="cursor: pointer; position: absolute; top: 266px; left: 100px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/wind_icon.png" width="22" height="23"> -->
+			<div id="17" class="Domaine_les_Pailles" style="position: absolute;background-image:url('images/weathermaps/wind_icon.png'); background-repeat: no-repeat;width:22px;height:23px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>	
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Port_Louis_Line_Barracks" class="station" title="Port Louis (Line Barracks)" style="cursor: pointer; position: absolute; top: 120px; left: 145px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/wind_icon.png" width="22" height="23"> -->
+			<div id="10" class="Port_Louis_Line_Barracks" style="position: absolute;background-image:url('images/weathermaps/wind_icon.png'); background-repeat: no-repeat;width:22px;height:23px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>	
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Riche_Terre" class="station" title="Riche Terre" style="cursor: pointer; position: absolute; top: 0px; left: 214px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/wind_icon.png" width="22" height="23"> -->
+			<div id="24" class="Riche_Terre" style="position: absolute;background-image:url('images/weathermaps/wind_icon.png'); background-repeat: no-repeat;width:22px;height:23px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">48</p>	
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Signal_Mountain" class="station" title="Signal Mountain" style="cursor: pointer; position: absolute; top: 160px; left: 120px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/wind_icon.png" width="22" height="23"> -->
+			<div id="25" class="Signal_Mountain" style="position: absolute;background-image:url('images/weathermaps/wind_icon.png'); background-repeat: no-repeat;width:22px;height:23px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">63</p>	
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+	</div>
+ 
+					    <div style="font-family:Arial; font-size: 12px; background-image:url('maps/map-mru.jpg'); background-repeat: no-repeat;width:510px;height:531px;position:relative;float:right;">
+		<div id="Albion" class="station" title="Albion" style="cursor: pointer; position: absolute; top: 208px; left: 135px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/wind_icon.png" width="22" height="23"> -->
+			<div id="1" class="Albion" style="position: absolute;background-image:url('images/weathermaps/wind_icon.png'); background-repeat: no-repeat;width:22px;height:23px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">50</p>	
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Beau_Bassin" class="station" title="Beau Bassin" style="cursor: pointer; position: absolute; top: 221px; left: 175px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/wind_icon.png" width="22" height="23"> -->
+			<div id="6" class="Beau_Bassin" style="position: absolute;background-image:url('images/weathermaps/wind_icon.png'); background-repeat: no-repeat;width:22px;height:23px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>	
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Belle_Mare" class="station" title="Belle Mare" style="cursor: pointer; position: absolute; top: 194px; left: 408px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/wind_icon.png" width="22" height="23"> -->
+			<div id="4" class="Belle_Mare" style="position: absolute;background-image:url('images/weathermaps/wind_icon.png'); background-repeat: no-repeat;width:22px;height:23px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">29</p>	
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Grand_Bassin" class="station" title="Grand Bassin" style="cursor: pointer; position: absolute; top: 360px; left: 205px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/wind_icon.png" width="22" height="23"> -->
+			<div id="15" class="Grand_Bassin" style="position: absolute;background-image:url('images/weathermaps/wind_icon.png'); background-repeat: no-repeat;width:22px;height:23px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>	
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Le_Morne" class="station" title="Le Morne" style="cursor: pointer; position: absolute; top: 390px; left: 70px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/wind_icon.png" width="22" height="23"> -->
+			<div id="3" class="Le_Morne" style="position: absolute;background-image:url('images/weathermaps/wind_icon.png'); background-repeat: no-repeat;width:22px;height:23px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">59</p>	
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Mare_Aux_Vacoas" class="station" title="Mare Aux Vacoas" style="cursor: pointer; position: absolute; top: 341px; left: 180px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/wind_icon.png" width="22" height="23"> -->
+			<div id="5" class="Mare_Aux_Vacoas" style="position: absolute;background-image:url('images/weathermaps/wind_icon.png'); background-repeat: no-repeat;width:22px;height:23px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>	
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Moka" class="station" title="Moka" style="cursor: pointer; position: absolute; top: 223px; left: 240px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/wind_icon.png" width="22" height="23"> -->
+			<div id="9" class="Moka" style="position: absolute;background-image:url('images/weathermaps/wind_icon.png'); background-repeat: no-repeat;width:22px;height:23px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>	
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Mon_Loisir_Rouillard" class="station" title="Mon Loisir Rouillard" style="cursor: pointer; position: absolute; top: 75px; left: 307px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/wind_icon.png" width="22" height="23"> -->
+			<div id="14" class="Mon_Loisir_Rouillard" style="position: absolute;background-image:url('images/weathermaps/wind_icon.png'); background-repeat: no-repeat;width:22px;height:23px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">54</p>	
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Mon_Loisir_Sugar_Estate" class="station" title="Mon Loisir Sugar Estate" style="cursor: pointer; position: absolute; top: 128px; left: 327px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/wind_icon.png" width="22" height="23"> -->
+			<div id="18" class="Mon_Loisir_Sugar_Estate" style="position: absolute;background-image:url('images/weathermaps/wind_icon.png'); background-repeat: no-repeat;width:22px;height:23px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">48</p>	
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Nouvelle_Decouverte" class="station" title="Nouvelle Decouverte" style="cursor: pointer; position: absolute; top: 193px; left: 253px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/wind_icon.png" width="22" height="23"> -->
+			<div id="13" class="Nouvelle_Decouverte" style="position: absolute;background-image:url('images/weathermaps/wind_icon.png'); background-repeat: no-repeat;width:22px;height:23px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>	
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Plaisance_SSR_Int_Airport" class="station" title="Plaisance (SSR Int Airport)" style="cursor: pointer; position: absolute; top: 380px; left: 336px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/wind_icon.png" width="22" height="23"> -->
+			<div id="28" class="Plaisance_SSR_Int_Airport" style="position: absolute;background-image:url('images/weathermaps/wind_icon.png'); background-repeat: no-repeat;width:22px;height:23px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">54</p>	
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Port_Louis_Line_Barracks" class="station" title="Port Louis (Line Barracks)" style="cursor: pointer; position: absolute; top: 165px; left: 196px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/wind_icon.png" width="22" height="23"> -->
+			<div id="10" class="Port_Louis_Line_Barracks" style="position: absolute;background-image:url('images/weathermaps/wind_icon.png'); background-repeat: no-repeat;width:22px;height:23px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>	
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Quatre_Bornes" class="station" title="Quatre Bornes" style="cursor: pointer; position: absolute; top: 248px; left: 179px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/wind_icon.png" width="22" height="23"> -->
+			<div id="27" class="Quatre_Bornes" style="position: absolute;background-image:url('images/weathermaps/wind_icon.png'); background-repeat: no-repeat;width:22px;height:23px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">48</p>	
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Queen_Victoria" class="station" title="Queen Victoria" style="cursor: pointer; position: absolute; top: 230px; left: 354px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/wind_icon.png" width="22" height="23"> -->
+			<div id="16" class="Queen_Victoria" style="position: absolute;background-image:url('images/weathermaps/wind_icon.png'); background-repeat: no-repeat;width:22px;height:23px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>	
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Riche_en_Eau" class="station" title="Riche en Eau" style="cursor: pointer; position: absolute; top: 346px; left: 317px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/wind_icon.png" width="22" height="23"> -->
+			<div id="8" class="Riche_en_Eau" style="position: absolute;background-image:url('images/weathermaps/wind_icon.png'); background-repeat: no-repeat;width:22px;height:23px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>	
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Riviere_Noire" class="station" title="Riviere Noire" style="cursor: pointer; position: absolute; top: 296px; left: 118px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/wind_icon.png" width="22" height="23"> -->
+			<div id="20" class="Riviere_Noire" style="position: absolute;background-image:url('images/weathermaps/wind_icon.png'); background-repeat: no-repeat;width:22px;height:23px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">36</p>	
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Rose_Belle" class="station" title="Rose Belle" style="cursor: pointer; position: absolute; top: 380px; left: 272px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/wind_icon.png" width="22" height="23"> -->
+			<div id="2" class="Rose_Belle" style="position: absolute;background-image:url('images/weathermaps/wind_icon.png'); background-repeat: no-repeat;width:22px;height:23px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>	
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="St_Felix" class="station" title="St.Felix" style="cursor: pointer; position: absolute; top: 430px; left: 187px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/wind_icon.png" width="22" height="23"> -->
+			<div id="21" class="St_Felix" style="position: absolute;background-image:url('images/weathermaps/wind_icon.png'); background-repeat: no-repeat;width:22px;height:23px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">50</p>	
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Vacoas" class="station" title="Vacoas" style="cursor: pointer; position: absolute; top: 276px; left: 184px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/wind_icon.png" width="22" height="23"> -->
+			<div id="22" class="Vacoas" style="position: absolute;background-image:url('images/weathermaps/wind_icon.png'); background-repeat: no-repeat;width:22px;height:23px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">46</p>	
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+	</div>
+<div class="clear"></div>
+<div class="weatherinfo">
+<p style="font-size:12px;margin-top:20px;margin-bottom:20px;text-align:center;">Maximum wind speed (km/h) for the last 24 hours until 16 October 2026 
+</p>
+</div>
+<div class="clear"></div>
+<div class="infotable"> 
+	<div id="windsinfo">
+		<table class="tableau">
+				
+		<tr>
+				
+			<th>station</th>
+			<th>wind</th>
+			<!--<th>direction</th>-->			
+				
+			<th>station</th>
+			<th>wind</th>
+			<!--<th>direction</th>-->			
+				
+			<th>station</th>
+			<th>wind</th>
+			<!--<th>direction</th>-->			
+				
+			<th>station</th>
+			<th>wind</th>
+			<!--<th>direction</th>-->			
+				</tr>
+				
+				
+		<tr>
+				
+		<td class="Albion" style="text-align:left;">Albion</td>
+		<td class="Albion">50</td>
+		<!-- <td class="Albion">S</td> -->
+				
+		<td class="Beau_Bassin" style="text-align:left;">Beau Bassin</td>
+		<td class="Beau_Bassin"> </td>
+		<!-- <td class="Beau_Bassin">WNW</td> -->
+				
+		<td class="Bell_Village" style="text-align:left;">Bell Village</td>
+		<td class="Bell_Village">37</td>
+		<!-- <td class="Bell_Village">SE</td> -->
+				
+		<td class="Belle_Mare" style="text-align:left;">Belle Mare</td>
+		<td class="Belle_Mare">29</td>
+		<!-- <td class="Belle_Mare">E</td> -->
+				</tr>
+				
+		<tr>
+				
+		<td class="Champ_de_Mars" style="text-align:left;">Champ de Mars</td>
+		<td class="Champ_de_Mars"> </td>
+		<!-- <td class="Champ_de_Mars">E</td> -->
+				
+		<td class="Chitrakoot" style="text-align:left;">Chitrakoot</td>
+		<td class="Chitrakoot"> </td>
+		<!-- <td class="Chitrakoot">E</td> -->
+				
+		<td class="Domaine_les_Pailles" style="text-align:left;">Domaine les Pailles</td>
+		<td class="Domaine_les_Pailles"> </td>
+		<!-- <td class="Domaine_les_Pailles">E</td> -->
+				
+		<td class="Grand_Bassin" style="text-align:left;">Grand Bassin</td>
+		<td class="Grand_Bassin"> </td>
+		<!-- <td class="Grand_Bassin">E</td> -->
+				</tr>
+				
+		<tr>
+				
+		<td class="Le_Morne" style="text-align:left;">Le Morne</td>
+		<td class="Le_Morne">59</td>
+		<!-- <td class="Le_Morne">E</td> -->
+				
+		<td class="Mare_Aux_Vacoas" style="text-align:left;">Mare Aux Vacoas</td>
+		<td class="Mare_Aux_Vacoas"> </td>
+		<!-- <td class="Mare_Aux_Vacoas">E</td> -->
+				
+		<td class="Moka" style="text-align:left;">Moka</td>
+		<td class="Moka"> </td>
+		<!-- <td class="Moka">E</td> -->
+				
+		<td class="Mon_Loisir_Rouillard" style="text-align:left;">Mon Loisir Rouillard</td>
+		<td class="Mon_Loisir_Rouillard">54</td>
+		<!-- <td class="Mon_Loisir_Rouillard">E</td> -->
+				</tr>
+				
+		<tr>
+				
+		<td class="Mon_Loisir_Sugar_Estate" style="text-align:left;">Mon Loisir Sugar Estate</td>
+		<td class="Mon_Loisir_Sugar_Estate">48</td>
+		<!-- <td class="Mon_Loisir_Sugar_Estate">SE</td> -->
+				
+		<td class="Nouvelle_Decouverte" style="text-align:left;">Nouvelle Decouverte</td>
+		<td class="Nouvelle_Decouverte"> </td>
+		<!-- <td class="Nouvelle_Decouverte">E</td> -->
+				
+		<td class="Plaisance_SSR_Int_Airport" style="text-align:left;">Plaisance (SSR Int Airport)</td>
+		<td class="Plaisance_SSR_Int_Airport">54</td>
+		<!-- <td class="Plaisance_SSR_Int_Airport">SE</td> -->
+				
+		<td class="Port_Louis_Line_Barracks" style="text-align:left;">Port Louis (Line Barracks)</td>
+		<td class="Port_Louis_Line_Barracks"> </td>
+		<!-- <td class="Port_Louis_Line_Barracks">E</td> -->
+				</tr>
+				
+		<tr>
+				
+		<td class="Quatre_Bornes" style="text-align:left;">Quatre Bornes</td>
+		<td class="Quatre_Bornes">48</td>
+		<!-- <td class="Quatre_Bornes">SE</td> -->
+				
+		<td class="Queen_Victoria" style="text-align:left;">Queen Victoria</td>
+		<td class="Queen_Victoria"> </td>
+		<!-- <td class="Queen_Victoria">E</td> -->
+				
+		<td class="Riche_en_Eau" style="text-align:left;">Riche en Eau</td>
+		<td class="Riche_en_Eau"> </td>
+		<!-- <td class="Riche_en_Eau">E</td> -->
+				
+		<td class="Riche_Terre" style="text-align:left;">Riche Terre</td>
+		<td class="Riche_Terre">48</td>
+		<!-- <td class="Riche_Terre">SE</td> -->
+				</tr>
+				
+		<tr>
+				
+		<td class="Riviere_Noire" style="text-align:left;">Riviere Noire</td>
+		<td class="Riviere_Noire">36</td>
+		<!-- <td class="Riviere_Noire">SE</td> -->
+				
+		<td class="Rose_Belle" style="text-align:left;">Rose Belle</td>
+		<td class="Rose_Belle"> </td>
+		<!-- <td class="Rose_Belle">E</td> -->
+				
+		<td class="Signal_Mountain" style="text-align:left;">Signal Mountain</td>
+		<td class="Signal_Mountain">63</td>
+		<!-- <td class="Signal_Mountain">SE</td> -->
+				
+		<td class="St_Felix" style="text-align:left;">St.Felix</td>
+		<td class="St_Felix">50</td>
+		<!-- <td class="St_Felix">SE</td> -->
+				</tr>
+				
+		<tr>
+				
+		<td class="Vacoas" style="text-align:left;">Vacoas</td>
+		<td class="Vacoas">46</td>
+		<!-- <td class="Vacoas">SE</td> -->
+				
+		<td class="" style="text-align:left;"> </td>
+		<td class=""> </td>
+		<!-- <td class=""> </td> -->
+				
+		<td class="" style="text-align:left;"> </td>
+		<td class=""> </td>
+		<!-- <td class=""> </td> -->
+				
+		<td class="" style="text-align:left;"> </td>
+		<td class=""> </td>
+		<!-- <td class=""> </td> -->
+				</tr>
+				</table>			
+	</div>	
+</div> 
+<div class="clear"></div>
+                    </div>
+                    
+                   <div id="view5">                  
+					   <div style="font-family:Arial; font-size: 12px; background-image:url('maps/map-pl.jpg'); background-repeat: no-repeat;width:400px;height:511px;padding: 10px 0px 0px 0px;position:relative;float:left;">
+		<div id="Bell_Village" class="station" title="Bell Village" style="cursor: pointer; position: absolute; top: 158px; left: 80px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="23" class="Bell_Village" style="position: absolute;background-image:url('images/weathermaps/square.png'); background-repeat: no-repeat;width:19px;height:19px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">46</p>			
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Champ_de_Mars" class="station" title="Champ de Mars" style="cursor: pointer; position: absolute; top: 140px; left: 212px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="19" class="Champ_de_Mars" style="position: absolute;background-image:url('images/weathermaps/square.png'); background-repeat: no-repeat;width:19px;height:19px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">47</p>			
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Chitrakoot" class="station" title="Chitrakoot" style="cursor: pointer; position: absolute; top: 230px; left: 370px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="26" class="Chitrakoot" style="position: absolute;background-image:url('images/weathermaps/square.png'); background-repeat: no-repeat;width:19px;height:19px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>			
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Domaine_les_Pailles" class="station" title="Domaine les Pailles" style="cursor: pointer; position: absolute; top: 266px; left: 100px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="17" class="Domaine_les_Pailles" style="position: absolute;background-image:url('images/weathermaps/square.png'); background-repeat: no-repeat;width:19px;height:19px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>			
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Port_Louis_Line_Barracks" class="station" title="Port Louis (Line Barracks)" style="cursor: pointer; position: absolute; top: 120px; left: 145px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="10" class="Port_Louis_Line_Barracks" style="position: absolute;background-image:url('images/weathermaps/square.png'); background-repeat: no-repeat;width:19px;height:19px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>			
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Riche_Terre" class="station" title="Riche Terre" style="cursor: pointer; position: absolute; top: 0px; left: 214px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="24" class="Riche_Terre" style="position: absolute;background-image:url('images/weathermaps/square.png'); background-repeat: no-repeat;width:19px;height:19px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">50</p>			
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Signal_Mountain" class="station" title="Signal Mountain" style="cursor: pointer; position: absolute; top: 160px; left: 120px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="25" class="Signal_Mountain" style="position: absolute;background-image:url('images/weathermaps/square.png'); background-repeat: no-repeat;width:19px;height:19px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">48</p>			
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+	</div>
+ 	
+					   <div style="font-family:Arial; font-size: 12px; background-image:url('maps/map-mru.jpg'); background-repeat: no-repeat;width:510px;height:531px;position:relative;float:right;">
+		<div id="Albion" class="station" title="Albion" style="cursor: pointer; position: absolute; top: 208px; left: 135px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="1" class="Albion" style="position: absolute;background-image:url('images/weathermaps/square.png'); background-repeat: no-repeat;width:19px;height:19px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">55</p>			
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Beau_Bassin" class="station" title="Beau Bassin" style="cursor: pointer; position: absolute; top: 221px; left: 175px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="6" class="Beau_Bassin" style="position: absolute;background-image:url('images/weathermaps/square.png'); background-repeat: no-repeat;width:19px;height:19px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>			
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Belle_Mare" class="station" title="Belle Mare" style="cursor: pointer; position: absolute; top: 194px; left: 408px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="4" class="Belle_Mare" style="position: absolute;background-image:url('images/weathermaps/square.png'); background-repeat: no-repeat;width:19px;height:19px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>			
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Grand_Bassin" class="station" title="Grand Bassin" style="cursor: pointer; position: absolute; top: 360px; left: 205px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="15" class="Grand_Bassin" style="position: absolute;background-image:url('images/weathermaps/square.png'); background-repeat: no-repeat;width:19px;height:19px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>			
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Le_Morne" class="station" title="Le Morne" style="cursor: pointer; position: absolute; top: 390px; left: 70px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="3" class="Le_Morne" style="position: absolute;background-image:url('images/weathermaps/square.png'); background-repeat: no-repeat;width:19px;height:19px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">62</p>			
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Mare_Aux_Vacoas" class="station" title="Mare Aux Vacoas" style="cursor: pointer; position: absolute; top: 341px; left: 180px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="5" class="Mare_Aux_Vacoas" style="position: absolute;background-image:url('images/weathermaps/square.png'); background-repeat: no-repeat;width:19px;height:19px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>			
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Moka" class="station" title="Moka" style="cursor: pointer; position: absolute; top: 223px; left: 240px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="9" class="Moka" style="position: absolute;background-image:url('images/weathermaps/square.png'); background-repeat: no-repeat;width:19px;height:19px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>			
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Mon_Loisir_Rouillard" class="station" title="Mon Loisir Rouillard" style="cursor: pointer; position: absolute; top: 75px; left: 307px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="14" class="Mon_Loisir_Rouillard" style="position: absolute;background-image:url('images/weathermaps/square.png'); background-repeat: no-repeat;width:19px;height:19px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">65</p>			
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Mon_Loisir_Sugar_Estate" class="station" title="Mon Loisir Sugar Estate" style="cursor: pointer; position: absolute; top: 128px; left: 327px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="18" class="Mon_Loisir_Sugar_Estate" style="position: absolute;background-image:url('images/weathermaps/square.png'); background-repeat: no-repeat;width:19px;height:19px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">62</p>			
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Nouvelle_Decouverte" class="station" title="Nouvelle Decouverte" style="cursor: pointer; position: absolute; top: 193px; left: 253px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="13" class="Nouvelle_Decouverte" style="position: absolute;background-image:url('images/weathermaps/square.png'); background-repeat: no-repeat;width:19px;height:19px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>			
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Plaisance_SSR_Int_Airport" class="station" title="Plaisance (SSR Int Airport)" style="cursor: pointer; position: absolute; top: 380px; left: 336px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="28" class="Plaisance_SSR_Int_Airport" style="position: absolute;background-image:url('images/weathermaps/square.png'); background-repeat: no-repeat;width:19px;height:19px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">44</p>			
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Port_Louis_Line_Barracks" class="station" title="Port Louis (Line Barracks)" style="cursor: pointer; position: absolute; top: 165px; left: 196px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="10" class="Port_Louis_Line_Barracks" style="position: absolute;background-image:url('images/weathermaps/square.png'); background-repeat: no-repeat;width:19px;height:19px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>			
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Quatre_Bornes" class="station" title="Quatre Bornes" style="cursor: pointer; position: absolute; top: 248px; left: 179px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="27" class="Quatre_Bornes" style="position: absolute;background-image:url('images/weathermaps/square.png'); background-repeat: no-repeat;width:19px;height:19px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">74</p>			
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Queen_Victoria" class="station" title="Queen Victoria" style="cursor: pointer; position: absolute; top: 230px; left: 354px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="16" class="Queen_Victoria" style="position: absolute;background-image:url('images/weathermaps/square.png'); background-repeat: no-repeat;width:19px;height:19px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;"></p>			
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Riche_en_Eau" class="station" title="Riche en Eau" style="cursor: pointer; position: absolute; top: 346px; left: 317px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="8" class="Riche_en_Eau" style="position: absolute;background-image:url('images/weathermaps/square.png'); background-repeat: no-repeat;width:19px;height:19px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">52</p>			
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Riviere_Noire" class="station" title="Riviere Noire" style="cursor: pointer; position: absolute; top: 296px; left: 118px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="20" class="Riviere_Noire" style="position: absolute;background-image:url('images/weathermaps/square.png'); background-repeat: no-repeat;width:19px;height:19px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">40</p>			
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Rose_Belle" class="station" title="Rose Belle" style="cursor: pointer; position: absolute; top: 380px; left: 272px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="2" class="Rose_Belle" style="position: absolute;background-image:url('images/weathermaps/square.png'); background-repeat: no-repeat;width:19px;height:19px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">57</p>			
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="St_Felix" class="station" title="St.Felix" style="cursor: pointer; position: absolute; top: 430px; left: 187px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="21" class="St_Felix" style="position: absolute;background-image:url('images/weathermaps/square.png'); background-repeat: no-repeat;width:19px;height:19px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">43</p>			
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+		<div id="Vacoas" class="station" title="Vacoas" style="cursor: pointer; position: absolute; top: 276px; left: 184px;">
+		<!-- <table border="0">
+		<tr>
+			<td style="font-size: 11; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #000;" background="images/weathermaps/rougebleu.png" width="26" height="36"> -->
+			<div id="22" class="Vacoas" style="position: absolute;background-image:url('images/weathermaps/square.png'); background-repeat: no-repeat;width:19px;height:19px;">			
+			<p style="padding-top: 5px; padding-left: 6px;font-size: 11px;font-weight: bold;font-family: Arial, Helvetica, sans-serif; color: #000;">54</p>			
+			</div>
+			<!-- </td>
+		</tr>
+		</table> -->
+	</div>
+	</div>
+<div class="clear"></div>
+<div class="weatherinfo">
+<p style="font-size:12px;margin-top:20px;margin-bottom:10px;text-align:center;">Humidity at 10 AM on 15 October 2026</p>
+</div>
+<div class="clear"></div>
+<div class="infotable"> 
+	<div id="humidityinfo">
+		<table class="tableau">
+				
+		<tr>
+				
+			<th>station</th>
+			<th>humidity</th>			
+				
+			<th>station</th>
+			<th>humidity</th>			
+				
+			<th>station</th>
+			<th>humidity</th>			
+				
+			<th>station</th>
+			<th>humidity</th>			
+				</tr>
+				
+				
+		<tr>
+				
+		<td class="Albion" style="text-align:left;">Albion</td>
+		<td class="Albion">55</td>
+				
+		<td class="Beau_Bassin" style="text-align:left;">Beau Bassin</td>
+		<td class="Beau_Bassin"> </td>
+				
+		<td class="Bell_Village" style="text-align:left;">Bell Village</td>
+		<td class="Bell_Village">46</td>
+				
+		<td class="Belle_Mare" style="text-align:left;">Belle Mare</td>
+		<td class="Belle_Mare"> </td>
+				</tr>
+				
+		<tr>
+				
+		<td class="Champ_de_Mars" style="text-align:left;">Champ de Mars</td>
+		<td class="Champ_de_Mars">47</td>
+				
+		<td class="Chitrakoot" style="text-align:left;">Chitrakoot</td>
+		<td class="Chitrakoot"> </td>
+				
+		<td class="Domaine_les_Pailles" style="text-align:left;">Domaine les Pailles</td>
+		<td class="Domaine_les_Pailles"> </td>
+				
+		<td class="Grand_Bassin" style="text-align:left;">Grand Bassin</td>
+		<td class="Grand_Bassin"> </td>
+				</tr>
+				
+		<tr>
+				
+		<td class="Le_Morne" style="text-align:left;">Le Morne</td>
+		<td class="Le_Morne">62</td>
+				
+		<td class="Mare_Aux_Vacoas" style="text-align:left;">Mare Aux Vacoas</td>
+		<td class="Mare_Aux_Vacoas"> </td>
+				
+		<td class="Moka" style="text-align:left;">Moka</td>
+		<td class="Moka"> </td>
+				
+		<td class="Mon_Loisir_Rouillard" style="text-align:left;">Mon Loisir Rouillard</td>
+		<td class="Mon_Loisir_Rouillard">65</td>
+				</tr>
+				
+		<tr>
+				
+		<td class="Mon_Loisir_Sugar_Estate" style="text-align:left;">Mon Loisir Sugar Estate</td>
+		<td class="Mon_Loisir_Sugar_Estate">62</td>
+				
+		<td class="Nouvelle_Decouverte" style="text-align:left;">Nouvelle Decouverte</td>
+		<td class="Nouvelle_Decouverte"> </td>
+				
+		<td class="Plaisance_SSR_Int_Airport" style="text-align:left;">Plaisance (SSR Int Airport)</td>
+		<td class="Plaisance_SSR_Int_Airport">44</td>
+				
+		<td class="Port_Louis_Line_Barracks" style="text-align:left;">Port Louis (Line Barracks)</td>
+		<td class="Port_Louis_Line_Barracks"> </td>
+				</tr>
+				
+		<tr>
+				
+		<td class="Quatre_Bornes" style="text-align:left;">Quatre Bornes</td>
+		<td class="Quatre_Bornes">74</td>
+				
+		<td class="Queen_Victoria" style="text-align:left;">Queen Victoria</td>
+		<td class="Queen_Victoria"> </td>
+				
+		<td class="Riche_en_Eau" style="text-align:left;">Riche en Eau</td>
+		<td class="Riche_en_Eau">52</td>
+				
+		<td class="Riche_Terre" style="text-align:left;">Riche Terre</td>
+		<td class="Riche_Terre">50</td>
+				</tr>
+				
+		<tr>
+				
+		<td class="Riviere_Noire" style="text-align:left;">Riviere Noire</td>
+		<td class="Riviere_Noire">40</td>
+				
+		<td class="Rose_Belle" style="text-align:left;">Rose Belle</td>
+		<td class="Rose_Belle">57</td>
+				
+		<td class="Signal_Mountain" style="text-align:left;">Signal Mountain</td>
+		<td class="Signal_Mountain">48</td>
+				
+		<td class="St_Felix" style="text-align:left;">St.Felix</td>
+		<td class="St_Felix">43</td>
+				</tr>
+				
+		<tr>
+				
+		<td class="Vacoas" style="text-align:left;">Vacoas</td>
+		<td class="Vacoas">54</td>
+				
+		<td class="" style="text-align:left;"> </td>
+		<td class=""> </td>
+				
+		<td class="" style="text-align:left;"> </td>
+		<td class=""> </td>
+				
+		<td class="" style="text-align:left;"> </td>
+		<td class=""> </td>
+				</tr>
+				</table>			
+	</div>	
+</div> 
+<div class="clear"></div>
+                    </div>
+                </div>
+			</div>		
+		</div>
+  	</div>
+	<div class="clear"></div>
+	<div style="padding: 20px 1px 10px;">
+	<a href="https://www.myt.mu/mobile/mytweather-app/?ref=metservice" target="_blank"><img src ="http://metservice.intnet.mu/images/app/metservice-banner-conditions.jpg" alt="my.t weather app"></a>
+</div>
+	<div class="clear"></div>
+	<script>
+	
+	jQuery(document).ready(function($){
+		var selectedtab;
+		var iconimg;
+		var iconimgover;
+		iconimg = 'images/weathermaps/rainfall.png';
+		iconimgover = 'images/weathermaps/rainfall_over.png';
+		$('.tabs > li > a').on("click",function(e){
+			e.preventDefault();
+			//alert("selected tab id: " + $(this).attr("href"));
+			selectedtab = $(this).attr("href");
+			//alert(selectedtab);
+			if (selectedtab == '#view1'){
+				iconimg = 'images/weathermaps/rainfall.png';
+				iconimgover = 'images/weathermaps/rainfall_over.png';
+				$('div .station').children().css('background-image', 'url("'+iconimg+'")');
+			}
+			else if (selectedtab == '#view2'){	
+				iconimg = 'images/weathermaps/rainfall.png';
+				iconimgover = 'images/weathermaps/rainfall_over.png';	
+				$('div .station').children().css('background-image', 'url("'+iconimg+'")');		
+			}
+			else if (selectedtab == '#view3'){	
+				iconimg = 'images/weathermaps/temp_icon.png';
+				iconimgover = 'images/weathermaps/rougebleu_over.png';
+				$('div .station').children().css('background-image', 'url("'+iconimg+'")');
+			}
+			else if (selectedtab == '#view4'){	
+				iconimg = 'images/weathermaps/wind_icon.png';
+				iconimgover = 'images/weathermaps/wind_icon_over.png';
+				//$('.Champ_de_Mars').css('background-image', 'url("'+iconimg+'")');
+				$('div .station').children().css('background-image', 'url("'+iconimg+'")');
+			}
+			else if (selectedtab == '#view5'){	
+				iconimg = 'images/weathermaps/square.png';
+				iconimgover = 'images/weathermaps/square_over.png';
+				$('div .station').children().css('background-image', 'url("'+iconimg+'")');
+			}
+		});
+		var temptitle;
+		$('div .station').children().hover( 
+			
+		   function() {
+		   	//alert(iconimgover);
+			  temptitle = $(this).attr('id')
+			  stationName = $(this).attr('class')	
+			  var cleanTitle = stationName.replace('(', '').replace(')', '').replace('.', '').replace(' ', '_');			  
+			  $('#'+temptitle).css('background-image', 'url("'+iconimgover+'")');
+			  $('.infotable tr td".'+stationName).addClass('current')	
+		   },
+		   function(){
+			 temptitle = $(this).attr('id')
+			 stationName = $(this).attr('class')
+			 var cleanTitle = stationName.replace('(', '').replace(')', '').replace('.', '').replace(' ', '_');
+			 $('#'+temptitle).css('background-image', 'url("'+iconimg+'")');
+			 $('.infotable tr td".'+stationName).removeClass('current')			 
+		   }
+		);
+		var textOfTd; 	
+		$(".infotable tr td").hover(
+		  function () {
+			textOfTd = $(this).attr('class');
+			$('.infotable tr td .'+textOfTd).addClass('bgcurrent').css('background', 'none!important');
+			$('div .station .'+textOfTd).css('background-image', 'url("'+iconimgover+'")');
+			$('div .temp .'+textOfTd).children().css("color", "white");			
+		  },
+		  function () {
+			textOfTd = $(this).attr('class');
+			$('.infotable tr td').removeClass('bgcurrent');
+			$('div .station').children().css('background-image', 'url("'+iconimg+'")');
+			$('div .temp .'+textOfTd).children().css("color", "black");	
+		  }
+		);
+	});
+	
+	</script>
+	<script type="text/javascript">
+        document.body.addEventListener('touchstart', function() {
+		document.body.classList.add('touched');
+	});
+    </script>
+</div>
+	<div class="clear"></div>
+	<div id="footer_main">
+
+		<div class="footer">
+			<div class="block_footer">
+				<h4>Weather</h4>
+				<ul>
+					  <li><a href="http://metservice.intnet.mu/maps.php">Weather Map</a></li>
+                        <li><a href="http://metservice.intnet.mu/forecast-bulletin-french-mauritius.php">Forecast Bulletin French</a></li>
+                        <li><a href="http://metservice.intnet.mu/forecast-bulletin-english-mauritius.php">Forecast Bulletin English</a></li>
+                        <li><a href="http://metservice.intnet.mu/forecast-bulletin-french-rodrigues.php">Forecast Bulletin Rodrigues</a></li>
+                        <li><a href="http://metservice.intnet.mu/forecast-bulletin-french-agalega.php">Forecast Bulletin Agalega</a></li>
+                        <li><a href="http://metservice.intnet.mu/probabilistic-forecast.php">7 Day Forecast</a></li>
+                        <li><a href="http://metservice.intnet.mu/latest-weather-data.php">Latest Weather Data</a></li>
+                        <li><a href="http://metservice.intnet.mu/warning-bulletin-special-weather.php">Special Weather Bulletin</a></li>
+                    </ul>
+				<br />
+				<h4>Tsunami</h4>
+                <ul>
+                    <li><a href="http://metservice.intnet.mu/warning-bulletin-tsunami.php">Tsunami Warning Bulletin</a></li>
+                    <li><a href="http://metservice.intnet.mu/tsunami/tsunami-warning-system.php">Warning System and General Info</a></li>
+                    <li><a href="http://metservice.intnet.mu/tsunami/precautions.php">Precautions</a></li>
+                </ul>
+			</div>
+			
+			<div class="block_footer">
+				<h4>Cyclone</h4>
+				<ul>
+                    <!--<li><a href="http://metservice.intnet.mu/cyclone-track.php">Cyclone Track</a></li>-->
+					<li><a href="http://metservice.intnet.mu/current-cyclone.php">Current Storm/Cyclone</a></li>
+                    <li><a href="http://metservice.intnet.mu/cyclone-bulletin-english-mauritius.php">Cyclone Warning Bulletin Mauritius</a></li>
+                    <li><a href="http://metservice.intnet.mu/cyclone-bulletin-french-rodrigues.php">Cyclone Warning Bulletin Rodrigues</a></li>
+                    <li><a href="http://metservice.intnet.mu/tropical-cyclone/warning-system.php">Warning System and General Info</a></li>
+                    <li><a href="http://metservice.intnet.mu/tropical-cyclone/precautions.php">Precautions</a></li>
+                    <li><a href="http://metservice.intnet.mu/tropical-cyclone/cyclone-names.php">Cyclone Names</a></li>
+				</ul>
+				<br />
+				<h4>Satellite &amp; Chart</h4>
+                <ul>
+                    <li><a href="satellite-imagery.php">Satellite Imagery</a></li>
+                    <li><a href="satellite-anim.php">Satellite Animation</a></li>
+                    <li><a href="synoptic-chart.php">Synoptic Chart</a></li>
+                    <!--<li><a href="radar-imagery.php">Radar Imagery Provisional</a></li>
+                    <li><a href="radar-anim.php">Radar Imagery Animation Provisional</a></li>-->
+                </ul>
+			</div>
+						
+			<div class="block_footer">
+                <h4>Torrential Rains</h4>
+                <ul>
+                    <li><a href="http://metservice.intnet.mu/warning-bulletin-torrential-rain.php">Torrential Rain Warning Bulletin</a></li>
+                    <li><a href="http://metservice.intnet.mu/torrential-rain/torrential-rain-warning-system.php">Warning System and General Info</a></li>
+                    <li><a href="http://metservice.intnet.mu/torrential-rain/precautions.php">Precautions</a></li>
+                </ul>
+                <br />
+               <h4>Climate Services</h4>
+                <ul>
+                    <li><a href="http://metservice.intnet.mu/climate-services/climate-info-and-data.php">Climate Info &amp; Data</a></li>
+                    <li><a href="http://metservice.intnet.mu/climate-services/climate-of-mauritius.php">Climate of Mauritius</a></li>
+                    <li><a href="http://metservice.intnet.mu/climate-services/climate-of-rodrigues-and-islands.php">Climate of Rodrigues &amp; Islands</a></li>
+                    <li><a href="http://metservice.intnet.mu/climate-services/climate-change.php">Climate Change</a></li>
+                    <li><a href="http://metservice.intnet.mu/climate-services/climate-info-for-water-resources.php">Climate Info for Water Resources</a></li>
+                    <li><a href="http://metservice.intnet.mu/climate-services/climate-info-for-agriculture.php">Climate Info for Agriculture</a></li>                    
+                    <li><a href="http://metservice.intnet.mu/climate-services/climate-info-for-fisheries-and-marine.php">Climate Info for Fisheries &amp; Marine</a></li>
+                    <li><a href="http://metservice.intnet.mu/climate-services/seasonal-climate-forecast.php">Seasonal Climate Forecast</a></li>
+                 </ul>
+            </div>
+            
+            <div class="block_footer">
+                <h4>High Waves</h4>
+                <ul>
+                    <li><a href="http://metservice.intnet.mu/warning-bulletin-heavy-swell.php">Heavy Swell Warning Bulletin</a></li>
+                    <li><a href="http://metservice.intnet.mu/warning-bulletin-storm-surge.php">Storm Surge Warning Bulletin</a></li>
+                    <li><a href="http://metservice.intnet.mu/high-waves/high-waves-warning-system.php">Warning System and General Info</a></li>
+                    <li><a href="http://metservice.intnet.mu/high-waves/precautions.php">Precautions</a></li>
+                </ul>
+                <br />
+                <h4>Sun, Moon &amp; Tides</h4>
+                <ul>
+                    <li><a href="http://metservice.intnet.mu/sun-moon-and-tides-sunrise-sunset-mauritius.php">Sunrise Sunset Mauritius</a></li>
+                    <li><a href="http://metservice.intnet.mu/sun-moon-and-tides-sunrise-sunset-rodrigues.php">Sunrise Sunset Rodrigues</a></li>
+                    <li><a href="http://metservice.intnet.mu/sun-moon-and-tides-moonrise-moonset-mauritius.php">Moonrise Moonset Mauritius</a></li>
+                    <li><a href="http://metservice.intnet.mu/sun-moon-and-tides-moonrise-moonset-rodrigues.php">Moonrise Moonset Rodrigues</a></li>
+                    <li><a href="http://metservice.intnet.mu/sun-moon-and-tides-tides-mauritius.php">Tides Mauritius</a></li>
+                    <li><a href="http://metservice.intnet.mu/sun-moon-and-tides-tides-rodrigues.php">Tides Rodrigues</a></li>                    
+                    <li><a href="http://metservice.intnet.mu/sun-moon-and-tides-moon-phase.php">Moon Phase</a></li>
+                    <li><a href="http://metservice.intnet.mu/sun-moon-and-tides-info-eclipses.php">Info Eclipses</a></li>
+
+               </ul>
+            </div>
+            
+			<div class="clear"></div>
+			<div class="sep_footer"></div>
+			<p style="float: left; width: 570px; font-size: 12px;"><a href="http://metservice.intnet.mu/about-us/charter/">About Us</a> &nbsp;<span class="sep">|</span>&nbsp;<a href="http://metservice.intnet.mu/publication.php">Publications</a>&nbsp;<span class="sep">|</span>&nbsp;<a href="http://publicprocurement.govmu.org" target="_blank">Procurement</a>&nbsp;<span class="sep">|</span>&nbsp;<a href="http://metservice.intnet.mu/survey/survey-links.php">Survey Links</a>&nbsp;<span class="sep">|</span>&nbsp;<a href="http://metservice.intnet.mu/faq/frequently-asked-questions.php">FAQ</a>&nbsp;<span class="sep">|</span>&nbsp;<a href="http://metservice.intnet.mu/feedback.php">Feedback</a>&nbsp;<span class="sep"><span class="sep">|</span></span>&nbsp;<a href="http://metservice.intnet.mu/contact-us.php">Contact Us</a>&nbsp;<span class="sep"><span class="sep">|</span></span>&nbsp;<a href="http://metservice.intnet.mu/useful-links/links-to-other-websites.php">Useful Links</a></p>
+			
+			<p style="float: right; width: 300px; font-size:11px;">
+			&copy; Copyright <b><a href="http://metservice.intnet.mu/">Mauritius Meteorological Services.</a></b></p>
+		</div>
+		
+	</div>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y1HLKE3N67"></script>
+	<script type="text/javascript">
+    
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-Y1HLKE3N67');
+
+</script>
+
+</body>
+</html>

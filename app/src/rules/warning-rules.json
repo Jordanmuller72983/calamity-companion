@@ -1,0 +1,978 @@
+{
+  "version": "0.2.0",
+  "reviewedOn": "2026-10-16",
+  "notes": "Checked on 2026-10-16 against official texts and press reports of past events (see 'sources'). Each topic has a 'basis': law (Workers' Rights Act or MMS regulations), communique (decided each time by a ministry; past practice shown), practice (what happened in past events, reported by the press), unclear (no evidence found). French and Kreol texts still need native-speaker review.",
+  "sources": {
+    "mms-regs-2023": {
+      "name": "MMS (Warnings) Regulations 2023, GN 8 of 2023",
+      "url": "https://faolex.fao.org/docs/pdf/mat224103.pdf"
+    },
+    "mms-cyclone": {
+      "name": "MMS: Cyclone warning system and precautions",
+      "url": "https://metservice.intnet.mu/tropical-cyclone/precautions.php"
+    },
+    "mms-rain": {
+      "name": "MMS: Torrential rain precautions",
+      "url": "https://metservice.intnet.mu/torrential-rain/precautions.php"
+    },
+    "wra-2019": {
+      "name": "Workers' Rights Act 2019, section 32 (consolidated to Act 13 of 2026)",
+      "url": "https://www.mra.mu/download/WorkersRightsAct2019.pdf"
+    },
+    "cabinet-2026-05-22": {
+      "name": "Cabinet, 22 May 2026: National Protocol on Heavy and Torrential Rain (approved, not yet in force)",
+      "url": "https://pmo.govmu.org/CabinetDecision/2026/Highlights%20of%20Cabinet%20Meeting%20%20Friday%20%2022%20May%202026.pdf"
+    },
+    "ps-protocol-2025": {
+      "name": "Public sector protocol on heavy/torrential rain and cyclones, January 2025",
+      "url": "https://civilservice.govmu.org/Documents/reports%20and%20publication/Revised_Protocol_Heavy_Torrential_Rain_Tropical_Storms_Cyclones_Public_Sector_January_2025.pdf"
+    },
+    "eccea": {
+      "name": "ECCEA protocol for pre-primary schools (cyclones and heavy rain)",
+      "url": "https://www.tipti.org/ECCEApro.pdf"
+    },
+    "press-belal-2024": {
+      "name": "Le Mauricien: Belal, 15 Jan 2024 timeline (schools closed under Class I, staggered release under Class II)",
+      "url": "https://www.lemauricien.com/actualites/societe/changement-climatique-les-traces-indelebiles-des-torrents-ravageurs-accompagnant-belal/620730/"
+    },
+    "press-class2-2020": {
+      "name": "Le Mauricien, 24 Jan 2020: Class II, no classes from pre-primary to secondary",
+      "url": "https://www.lemauricien.com/actualites/societe/alerte-cyclonique-de-classe-2-2e-jour-de-conge-force-pour-les-etudiants/321969/"
+    },
+    "press-wra-defimedia-2023": {
+      "name": "Defimedia, 21 Feb 2023: an employee may stay off work under Class III",
+      "url": "https://defimedia.info/me-dev-ramano-un-employe-peut-sabsenter-un-jour-de-cyclone-de-classe-iii"
+    },
+    "press-class3-travel-2023": {
+      "name": "Defimedia, 20 Feb 2023: Class III, travel forbidden except emergencies",
+      "url": "https://defimedia.info/classe-iii-interdiction-de-circuler-sauf-en-cas-durgence"
+    },
+    "press-class3-buses-2019": {
+      "name": "Le Mauricien, 30 Dec 2019: buses run three more hours after Class III",
+      "url": "https://www.lemauricien.com/actualites/calvinia-un-avertissement-de-cyclone-de-classe-3-est-en-vigueur-a-maurice/318029/"
+    },
+    "press-safety-2023": {
+      "name": "Le Mauricien, 20 Feb 2023: safety phase, schools closed, only emergency services may travel",
+      "url": "https://www.lemauricien.com/actualites/societe/maurice-en-phase-de-securite-a-4h-demain-matin-pas-decole-ce-mardi-21-fevrier/540850/"
+    },
+    "press-buses-resume-2024": {
+      "name": "Defimedia, 16 Jan 2024: buses have two hours to resume after the safety bulletin is lifted",
+      "url": "https://defimedia.info/transport-en-commun-les-operateurs-devraient-reprendre-du-service-cet-apres-midi"
+    },
+    "press-heavyrain-closed-2026": {
+      "name": "Le Mauricien, 30 Mar 2026: heavy rain warning, no classes from pre-primary to tertiary",
+      "url": "https://www.lemauricien.com/actualites/societe/fortes-pluies-pas-de-classes-ce-lundi-dans-les-ecoles-colleges-centres-techniques-et-etablissements-du-superieur-2/703074/"
+    },
+    "press-heavyrain-stay-2026": {
+      "name": "Defimedia, 28 Apr 2026: heavy rain during school hours, pupils kept at school",
+      "url": "https://defimedia.info/avis-de-fortes-pluies-consignes-du-ministere-de-leducation"
+    },
+    "press-torrential-schools-2023": {
+      "name": "Le Mauricien, 27 Jan 2023: torrential rain warning, schools closed",
+      "url": "https://www.lemauricien.com/actualites/societe/avis-de-pluies-torrentielles-les-ecoles-fermees-ce-vendredi/536447/"
+    },
+    "press-torrential-metro-2023": {
+      "name": "Defimedia, 27 Jan 2023: torrential rain, Metro Express stops at 8am",
+      "url": "https://defimedia.info/pluies-torrentielles-metro-express-operationnel-jusqua-8-h-ce-matin"
+    }
+  },
+  "warnings": {
+    "none": {
+      "kind": "none",
+      "severity": 0,
+      "shortName": {
+        "en": "No warning",
+        "fr": "Aucun avis",
+        "mfe": "Pena avertisman"
+      },
+      "headline": {
+        "en": "No warning in force",
+        "fr": "Aucun avis en vigueur",
+        "mfe": "Pena okenn avertisman"
+      },
+      "instruction": {
+        "en": "Normal day. Keep your emergency kit ready.",
+        "fr": "Journée normale. Gardez votre kit d'urgence prêt.",
+        "mfe": "Zourne normal. Gard ou kit lirzans pare."
+      },
+      "topics": {
+        "school": {
+          "status": "ok",
+          "basis": "normal",
+          "sources": [],
+          "detail": {
+            "en": "Schools open as usual.",
+            "fr": "Écoles ouvertes normalement.",
+            "mfe": "Lekol ouver kouma dabitid."
+          }
+        },
+        "work": {
+          "status": "ok",
+          "basis": "normal",
+          "sources": [
+            "wra-2019"
+          ],
+          "detail": {
+            "en": "Go to work as usual.",
+            "fr": "Travail normal.",
+            "mfe": "Al travay kouma dabitid."
+          }
+        },
+        "transport": {
+          "status": "ok",
+          "basis": "normal",
+          "sources": [],
+          "detail": {
+            "en": "Buses and Metro running normally.",
+            "fr": "Bus et Metro circulent normalement.",
+            "mfe": "Bis ek Metro pe roule normal."
+          }
+        },
+        "outside": {
+          "status": "ok",
+          "basis": "normal",
+          "sources": [],
+          "detail": {
+            "en": "Safe to go out.",
+            "fr": "Vous pouvez sortir.",
+            "mfe": "Ou kapav sorti."
+          }
+        }
+      },
+      "doNow": [
+        {
+          "en": "Check your kit: water, torch, radio, medicines, phone charger.",
+          "fr": "Vérifiez votre kit : eau, lampe, radio, médicaments, chargeur.",
+          "mfe": "Verifye ou kit: dilo, torss, radio, medikaman, sarzer telefonn."
+        }
+      ],
+      "sourceIds": [],
+      "verified": true
+    },
+    "class1": {
+      "kind": "cyclone",
+      "severity": 1,
+      "shortName": {
+        "en": "Class I",
+        "fr": "Classe I",
+        "mfe": "Klas 1"
+      },
+      "headline": {
+        "en": "Cyclone warning Class I",
+        "fr": "Avis de cyclone classe I",
+        "mfe": "Avertisman siklonn Klas 1"
+      },
+      "instruction": {
+        "en": "Strong winds possible in 36 to 48 hours. Start preparing now.",
+        "fr": "Vents forts possibles d'ici 36 à 48 heures. Préparez-vous dès maintenant.",
+        "mfe": "Kapav ena gro divan dan 36 ziska 48 er. Koumans prepare aster."
+      },
+      "topics": {
+        "school": {
+          "status": "ok",
+          "basis": "communique",
+          "sources": [
+            "press-belal-2024"
+          ],
+          "detail": {
+            "en": "Normally open. The Ministry of Education can still close schools early (it did during Belal in 2024): check its communiqué.",
+            "fr": "Normalement ouvertes. Le ministère de l'Éducation peut quand même fermer les écoles (ce fut le cas pour Belal en 2024) : suivez son communiqué.",
+            "mfe": "Normalman ouver. Minister Ledikasion kapav ferm lekol pli boner (sa finn arive pou Belal an 2024): swiv so kominike."
+          }
+        },
+        "work": {
+          "status": "ok",
+          "basis": "law",
+          "sources": [
+            "wra-2019"
+          ],
+          "detail": {
+            "en": "Work as usual. The law gives no right to stay off work under Class I.",
+            "fr": "Travail normal. La loi ne prévoit pas d'absence sous la classe I.",
+            "mfe": "Travay normal. Lalwa pa donn drwa res lakaz anba Klas 1."
+          }
+        },
+        "transport": {
+          "status": "ok",
+          "basis": "normal",
+          "sources": [],
+          "detail": {
+            "en": "Buses and Metro running.",
+            "fr": "Bus et Metro en service.",
+            "mfe": "Bis ek Metro pe roule."
+          }
+        },
+        "outside": {
+          "status": "ok",
+          "basis": "normal",
+          "sources": [
+            "mms-cyclone"
+          ],
+          "detail": {
+            "en": "You can go out. Do your shopping today.",
+            "fr": "Vous pouvez sortir. Faites vos courses aujourd'hui.",
+            "mfe": "Ou kapav sorti. Fer ou komision zordi."
+          }
+        }
+      },
+      "doNow": [
+        {
+          "en": "Buy drinking water, food, candles and batteries.",
+          "fr": "Achetez eau potable, nourriture, bougies et piles.",
+          "mfe": "Aste dilo pou bwar, manze, labouzi ek batri."
+        },
+        {
+          "en": "Charge phones and power banks.",
+          "fr": "Chargez téléphones et batteries externes.",
+          "mfe": "Sarz telefonn ek power bank."
+        },
+        {
+          "en": "Tie down or bring in loose things outside.",
+          "fr": "Rentrez ou attachez les objets à l'extérieur.",
+          "mfe": "Rantre ou amar tou seki deor."
+        }
+      ],
+      "sourceIds": [
+        "mms-regs-2023",
+        "wra-2019",
+        "press-belal-2024"
+      ],
+      "verified": true
+    },
+    "class2": {
+      "kind": "cyclone",
+      "severity": 2,
+      "shortName": {
+        "en": "Class II",
+        "fr": "Classe II",
+        "mfe": "Klas 2"
+      },
+      "headline": {
+        "en": "Cyclone warning Class II",
+        "fr": "Avis de cyclone classe II",
+        "mfe": "Avertisman siklonn Klas 2"
+      },
+      "instruction": {
+        "en": "Strong winds possible in about 12 hours. Finish preparing today.",
+        "fr": "Vents forts possibles d'ici environ 12 heures. Terminez vos préparatifs aujourd'hui.",
+        "mfe": "Kapav ena gro divan dan apepre 12 er. Fini prepare zordi."
+      },
+      "topics": {
+        "school": {
+          "status": "stop",
+          "basis": "communique",
+          "sources": [
+            "press-class2-2020",
+            "eccea"
+          ],
+          "detail": {
+            "en": "Schools closed, by Ministry of Education communiqué. If it starts during school hours, follow your school's instructions to collect children.",
+            "fr": "Écoles fermées, par communiqué du ministère de l'Éducation. Si l'avis tombe pendant les cours, suivez les consignes de l'école pour récupérer les enfants.",
+            "mfe": "Lekol ferme, par kominike Minister Ledikasion. Si li tonbe pandan lekol, swiv lenstriksion lekol pou al sers zanfan."
+          }
+        },
+        "work": {
+          "status": "ok",
+          "basis": "law",
+          "sources": [
+            "wra-2019",
+            "press-belal-2024"
+          ],
+          "detail": {
+            "en": "No legal right to stay off work under Class II. The government often lets staff leave early: watch for a communiqué.",
+            "fr": "Pas de droit légal de s'absenter sous la classe II. Le gouvernement libère souvent le personnel plus tôt : suivez les communiqués.",
+            "mfe": "Pena drwa dapre lalwa pou res lakaz anba Klas 2. Gouvernman souvan les dimounn sorti pli boner: swiv kominike."
+          }
+        },
+        "transport": {
+          "status": "ok",
+          "basis": "unclear",
+          "sources": [],
+          "detail": {
+            "en": "Buses and Metro normally still running.",
+            "fr": "Bus et Metro normalement toujours en service.",
+            "mfe": "Bis ek Metro normalman pe roule ankor."
+          }
+        },
+        "outside": {
+          "status": "caution",
+          "basis": "practice",
+          "sources": [
+            "mms-cyclone"
+          ],
+          "detail": {
+            "en": "Go out only to finish preparing.",
+            "fr": "Sortez seulement pour finir vos préparatifs.",
+            "mfe": "Sorti zis pou fini prepare."
+          }
+        }
+      },
+      "doNow": [
+        {
+          "en": "Fill containers with drinking water.",
+          "fr": "Remplissez des récipients d'eau potable.",
+          "mfe": "Ranpli bann rekipian ar dilo pou bwar."
+        },
+        {
+          "en": "Tie down or bring in anything the wind can carry.",
+          "fr": "Rentrez ou attachez tout ce que le vent peut emporter.",
+          "mfe": "Rantre ou amar tou seki divan kapav anmenn."
+        },
+        {
+          "en": "Agree where your family will shelter.",
+          "fr": "Décidez en famille où vous allez vous abriter.",
+          "mfe": "Desid ar ou fami kot zot pou abrite."
+        }
+      ],
+      "sourceIds": [
+        "mms-regs-2023",
+        "wra-2019",
+        "press-class2-2020",
+        "press-belal-2024"
+      ],
+      "verified": false
+    },
+    "class3": {
+      "kind": "cyclone",
+      "severity": 3,
+      "shortName": {
+        "en": "Class III",
+        "fr": "Classe III",
+        "mfe": "Klas 3"
+      },
+      "headline": {
+        "en": "Cyclone warning Class III",
+        "fr": "Avis de cyclone classe III",
+        "mfe": "Avertisman siklonn Klas 3"
+      },
+      "instruction": {
+        "en": "Strong winds expected in about 6 hours. Get home and stay there.",
+        "fr": "Vents forts attendus d'ici environ 6 heures. Rentrez chez vous et restez-y.",
+        "mfe": "Gro divan pe atann dan apepre 6 er. Rant lakaz ek res laba."
+      },
+      "topics": {
+        "school": {
+          "status": "stop",
+          "basis": "communique",
+          "sources": [
+            "eccea"
+          ],
+          "detail": {
+            "en": "Schools closed.",
+            "fr": "Écoles fermées.",
+            "mfe": "Lekol ferme."
+          }
+        },
+        "work": {
+          "status": "stop",
+          "basis": "law",
+          "sources": [
+            "wra-2019",
+            "press-wra-defimedia-2023"
+          ],
+          "detail": {
+            "en": "You can stay off work, or go home, and still be paid (Workers' Rights Act, s.32). If your employer needs you on site, they must pay 3 times your hourly rate and give you a free meal.",
+            "fr": "Vous pouvez vous absenter ou rentrer chez vous, et vous êtes payé (Workers' Rights Act, art. 32). Si votre employeur a besoin de vous sur place, il doit payer 3 fois votre taux horaire et fournir un repas.",
+            "mfe": "Ou kapav res lakaz ouswa rant lakaz, ek ou gagn ou lapey (Workers' Rights Act, s.32). Si ou patron bizin ou travay laba, li bizin pey ou 3 fwa ou to lerr ek donn ou enn repa."
+          }
+        },
+        "transport": {
+          "status": "caution",
+          "basis": "practice",
+          "sources": [
+            "press-class3-buses-2019"
+          ],
+          "detail": {
+            "en": "Buses keep running for a few hours (3 hours in 2019) so people can get home, then stop. Metro usually stops. Watch for the transport authority's announcement.",
+            "fr": "Les bus circulent encore quelques heures (3 heures en 2019) pour permettre de rentrer, puis s'arrêtent. Le Metro s'arrête généralement. Suivez l'annonce de l'autorité des transports.",
+            "mfe": "Bis roule ankor enn de-trwa er (3 er an 2019) pou dimounn rant lakaz, apre zot aret. Metro souvan aret. Swiv lanons lotorite transpor."
+          }
+        },
+        "outside": {
+          "status": "stop",
+          "basis": "practice",
+          "sources": [
+            "mms-cyclone",
+            "press-class3-travel-2023"
+          ],
+          "detail": {
+            "en": "Get home now. Travel is not allowed except for emergencies.",
+            "fr": "Rentrez maintenant. Les déplacements sont interdits sauf urgence.",
+            "mfe": "Rant lakaz aster. Pa gagn drwa deplase, sof pou lirzans."
+          }
+        }
+      },
+      "doNow": [
+        {
+          "en": "Get home before the buses stop.",
+          "fr": "Rentrez avant l'arrêt des bus.",
+          "mfe": "Rant lakaz avan bis aret."
+        },
+        {
+          "en": "Stay away from windows.",
+          "fr": "Éloignez-vous des fenêtres.",
+          "mfe": "Res lwin ar lafnet."
+        },
+        {
+          "en": "If your home is not safe, go to a refugee centre now.",
+          "fr": "Si votre maison n'est pas sûre, allez dans un centre de refuge maintenant.",
+          "mfe": "Si ou lakaz pa solid, al dan enn sant refiz aster."
+        }
+      ],
+      "sourceIds": [
+        "mms-regs-2023",
+        "mms-cyclone",
+        "wra-2019",
+        "press-class3-buses-2019",
+        "press-class3-travel-2023"
+      ],
+      "verified": true
+    },
+    "class4": {
+      "kind": "cyclone",
+      "severity": 4,
+      "shortName": {
+        "en": "Class IV",
+        "fr": "Classe IV",
+        "mfe": "Klas 4"
+      },
+      "headline": {
+        "en": "Cyclone warning Class IV",
+        "fr": "Avis de cyclone classe IV",
+        "mfe": "Avertisman siklonn Klas 4"
+      },
+      "instruction": {
+        "en": "Gusts of 120 km/h are happening now. Stay inside, in the safest room.",
+        "fr": "Rafales de 120 km/h en ce moment. Restez à l'intérieur, dans la pièce la plus sûre.",
+        "mfe": "Ena rafal 120 km/h aster. Res andan, dan lasam pli solid."
+      },
+      "topics": {
+        "school": {
+          "status": "stop",
+          "basis": "communique",
+          "sources": [
+            "eccea"
+          ],
+          "detail": {
+            "en": "Schools closed, including the day after a Class IV night.",
+            "fr": "Écoles fermées, y compris le lendemain d'une nuit en classe IV.",
+            "mfe": "Lekol ferme, mem lelandime enn lanwit Klas 4."
+          }
+        },
+        "work": {
+          "status": "stop",
+          "basis": "law",
+          "sources": [
+            "wra-2019"
+          ],
+          "detail": {
+            "en": "Do not travel to work. You are paid while absent (Workers' Rights Act, s.32). Staff required on site get 3 times their hourly rate and a free meal.",
+            "fr": "Ne vous rendez pas au travail. Vous êtes payé pendant l'absence (Workers' Rights Act, art. 32). Le personnel requis sur place reçoit 3 fois le taux horaire et un repas.",
+            "mfe": "Pa al travay. Ou gagn ou lapey (Workers' Rights Act, s.32). Bann ki bizin travay laba gagn 3 fwa zot to lerr ek enn repa."
+          }
+        },
+        "transport": {
+          "status": "stop",
+          "basis": "practice",
+          "sources": [
+            "press-class3-buses-2019"
+          ],
+          "detail": {
+            "en": "No buses or Metro.",
+            "fr": "Aucun bus ni Metro.",
+            "mfe": "Pena bis ni Metro."
+          }
+        },
+        "outside": {
+          "status": "stop",
+          "basis": "practice",
+          "sources": [
+            "mms-cyclone"
+          ],
+          "detail": {
+            "en": "Stay inside. Do not go out.",
+            "fr": "Restez à l'intérieur. Ne sortez pas.",
+            "mfe": "Res andan. Pa sorti."
+          }
+        }
+      },
+      "doNow": [
+        {
+          "en": "Stay in the strongest room, away from windows.",
+          "fr": "Restez dans la pièce la plus solide, loin des fenêtres.",
+          "mfe": "Res dan lasam pli solid, lwin ar lafnet."
+        },
+        {
+          "en": "If the wind suddenly stops, stay inside. It is the eye of the cyclone and the wind will return.",
+          "fr": "Si le vent s'arrête soudain, restez à l'intérieur : c'est l'œil du cyclone, le vent va revenir.",
+          "mfe": "Si divan aret sek-sek, res andan: se lizie siklonn, divan pou retourne."
+        },
+        {
+          "en": "If you need help, call 999 (police) or 114 (SAMU).",
+          "fr": "En cas de besoin, appelez le 999 (police) ou le 114 (SAMU).",
+          "mfe": "Si ou bizin led, apel 999 (lapolis) ou 114 (SAMU)."
+        }
+      ],
+      "sourceIds": [
+        "mms-regs-2023",
+        "mms-cyclone",
+        "wra-2019",
+        "eccea"
+      ],
+      "verified": true
+    },
+    "safetyBulletin": {
+      "kind": "cyclone",
+      "severity": 2,
+      "shortName": {
+        "en": "Safety bulletin",
+        "fr": "Bulletin de sécurité",
+        "mfe": "Bilten sekirite"
+      },
+      "headline": {
+        "en": "Cyclone warning lifted: safety bulletin",
+        "fr": "Avis de cyclone levé : bulletin de sécurité",
+        "mfe": "Avertisman siklonn leve: bilten sekirite"
+      },
+      "instruction": {
+        "en": "The cyclone warning is lifted, but stay inside until the safety bulletin ends. Dangers remain.",
+        "fr": "L'avis de cyclone est levé, mais restez à l'intérieur jusqu'à la fin du bulletin de sécurité. Des dangers subsistent.",
+        "mfe": "Avertisman siklonn finn leve, me res andan ziska bilten sekirite fini. Ena ankor danze."
+      },
+      "topics": {
+        "school": {
+          "status": "stop",
+          "basis": "communique",
+          "sources": [
+            "press-safety-2023"
+          ],
+          "detail": {
+            "en": "Schools stay closed. They reopen when the Ministry of Education announces it.",
+            "fr": "Les écoles restent fermées. Elles rouvrent sur annonce du ministère de l'Éducation.",
+            "mfe": "Lekol res ferme. Zot reouver kan Minister Ledikasion anonse."
+          }
+        },
+        "work": {
+          "status": "stop",
+          "basis": "law",
+          "sources": [
+            "wra-2019"
+          ],
+          "detail": {
+            "en": "You can still stay off work and be paid, until the warnings end and public transport (or transport from your employer) is available.",
+            "fr": "Vous pouvez encore vous absenter et être payé, jusqu'à la fin des avis et la reprise des transports publics (ou un transport fourni par l'employeur).",
+            "mfe": "Ou kapav ankor res lakaz ek gagn ou lapey, ziska avertisman fini ek ena transpor piblik (ouswa transpor ou patron)."
+          }
+        },
+        "transport": {
+          "status": "stop",
+          "basis": "practice",
+          "sources": [
+            "press-buses-resume-2024"
+          ],
+          "detail": {
+            "en": "No buses yet. They restart within about 2 hours after the safety bulletin is lifted. Metro restarts after line checks.",
+            "fr": "Pas encore de bus. Ils reprennent environ 2 heures après la levée du bulletin de sécurité. Le Metro reprend après vérification de la ligne.",
+            "mfe": "Pena bis ankor. Zot rekoumans apepre 2 er apre ki bilten sekirite leve. Metro rekoumans apre verifikasion lalign."
+          }
+        },
+        "outside": {
+          "status": "stop",
+          "basis": "practice",
+          "sources": [
+            "press-safety-2023",
+            "mms-cyclone"
+          ],
+          "detail": {
+            "en": "Stay inside. Only emergency services may travel until the safety bulletin is lifted.",
+            "fr": "Restez à l'intérieur. Seuls les services d'urgence peuvent circuler jusqu'à la levée du bulletin de sécurité.",
+            "mfe": "Res andan. Zis servis lirzans kapav deplase ziska bilten sekirite leve."
+          }
+        }
+      },
+      "doNow": [
+        {
+          "en": "Stay away from fallen power lines. Report them to CEB on 130.",
+          "fr": "Éloignez-vous des lignes électriques tombées. Signalez-les au CEB au 130.",
+          "mfe": "Res lwin ar fil kouran ki finn tonbe. Rapor zot ar CEB lor 130."
+        },
+        {
+          "en": "Do not cross flooded roads.",
+          "fr": "Ne traversez pas les routes inondées.",
+          "mfe": "Pa travers larout inonde."
+        },
+        {
+          "en": "Check on neighbours, especially older people.",
+          "fr": "Prenez des nouvelles de vos voisins, surtout les personnes âgées.",
+          "mfe": "Al get ou vwazin, sirtou bann dimounn aze."
+        }
+      ],
+      "sourceIds": [
+        "mms-regs-2023",
+        "wra-2019",
+        "press-safety-2023",
+        "press-buses-resume-2024"
+      ],
+      "verified": true
+    },
+    "terminated": {
+      "kind": "cyclone",
+      "severity": 0,
+      "shortName": {
+        "en": "Ended",
+        "fr": "Terminé",
+        "mfe": "Fini"
+      },
+      "headline": {
+        "en": "Cyclone warnings ended",
+        "fr": "Fin des avis de cyclone",
+        "mfe": "Avertisman siklonn fini"
+      },
+      "instruction": {
+        "en": "All cyclone warnings have ended. Stay careful around damage and flooded roads.",
+        "fr": "Tous les avis de cyclone sont terminés. Restez prudent près des dégâts et des routes inondées.",
+        "mfe": "Tou avertisman siklonn fini. Fer atansion kot ena dega ek larout inonde."
+      },
+      "topics": {
+        "school": {
+          "status": "caution",
+          "basis": "communique",
+          "sources": [
+            "press-safety-2023"
+          ],
+          "detail": {
+            "en": "Schools reopen when the Ministry of Education announces it.",
+            "fr": "Les écoles rouvrent sur annonce du ministère de l'Éducation.",
+            "mfe": "Lekol reouver kan Minister Ledikasion anonse."
+          }
+        },
+        "work": {
+          "status": "ok",
+          "basis": "law",
+          "sources": [
+            "wra-2019"
+          ],
+          "detail": {
+            "en": "Back to work once public transport is running, or your employer provides transport.",
+            "fr": "Retour au travail dès que les transports publics circulent ou que l'employeur fournit un transport.",
+            "mfe": "Retourn travay kan transpor piblik pe roule, ouswa ou patron donn transpor."
+          }
+        },
+        "transport": {
+          "status": "caution",
+          "basis": "practice",
+          "sources": [
+            "press-buses-resume-2024"
+          ],
+          "detail": {
+            "en": "Buses restart within about 2 hours. Some routes may still be affected.",
+            "fr": "Les bus reprennent en 2 heures environ. Certains trajets peuvent rester perturbés.",
+            "mfe": "Bis rekoumans dan apepre 2 er. Kapav ena serten trase ankor perturbe."
+          }
+        },
+        "outside": {
+          "status": "caution",
+          "basis": "practice",
+          "sources": [
+            "mms-cyclone"
+          ],
+          "detail": {
+            "en": "Watch for fallen trees, power lines and flooded roads.",
+            "fr": "Attention aux arbres, lignes électriques tombées et routes inondées.",
+            "mfe": "Fer atansion ar pie dibwa, fil kouran tonbe ek larout inonde."
+          }
+        }
+      },
+      "doNow": [
+        {
+          "en": "Stay away from fallen power lines. Report them to CEB on 130.",
+          "fr": "Éloignez-vous des lignes électriques tombées. Signalez-les au CEB au 130.",
+          "mfe": "Res lwin ar fil kouran ki finn tonbe. Rapor zot ar CEB lor 130."
+        },
+        {
+          "en": "Check on neighbours, especially older people.",
+          "fr": "Prenez des nouvelles de vos voisins, surtout les personnes âgées.",
+          "mfe": "Al get ou vwazin, sirtou bann dimounn aze."
+        }
+      ],
+      "sourceIds": [
+        "mms-regs-2023",
+        "wra-2019",
+        "press-buses-resume-2024"
+      ],
+      "verified": true
+    },
+    "heavyRainWatch": {
+      "kind": "rain",
+      "severity": 1,
+      "shortName": {
+        "en": "Heavy rain watch",
+        "fr": "Veille de fortes pluies",
+        "mfe": "Veye gro lapli"
+      },
+      "headline": {
+        "en": "Heavy rain watch",
+        "fr": "Veille de fortes pluies",
+        "mfe": "Veye gro lapli"
+      },
+      "instruction": {
+        "en": "Heavy rain is possible in the next 12 to 24 hours. Stay alert and avoid low-lying areas.",
+        "fr": "De fortes pluies sont possibles dans les 12 à 24 heures. Restez attentif et évitez les zones basses.",
+        "mfe": "Kapav ena gro lapli dan 12 ziska 24 er. Res atantif ek evit bann landrwa ba."
+      },
+      "topics": {
+        "school": {
+          "status": "ok",
+          "basis": "normal",
+          "sources": [],
+          "detail": {
+            "en": "Schools open.",
+            "fr": "Écoles ouvertes.",
+            "mfe": "Lekol ouver."
+          }
+        },
+        "work": {
+          "status": "ok",
+          "basis": "normal",
+          "sources": [
+            "wra-2019"
+          ],
+          "detail": {
+            "en": "Work as usual.",
+            "fr": "Travail normal.",
+            "mfe": "Travay normal."
+          }
+        },
+        "transport": {
+          "status": "ok",
+          "basis": "unclear",
+          "sources": [],
+          "detail": {
+            "en": "Buses and Metro running. Allow extra time.",
+            "fr": "Bus et Metro en service. Prévoyez plus de temps.",
+            "mfe": "Bis ek Metro pe roule. Pran plis letan."
+          }
+        },
+        "outside": {
+          "status": "caution",
+          "basis": "practice",
+          "sources": [
+            "mms-rain"
+          ],
+          "detail": {
+            "en": "Avoid rivers, drains and low roads if it rains hard.",
+            "fr": "Évitez rivières, caniveaux et routes basses s'il pleut fort.",
+            "mfe": "Evit larivier, kanal ek larout ba si lapli tonbe for."
+          }
+        }
+      },
+      "doNow": [
+        {
+          "en": "Know a higher route home.",
+          "fr": "Connaissez un chemin plus en hauteur pour rentrer.",
+          "mfe": "Konn enn semin pli o pou rant lakaz."
+        },
+        {
+          "en": "Keep drains near your home clear.",
+          "fr": "Dégagez les caniveaux près de chez vous.",
+          "mfe": "Netway bann kanal pre ar ou lakaz."
+        }
+      ],
+      "sourceIds": [
+        "mms-regs-2023",
+        "wra-2019"
+      ],
+      "verified": false
+    },
+    "heavyRainWarning": {
+      "kind": "rain",
+      "severity": 2,
+      "shortName": {
+        "en": "Heavy rain warning",
+        "fr": "Avis de fortes pluies",
+        "mfe": "Avertisman gro lapli"
+      },
+      "headline": {
+        "en": "Heavy rain warning",
+        "fr": "Avis de fortes pluies",
+        "mfe": "Avertisman gro lapli"
+      },
+      "instruction": {
+        "en": "At least 25 mm of rain in 30 minutes expected. Water can rise fast in low areas.",
+        "fr": "Au moins 25 mm de pluie en 30 minutes attendus. L'eau peut monter vite dans les zones basses.",
+        "mfe": "Omwin 25 mm lapli dan 30 minit pe atann. Dilo kapav monte vit dan bann landrwa ba."
+      },
+      "topics": {
+        "school": {
+          "status": "caution",
+          "basis": "communique",
+          "sources": [
+            "press-heavyrain-closed-2026",
+            "press-heavyrain-stay-2026"
+          ],
+          "detail": {
+            "en": "Before school: schools are often closed by communiqué. During school: pupils usually stay at school and parents may collect them.",
+            "fr": "Avant les cours : les écoles sont souvent fermées par communiqué. Pendant les cours : les élèves restent généralement à l'école et les parents peuvent les récupérer.",
+            "mfe": "Avan lekol: souvan lekol ferme par kominike. Pandan lekol: zelev zeneralman res lekol ek paran kapav al sers zot."
+          }
+        },
+        "work": {
+          "status": "ok",
+          "basis": "law",
+          "sources": [
+            "wra-2019",
+            "ps-protocol-2025"
+          ],
+          "detail": {
+            "en": "Work as usual, unless the National Crisis Committee orders people to stay indoors.",
+            "fr": "Travail normal, sauf si le Comité national de crise ordonne de rester à l'intérieur.",
+            "mfe": "Travay normal, sof si Komite Nasional Kriz donn lord pou res andan."
+          }
+        },
+        "transport": {
+          "status": "caution",
+          "basis": "unclear",
+          "sources": [],
+          "detail": {
+            "en": "Expect delays and flooded roads.",
+            "fr": "Prévoyez des retards et des routes inondées.",
+            "mfe": "Atann ou ar reter ek larout inonde."
+          }
+        },
+        "outside": {
+          "status": "caution",
+          "basis": "practice",
+          "sources": [
+            "mms-rain"
+          ],
+          "detail": {
+            "en": "Avoid rivers, drains and low roads.",
+            "fr": "Évitez rivières, caniveaux et routes basses.",
+            "mfe": "Evit larivier, kanal ek larout ki ba."
+          }
+        }
+      },
+      "doNow": [
+        {
+          "en": "Never walk or drive through moving water.",
+          "fr": "Ne marchez ni ne roulez jamais dans de l'eau qui coule.",
+          "mfe": "Zame mars ni roul dan dilo ki pe koule."
+        },
+        {
+          "en": "Keep away from rivers and canals.",
+          "fr": "Restez loin des rivières et des canaux.",
+          "mfe": "Res lwin ar larivier ek kanal."
+        },
+        {
+          "en": "Know a higher route home.",
+          "fr": "Connaissez un chemin plus en hauteur pour rentrer.",
+          "mfe": "Konn enn semin pli o pou rant lakaz."
+        }
+      ],
+      "sourceIds": [
+        "mms-regs-2023",
+        "wra-2019",
+        "press-heavyrain-closed-2026",
+        "press-heavyrain-stay-2026"
+      ],
+      "verified": false
+    },
+    "torrentialRainWarning": {
+      "kind": "rain",
+      "severity": 3,
+      "shortName": {
+        "en": "Torrential rain warning",
+        "fr": "Avis de pluies torrentielles",
+        "mfe": "Avertisman lapli torransiel"
+      },
+      "headline": {
+        "en": "Torrential rain warning",
+        "fr": "Avis de pluies torrentielles",
+        "mfe": "Avertisman lapli torransiel"
+      },
+      "instruction": {
+        "en": "100 mm of rain has fallen or soon will. Flash floods possible. Stay where you are safe. Do not travel.",
+        "fr": "100 mm de pluie sont tombés ou vont tomber. Crues soudaines possibles. Restez à l'abri. Ne vous déplacez pas.",
+        "mfe": "100 mm lapli finn tonbe ou pe al tonbe. Kapav ena inondasion sibit. Res kot ou an sekirite. Pa deplase."
+      },
+      "topics": {
+        "school": {
+          "status": "stop",
+          "basis": "communique",
+          "sources": [
+            "mms-rain",
+            "press-torrential-schools-2023",
+            "eccea"
+          ],
+          "detail": {
+            "en": "Do not send children to school (MMS advice). Pupils already at school are kept there safely; parents may collect them.",
+            "fr": "N'envoyez pas les enfants à l'école (conseil MMS). Les élèves déjà à l'école y restent en sécurité ; les parents peuvent les récupérer.",
+            "mfe": "Pa avoy zanfan lekol (konsey MMS). Zelev ki deza lekol res laba an sekirite; paran kapav al sers zot."
+          }
+        },
+        "work": {
+          "status": "caution",
+          "basis": "law",
+          "sources": [
+            "wra-2019",
+            "cabinet-2026-05-22"
+          ],
+          "detail": {
+            "en": "If the National Crisis Committee orders people indoors, your employer cannot make you travel to work or stay working exposed to the weather. A new rule letting all non-emergency staff stay home is approved but not yet law.",
+            "fr": "Si le Comité national de crise ordonne de rester à l'intérieur, votre employeur ne peut pas vous obliger à venir ni à travailler exposé aux intempéries. Une nouvelle règle permettant à tout le personnel non urgent de rester chez soi est approuvée mais pas encore en vigueur.",
+            "mfe": "Si Komite Nasional Kriz donn lord pou res andan, ou patron pa kapav fors ou vinn travay ni travay deor dan move letan. Enn nouvo regleman pou ki tou dimounn (sof servis lirzans) res lakaz finn aprouve me li pa ankor lalwa."
+          }
+        },
+        "transport": {
+          "status": "caution",
+          "basis": "practice",
+          "sources": [
+            "press-torrential-metro-2023"
+          ],
+          "detail": {
+            "en": "Metro may stop (it did in 2023). Buses may stop or change route. Many roads may be flooded.",
+            "fr": "Le Metro peut s'arrêter (ce fut le cas en 2023). Les bus peuvent s'arrêter ou changer d'itinéraire. Beaucoup de routes peuvent être inondées.",
+            "mfe": "Metro kapav aret (sa finn arive an 2023). Bis kapav aret ou sanz trase. Boukou larout kapav inonde."
+          }
+        },
+        "outside": {
+          "status": "stop",
+          "basis": "practice",
+          "sources": [
+            "mms-rain"
+          ],
+          "detail": {
+            "en": "Stay inside. Avoid long trips. Do not cross flooded roads, bridges or rivers.",
+            "fr": "Restez à l'intérieur. Évitez les longs trajets. Ne traversez ni routes inondées, ni ponts, ni rivières.",
+            "mfe": "Res andan. Evit long vwayaz. Pa travers larout inonde, pon ou larivier."
+          }
+        }
+      },
+      "doNow": [
+        {
+          "en": "Never walk or drive through flood water. 30 cm of water can move a car.",
+          "fr": "N'entrez jamais dans l'eau d'une inondation, à pied ou en voiture. 30 cm d'eau peuvent emporter une voiture.",
+          "mfe": "Zame mars ni roul dan dilo inondasion. 30 cm dilo kapav anmenn enn loto."
+        },
+        {
+          "en": "If water enters your home, move to higher ground.",
+          "fr": "Si l'eau entre chez vous, montez en hauteur.",
+          "mfe": "Si dilo rant dan lakaz, al dan enn landrwa pli o."
+        },
+        {
+          "en": "Stay put until the warning is lifted.",
+          "fr": "Restez sur place jusqu'à la levée de l'avis.",
+          "mfe": "Res kot ou ete ziska avertisman fini."
+        }
+      ],
+      "sourceIds": [
+        "mms-regs-2023",
+        "mms-rain",
+        "wra-2019",
+        "cabinet-2026-05-22",
+        "press-torrential-schools-2023"
+      ],
+      "verified": true
+    }
+  }
+}

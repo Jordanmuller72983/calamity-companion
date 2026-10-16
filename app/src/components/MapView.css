@@ -1,0 +1,52 @@
+.map-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 240px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #dfe8f2;
+}
+.map-canvas {
+  position: absolute;
+  inset: 0;
+}
+.map-failed {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  text-align: center;
+  color: var(--ink-2);
+  font-size: 14px;
+}
+.storm-marker {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #dc2626;
+  color: #fff;
+  border: 3px solid #fff;
+  box-shadow: 0 4px 14px rgb(127 29 29 / 0.5);
+}
+/* Spin the icon, not the marker: MapLibre positions the marker with its own transform. */
+.storm-marker svg {
+  animation: storm-spin 6s linear infinite;
+}
+@keyframes storm-spin {
+  to { transform: rotate(-360deg); }
+}
+.maplibregl-popup-content {
+  font-family: var(--adm-font-family);
+  font-size: 13.5px;
+  line-height: 1.45;
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+.maplibregl-popup-content p { margin: 6px 0 0; }
+.pop-big { font-size: 20px; font-weight: 700; }
+.pop-muted { color: var(--ink-3); font-size: 12.5px; }
+.pop-photo { margin-top: 8px; width: 100%; border-radius: 8px; }

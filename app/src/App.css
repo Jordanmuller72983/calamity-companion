@@ -1,0 +1,212 @@
+/* ---------- Shell: phone first, sidebar from 1024px ---------- */
+.shell {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgb(255 255 255 / 0.14);
+  color: #fff;
+  flex: none;
+}
+.brand-name {
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+.brand-tag {
+  font-size: 12.5px;
+  opacity: 0.75;
+  margin-top: 2px;
+}
+
+/* Top bar (phone/tablet) */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: calc(10px + env(safe-area-inset-top)) 16px 10px;
+  background: linear-gradient(120deg, var(--swan-blue-deep), var(--swan-blue));
+  color: #fff;
+}
+
+.lang-switch {
+  --segmented-background: rgb(255 255 255 / 0.14);
+  --segmented-item-color: #fff;
+  --segmented-item-selected-background: #fff;
+  --segmented-item-selected-color: var(--swan-blue);
+  font-size: 13px;
+  font-weight: 700;
+  flex: none;
+}
+.lang-switch .adm-segmented-item {
+  min-width: 38px;
+  min-height: 34px;
+  display: grid;
+  place-items: center;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+.content-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.tabbar {
+  position: sticky;
+  bottom: 0;
+  z-index: 20;
+  background: #fff;
+  border-top: 1px solid var(--line);
+  box-shadow: 0 -4px 16px rgb(16 24 40 / 0.05);
+}
+.tabbar .adm-tab-bar-item-title {
+  font-size: 13px;
+}
+.tabbar .adm-tab-bar-item-icon {
+  font-size: 24px;
+}
+
+/* Data mode button */
+.mode-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+.mode-btn:hover {
+  border-color: var(--swan-sky);
+}
+.mode-btn-label {
+  color: var(--ink-3);
+}
+.mode-btn-value {
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Sidebar (desktop) */
+.sidebar {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .shell {
+    flex-direction: row;
+  }
+  .topbar,
+  .tabbar {
+    display: none;
+  }
+  .sidebar {
+    position: sticky;
+    top: 0;
+    height: 100dvh;
+    width: 264px;
+    flex: none;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    padding: 24px 18px;
+    background: linear-gradient(180deg, var(--swan-blue-deep), var(--swan-blue) 70%, #0a3d9a);
+    color: #fff;
+  }
+  .sidebar .brand {
+    align-items: flex-start;
+  }
+  .sidebar .brand-name {
+    white-space: normal;
+  }
+  .side-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .side-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border: 0;
+    border-radius: 12px;
+    background: transparent;
+    color: rgb(255 255 255 / 0.82);
+    font: inherit;
+    font-size: 15.5px;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: left;
+  }
+  .side-link svg {
+    font-size: 22px;
+  }
+  .side-link:hover {
+    background: rgb(255 255 255 / 0.08);
+    color: #fff;
+  }
+  .side-link.active {
+    background: #fff;
+    color: var(--swan-blue);
+  }
+  /* Appears only during a cyclone warning, so it stands out. */
+  .side-report:not(.active) {
+    background: rgb(220 38 38 / 0.9);
+    color: #fff;
+  }
+  .side-report:not(.active):hover {
+    background: #dc2626;
+  }
+  .side-bottom {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+  .side-bottom .mode-btn {
+    background: rgb(255 255 255 / 0.1);
+    border-color: rgb(255 255 255 / 0.2);
+    color: #fff;
+    border-radius: 12px;
+    justify-content: space-between;
+  }
+  .side-bottom .mode-btn-label {
+    color: rgb(255 255 255 / 0.7);
+  }
+  .side-bottom .lang-switch {
+    align-self: flex-start;
+  }
+  .page-foot .mode-row {
+    display: none;
+  }
+}
