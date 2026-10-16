@@ -4,7 +4,7 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "regions": ["cpt1"],
-  "rewrites": [{ "source": "/api/:path*", "destination": "/api/index?__path=:path*" }],
+  "rewrites": [{ "source": "/api/:route*", "destination": "/api/index?__path=:route*" }],
   "functions": {
     "api/index.mjs": { "maxDuration": 60, "includeFiles": "server/fixtures/**" }
   }

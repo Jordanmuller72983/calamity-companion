@@ -664,7 +664,7 @@ async function getPhoto(name) {
 }
 
 // server/status.ts
-import { readFileSync as readFileSync2 } from "node:fs";
+import { existsSync as existsSync2, readFileSync as readFileSync2 } from "node:fs";
 import { join as join2 } from "node:path";
 
 // server/cyclone.ts
@@ -877,8 +877,17 @@ async function getLiveStatus() {
   });
   return inflight;
 }
+function fixturesDir() {
+  const candidates = [
+    join2(process.cwd(), "server", "fixtures"),
+    join2(process.cwd(), "app", "server", "fixtures"),
+    join2(import.meta.dirname ?? "", "..", "server", "fixtures"),
+    join2(import.meta.dirname ?? "", "fixtures")
+  ];
+  return candidates.find((d) => existsSync2(d)) ?? candidates[0];
+}
 function getBelalArchiveStatus() {
-  const f = (name) => readFileSync2(join2(process.cwd(), "server", "fixtures", name), "utf8");
+  const f = (name) => readFileSync2(join2(fixturesDir(), name), "utf8");
   const belal = f("2024-01-16-belal-cyclone-en.html");
   const status = build(
     {
@@ -1212,6 +1221,7 @@ async function handler(req, res) {
   const path = url2.searchParams.get("__path");
   if (path !== null) {
     url2.searchParams.delete("__path");
+    url2.searchParams.delete("route");
     req.url = `/api/${path}${url2.search}`;
   }
   const handled = await handleApi(req, res);

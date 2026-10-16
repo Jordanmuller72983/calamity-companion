@@ -1,7 +1,7 @@
 // Builds the app's live status from MMS pages. Runs in Node today (Vite dev/preview middleware);
 // the same code moves to a scheduled Supabase function later.
 
-import { readFileSync } from 'node:fs'
+import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import type { AreaReading, Conditions, LiveStatus, RainfallSet, TrackCollection } from '../src/data/liveTypes.ts'
 import type { CycloneLevel, RainLevel } from '../src/rules/types.ts'
@@ -158,10 +158,20 @@ export async function getLiveStatus(): Promise<LiveStatus> {
   return inflight
 }
 
+/** Saved MMS pages. On Vercel they are included via vercel.json, but where they land depends on the project's root folder. */
+function fixturesDir(): string {
+  const candidates = [
+    join(process.cwd(), 'server', 'fixtures'),
+    join(process.cwd(), 'app', 'server', 'fixtures'),
+    join(import.meta.dirname ?? '', '..', 'server', 'fixtures'),
+    join(import.meta.dirname ?? '', 'fixtures'),
+  ]
+  return candidates.find((d) => existsSync(d)) ?? candidates[0]
+}
+
 /** Real archived MMS pages from Cyclone Belal (16 Jan 2024), to see the app with an actual bulletin. */
 export function getBelalArchiveStatus(): LiveStatus {
-  // Relative to the app folder: works in dev and on Vercel (files included via vercel.json).
-  const f = (name: string) => readFileSync(join(process.cwd(), 'server', 'fixtures', name), 'utf8')
+  const f = (name: string) => readFileSync(join(fixturesDir(), name), 'utf8')
   const belal = f('2024-01-16-belal-cyclone-en.html')
   const status = build(
     {
