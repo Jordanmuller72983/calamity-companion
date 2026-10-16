@@ -68,3 +68,12 @@
 .contact-wa { background: #e7f6ec; border-color: transparent; color: #14532d; }
 
 .delete-btn { margin-top: 6px; border: 1px solid var(--stop); background: #fff; color: var(--stop-ink); border-radius: 8px; padding: 4px 10px; font: inherit; font-size: 13px; cursor: pointer; }
+
+.admin-reports h3 { margin: 16px 0 6px; font-size: 14px; }
+.admin-reports li { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+.admin-reports li a { font-size: 13px; }
+.admin-reports .delete-btn { margin-top: 0; flex: none; }
+.report > .admin-reports { margin-top: 8px; }
+/* Closed (no cyclone warning): one column, for the owner's report manager */
+.report.report-closed { display: flex; flex-direction: column; gap: 16px; max-width: 820px; }
+.report-closed .adm-result { background: #fff; border-radius: var(--radius-card); box-shadow: var(--shadow-card); }

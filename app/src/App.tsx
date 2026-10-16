@@ -11,6 +11,7 @@ import { useTranslation } from 'react-i18next'
 import { HeroIcon } from './components/HeroIcon'
 import type { NewsStatus, Report, TownsStatus, WaterStatusLive } from './data/liveTypes'
 import { SCENARIOS } from './data/scenarios'
+import { getAdminKey } from './data/admin'
 import { useJson } from './data/useJson'
 import { useLiveStatus } from './data/useLiveStatus'
 import { LANGS, saveLang } from './i18n'
@@ -154,7 +155,10 @@ function Shell({ mode, demoSnapshot, modeControl, langSwitch }: ShellProps) {
 
   const snapshot = mode === 'demo' ? demoSnapshot : live.data?.snapshot
   const reportEnabled = !!snapshot && REPORTING.includes(snapshot.cyclone)
-  const activeTab: Tab = tab === 'report' && !reportEnabled ? 'now' : tab
+  // The owner (admin key on this device) can always open Report to manage reports.
+  const [isAdmin] = useState(() => !!getAdminKey())
+  const reportVisible = reportEnabled || isAdmin
+  const activeTab: Tab = tab === 'report' && !reportVisible ? 'now' : tab
 
   const setTab = (next: Tab) => {
     setTabState(next)
@@ -165,7 +169,7 @@ function Shell({ mode, demoSnapshot, modeControl, langSwitch }: ShellProps) {
   const navItems: { key: Tab; icon: ReactNode; hidden?: boolean }[] = [
     { key: 'now', icon: <ExclamationShieldOutline /> },
     { key: 'map', icon: <EnvironmentOutline /> },
-    { key: 'report', icon: <MessageOutline />, hidden: !reportEnabled },
+    { key: 'report', icon: <MessageOutline />, hidden: !reportVisible },
     { key: 'mms', icon: <FileOutline /> },
   ]
   const visibleNav = navItems.filter((n) => !n.hidden)
@@ -214,7 +218,6 @@ function Shell({ mode, demoSnapshot, modeControl, langSwitch }: ShellProps) {
         demoWarning={snapshot?.cyclone}
         reports={reports.data}
         onSent={() => void reports.reload()}
-        onDeleted={() => void reports.reload()}
       />
     )
   }
@@ -234,7 +237,7 @@ function Shell({ mode, demoSnapshot, modeControl, langSwitch }: ShellProps) {
           {visibleNav.map((n) => (
             <button
               key={n.key}
-              className={`side-link ${activeTab === n.key ? 'active' : ''} ${n.key === 'report' ? 'side-report' : ''}`}
+              className={`side-link ${activeTab === n.key ? 'active' : ''} ${n.key === 'report' && reportEnabled ? 'side-report' : ''}`}
               onClick={() => setTab(n.key)}
               aria-current={activeTab === n.key ? 'page' : undefined}
             >
@@ -269,7 +272,7 @@ function Shell({ mode, demoSnapshot, modeControl, langSwitch }: ShellProps) {
           {visibleNav.map((n) => (
             <TabBar.Item
               key={n.key}
-              icon={n.key === 'report' ? <Badge content={Badge.dot}>{n.icon}</Badge> : n.icon}
+              icon={n.key === 'report' && reportEnabled ? <Badge content={Badge.dot}>{n.icon}</Badge> : n.icon}
               title={t(`tabs.${n.key}`)}
             />
           ))}

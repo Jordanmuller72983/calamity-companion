@@ -5,6 +5,8 @@ import { useTranslation } from 'react-i18next'
 import { authoritiesFor, lookupPlace, mailtoLink, type MailDraft } from '../data/authorities'
 import { REPORT_KINDS, type Report, type ReportKind } from '../data/liveTypes'
 import { useAgoText, useMapLabels } from '../data/mapLabels'
+import { AdminReports } from '../components/AdminReports'
+import { getAdminKey } from '../data/admin'
 import './ReportScreen.css'
 
 const MapView = lazy(() => import('../components/MapView'))
@@ -26,26 +28,9 @@ interface Props {
   demoWarning?: string
   reports?: Report[]
   onSent: () => void
-  onDeleted: () => void
 }
 
-// Admin key for deleting reports. Set once by opening the app with ?admin=<key>; kept on this device only.
-function adminKey(): string | undefined {
-  try {
-    const fromUrl = new URLSearchParams(window.location.search).get('admin')
-    if (fromUrl) {
-      localStorage.setItem('cc.adminKey', fromUrl)
-      const url = new URL(window.location.href)
-      url.searchParams.delete('admin')
-      window.history.replaceState(null, '', url)
-    }
-    return localStorage.getItem('cc.adminKey') ?? undefined
-  } catch {
-    return undefined
-  }
-}
-
-export function ReportScreen({ enabled, demo, demoWarning, reports, onSent, onDeleted }: Props) {
+export function ReportScreen({ enabled, demo, demoWarning, reports, onSent }: Props) {
   const { t } = useTranslation()
   const labels = useMapLabels()
   const ago = useAgoText()
@@ -56,21 +41,14 @@ export function ReportScreen({ enabled, demo, demoWarning, reports, onSent, onDe
   const [locating, setLocating] = useState(false)
   const [sending, setSending] = useState(false)
   const [done, setDone] = useState<MailDraft | null>(null)
-  const [admin] = useState(adminKey)
-
-  const remove = async (id: string) => {
-    if (!admin || !window.confirm(t('report.deleteConfirm'))) return
-    const res = await fetch(`/api/reports/${id}`, { method: 'DELETE', headers: { 'x-admin-key': admin } })
-    const body = await res.json().catch(() => ({}))
-    if (!res.ok) Toast.show({ content: body.error ?? res.status })
-    else onDeleted()
-  }
+  const [admin] = useState(getAdminKey)
 
   if (!enabled) {
     return (
-      <div className="report">
+      <div className="report report-closed">
         <h1 className="page-title">{t('report.title')}</h1>
         <Result status="info" title={t('report.closed')} description={t('report.danger')} />
+        {admin && <AdminReports adminKey={admin} />}
       </div>
     )
   }
@@ -236,24 +214,23 @@ export function ReportScreen({ enabled, demo, demoWarning, reports, onSent, onDe
         </Button>
       </div>
 
-      <aside className="report-recent">
-        <h2>{t('report.recent')}</h2>
-        {!reports?.length && <p className="muted">{t('report.none')}</p>}
-        <ul>
-          {reports?.slice(0, 12).map((r) => (
-            <li key={r.id}>
-              <strong>{t(`report.kinds.${r.kind}`)}</strong>
-              <span className="muted"> · {ago(r.createdAt)}</span>
-              {r.note && <p>{r.note}</p>}
-              {admin && (
-                <button className="delete-btn" onClick={() => void remove(r.id)}>
-                  {t('report.delete')}
-                </button>
-              )}
-            </li>
-          ))}
-        </ul>
-      </aside>
+      {admin ? (
+        <AdminReports adminKey={admin} />
+      ) : (
+        <aside className="report-recent">
+          <h2>{t('report.recent')}</h2>
+          {!reports?.length && <p className="muted">{t('report.none')}</p>}
+          <ul>
+            {reports?.slice(0, 12).map((r) => (
+              <li key={r.id}>
+                <strong>{t(`report.kinds.${r.kind}`)}</strong>
+                <span className="muted"> · {ago(r.createdAt)}</span>
+                {r.note && <p>{r.note}</p>}
+              </li>
+            ))}
+          </ul>
+        </aside>
+      )}
     </div>
   )
 }

@@ -110,6 +110,7 @@ export const en = {
     metro: { title: 'Metro Express updates', intro: 'Metro Express posts service updates on its official Facebook page.' },
     cwa: { title: 'CWA updates', intro: 'The Central Water Authority posts water cuts and supply schedules on its official Facebook page.' },
   },
+  admin: { title: 'Manage reports', intro: 'Only you see this (admin key on this device). Reports disappear on their own after 72 hours.', live: 'Live reports (on the public map)', test: 'Test reports (demo mode only)', signOut: 'Remove admin key from this device' },
   press: {
     title: 'In the press',
     note: 'Headlines from L’Express and Defimedia, to cross-check the guidance above. They don’t change it.',
@@ -300,6 +301,7 @@ export const fr: Strings = {
     metro: { title: 'Infos Metro Express', intro: 'Metro Express publie ses informations de service sur sa page Facebook officielle.' },
     cwa: { title: 'Infos CWA', intro: 'La Central Water Authority publie les coupures et horaires de distribution d’eau sur sa page Facebook officielle.' },
   },
+  admin: { title: 'Gérer les signalements', intro: 'Vous seul voyez ceci (clé admin sur cet appareil). Les signalements disparaissent d’eux-mêmes après 72 heures.', live: 'Signalements en direct (carte publique)', test: 'Signalements de test (mode démo)', signOut: 'Retirer la clé admin de cet appareil' },
   press: {
     title: 'Dans la presse',
     note: 'Titres de L’Express et Defimedia, pour recouper les consignes ci-dessus. Ils ne les modifient pas.',
@@ -488,6 +490,7 @@ export const mfe: Strings = {
     metro: { title: 'Nouvel Metro Express', intro: 'Metro Express pibliye so nouvel servis lor so paz Facebook ofisiel.' },
     cwa: { title: 'Nouvel CWA', intro: 'Central Water Authority pibliye koupir dilo ek ler distribision lor so paz Facebook ofisiel.' },
   },
+  admin: { title: 'Zer bann rapor', intro: 'Zis ou ki trouv sa (kle admin lor sa aparey-la). Bann rapor disparet tousel apre 72 er.', live: 'Rapor an direk (lor kart piblik)', test: 'Rapor tes (mod demo selman)', signOut: 'Tir kle admin lor sa aparey-la' },
   press: {
     title: 'Dan lapres',
     note: 'Tit L’Express ek Defimedia, pou konfirm konsiy lao-la. Zot pa sanz zot.',
