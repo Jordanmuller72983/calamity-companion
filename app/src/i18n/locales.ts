@@ -168,7 +168,9 @@ export const en = {
     needPlace: 'Choose where it is.',
     recent: 'Recent reports',
     none: 'No reports yet.',
-    demo: 'Demo mode: your report is saved as a test.',
+    demo: 'Demo mode: your report is saved as a test. Test reports only appear in demo mode, never on the live map.',
+    delete: 'Delete',
+    deleteConfirm: 'Delete this report for everyone?',
   },
   mms: {
     tab: 'MMS',
@@ -356,7 +358,9 @@ export const fr: Strings = {
     needPlace: 'Choisissez l’endroit.',
     recent: 'Signalements récents',
     none: 'Aucun signalement pour le moment.',
-    demo: 'Mode démo : votre signalement est enregistré comme test.',
+    demo: 'Mode démo : votre signalement est enregistré comme test. Les tests n’apparaissent qu’en mode démo, jamais sur la carte en direct.',
+    delete: 'Supprimer',
+    deleteConfirm: 'Supprimer ce signalement pour tout le monde ?',
   },
   mms: {
     tab: 'MMS',
@@ -542,7 +546,9 @@ export const mfe: Strings = {
     needPlace: 'Swazir kot li ete.',
     recent: 'Dernie rapor',
     none: 'Pena rapor ankor.',
-    demo: 'Mod demo: ou rapor anrezistre kouma enn tes.',
+    demo: 'Mod demo: ou rapor anrezistre kouma enn tes. Bann tes parett zis dan mod demo, zame lor kart an direk.',
+    delete: 'Efase',
+    deleteConfirm: 'Efas sa rapor-la pou tou dimounn?',
   },
   mms: {
     tab: 'MMS',

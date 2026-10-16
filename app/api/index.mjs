@@ -598,6 +598,18 @@ async function setJson(key, value, ttlSeconds) {
   if (!existsSync(DIR)) mkdirSync(DIR, { recursive: true });
   writeFileSync(file(key), JSON.stringify(value));
 }
+async function del(key) {
+  if (redis) {
+    await redis.del(key);
+    return;
+  }
+  if (isServerless) return;
+  try {
+    const { rmSync } = await import("node:fs");
+    rmSync(file(key), { force: true });
+  } catch {
+  }
+}
 async function hit(key, windowSeconds) {
   if (redis) {
     const n = await redis.incr(key);
@@ -622,8 +634,17 @@ var recent = (reports) => {
   const since = Date.now() - KEEP_HOURS * 3600 * 1e3;
   return reports.filter((r) => new Date(r.createdAt).getTime() > since);
 };
-async function listReports() {
-  return recent(await getJson(LIST_KEY) ?? []).sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+var isTestReport = (r) => r.warning.startsWith("demo:");
+async function listReports(scope = "live") {
+  return recent(await getJson(LIST_KEY) ?? []).filter((r) => scope === "demo" ? isTestReport(r) : !isTestReport(r)).sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+}
+async function deleteReport(id) {
+  const all = await getJson(LIST_KEY) ?? [];
+  const keep = all.filter((r) => r.id !== id);
+  if (keep.length === all.length) return false;
+  await setJson(LIST_KEY, keep);
+  await del(`photo:${id}`);
+  return true;
 }
 var ReportError = class extends Error {
   status;
@@ -1188,7 +1209,7 @@ async function handleApi(req, res) {
         return true;
       }
       case "/api/reports": {
-        if (req.method === "GET") return json(res, 200, await listReports(), cdn(30)), true;
+        if (req.method === "GET") return json(res, 200, await listReports(url2.searchParams.get("scope") === "demo" ? "demo" : "live"), cdn(30)), true;
         if (req.method !== "POST") return json(res, 405, { error: "Method not allowed." }), true;
         const body = await readBody(req);
         const status = await getLiveStatus();
@@ -1198,6 +1219,13 @@ async function handleApi(req, res) {
         const warning = demo ? `demo:${String(body.demoWarning ?? "")}` : status.snapshot.cyclone;
         return json(res, 201, await addReport(body, clientIp(req), warning)), true;
       }
+    }
+    const del2 = url2.pathname.match(/^\/api\/reports\/([0-9a-f-]{36})$/);
+    if (del2 && req.method === "DELETE") {
+      const key = process.env.ADMIN_KEY;
+      if (!key) return json(res, 403, { error: "Deleting is off: set ADMIN_KEY in the server settings." }), true;
+      if (req.headers["x-admin-key"] !== key) return json(res, 401, { error: "Wrong admin key." }), true;
+      return json(res, await deleteReport(del2[1]) ? 200 : 404, { ok: true }), true;
     }
     if (url2.pathname.startsWith("/api/reports/photo/")) {
       const photo = await getPhoto(url2.pathname.split("/").pop() ?? "");

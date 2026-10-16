@@ -4,7 +4,7 @@
 
 import { randomUUID } from 'node:crypto'
 import { REPORT_KINDS, type Report, type ReportKind } from '../src/data/liveTypes.ts'
-import { getJson, hit, setJson } from './store.ts'
+import { del, getJson, hit, setJson } from './store.ts'
 
 const KEEP_HOURS = 72
 // Photos are resized to 1280 px JPEG in the browser (typically 150–400 KB); Upstash accepts up to 1 MB per value.
@@ -21,8 +21,25 @@ const recent = (reports: Report[]) => {
   return reports.filter((r) => new Date(r.createdAt).getTime() > since)
 }
 
-export async function listReports(): Promise<Report[]> {
-  return recent((await getJson<Report[]>(LIST_KEY)) ?? []).sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+/** Reports sent from demo/archive mode are tests: they never appear on the live map, and live ones never appear in demos. */
+export const isTestReport = (r: Report) => r.warning.startsWith('demo:')
+
+export type ReportScope = 'live' | 'demo'
+
+export async function listReports(scope: ReportScope = 'live'): Promise<Report[]> {
+  return recent((await getJson<Report[]>(LIST_KEY)) ?? [])
+    .filter((r) => (scope === 'demo' ? isTestReport(r) : !isTestReport(r)))
+    .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+}
+
+/** Remove a report (and its photo). Returns false if it didn't exist. */
+export async function deleteReport(id: string): Promise<boolean> {
+  const all = (await getJson<Report[]>(LIST_KEY)) ?? []
+  const keep = all.filter((r) => r.id !== id)
+  if (keep.length === all.length) return false
+  await setJson(LIST_KEY, keep)
+  await del(`photo:${id}`)
+  return true
 }
 
 export class ReportError extends Error {

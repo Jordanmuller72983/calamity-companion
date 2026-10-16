@@ -147,7 +147,8 @@ function Shell({ mode, demoSnapshot, modeControl, langSwitch }: ShellProps) {
   const [tab, setTabState] = useState<Tab>(initialTab)
   const live = useLiveStatus(mode === 'belal' ? 'belal' : 'live')
   const water = useJson<WaterStatusLive>('/api/water', 30 * 60 * 1000)
-  const reports = useJson<Report[]>('/api/reports', 60 * 1000)
+  // Live map: real reports only. Demo/archive: test reports only.
+  const reports = useJson<Report[]>(`/api/reports?scope=${mode === 'live' ? 'live' : 'demo'}`, 60 * 1000)
   const news = useJson<NewsStatus>('/api/news', 10 * 60 * 1000)
   const towns = useJson<TownsStatus>('/api/towns', 15 * 60 * 1000)
 
@@ -213,6 +214,7 @@ function Shell({ mode, demoSnapshot, modeControl, langSwitch }: ShellProps) {
         demoWarning={snapshot?.cyclone}
         reports={reports.data}
         onSent={() => void reports.reload()}
+        onDeleted={() => void reports.reload()}
       />
     )
   }

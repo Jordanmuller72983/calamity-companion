@@ -26,9 +26,26 @@ interface Props {
   demoWarning?: string
   reports?: Report[]
   onSent: () => void
+  onDeleted: () => void
 }
 
-export function ReportScreen({ enabled, demo, demoWarning, reports, onSent }: Props) {
+// Admin key for deleting reports. Set once by opening the app with ?admin=<key>; kept on this device only.
+function adminKey(): string | undefined {
+  try {
+    const fromUrl = new URLSearchParams(window.location.search).get('admin')
+    if (fromUrl) {
+      localStorage.setItem('cc.adminKey', fromUrl)
+      const url = new URL(window.location.href)
+      url.searchParams.delete('admin')
+      window.history.replaceState(null, '', url)
+    }
+    return localStorage.getItem('cc.adminKey') ?? undefined
+  } catch {
+    return undefined
+  }
+}
+
+export function ReportScreen({ enabled, demo, demoWarning, reports, onSent, onDeleted }: Props) {
   const { t } = useTranslation()
   const labels = useMapLabels()
   const ago = useAgoText()
@@ -39,6 +56,15 @@ export function ReportScreen({ enabled, demo, demoWarning, reports, onSent }: Pr
   const [locating, setLocating] = useState(false)
   const [sending, setSending] = useState(false)
   const [done, setDone] = useState<MailDraft | null>(null)
+  const [admin] = useState(adminKey)
+
+  const remove = async (id: string) => {
+    if (!admin || !window.confirm(t('report.deleteConfirm'))) return
+    const res = await fetch(`/api/reports/${id}`, { method: 'DELETE', headers: { 'x-admin-key': admin } })
+    const body = await res.json().catch(() => ({}))
+    if (!res.ok) Toast.show({ content: body.error ?? res.status })
+    else onDeleted()
+  }
 
   if (!enabled) {
     return (
@@ -219,6 +245,11 @@ export function ReportScreen({ enabled, demo, demoWarning, reports, onSent }: Pr
               <strong>{t(`report.kinds.${r.kind}`)}</strong>
               <span className="muted"> · {ago(r.createdAt)}</span>
               {r.note && <p>{r.note}</p>}
+              {admin && (
+                <button className="delete-btn" onClick={() => void remove(r.id)}>
+                  {t('report.delete')}
+                </button>
+              )}
             </li>
           ))}
         </ul>

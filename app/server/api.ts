@@ -7,7 +7,8 @@
 //   GET  /api/mms/image?src=…           MMS images (satellite, charts, icons)
 //   GET  /api/towns                     current weather for more towns (Open-Meteo model estimates)
 //   GET  /api/news                      L'Express / Defimedia headlines and press-reported disruptions
-//   GET  /api/reports  POST /api/reports   community reports shown on the map
+//   GET  /api/reports[?scope=demo]  POST /api/reports   community reports shown on the map
+//   DELETE /api/reports/<id>            remove a report (header x-admin-key = ADMIN_KEY env var)
 //   GET  /api/reports/photo/<id>.jpg
 //
 // Cache-Control "s-maxage" lets Vercel's CDN serve the same answer to everyone for a few minutes,
@@ -16,7 +17,7 @@
 import type { IncomingMessage, ServerResponse } from 'node:http'
 import { getMenu, getPage, isAllowedPath } from './mmsPages.ts'
 import { getNews } from './news.ts'
-import { ReportError, addReport, getPhoto, listReports } from './reports.ts'
+import { ReportError, addReport, deleteReport, getPhoto, listReports } from './reports.ts'
 import { getBelalArchiveStatus, getLiveStatus } from './status.ts'
 import { getTowns } from './towns.ts'
 import { getWater } from './water.ts'
@@ -90,7 +91,7 @@ export async function handleApi(req: IncomingMessage, res: ServerResponse): Prom
       }
 
       case '/api/reports': {
-        if (req.method === 'GET') return json(res, 200, await listReports(), cdn(30)), true
+        if (req.method === 'GET') return json(res, 200, await listReports(url.searchParams.get('scope') === 'demo' ? 'demo' : 'live'), cdn(30)), true
         if (req.method !== 'POST') return json(res, 405, { error: 'Method not allowed.' }), true
         const body = (await readBody(req)) as Record<string, unknown>
         // Reporting opens with a cyclone warning. Demo/archive modes let people try it without one.
@@ -101,6 +102,13 @@ export async function handleApi(req: IncomingMessage, res: ServerResponse): Prom
         const warning = demo ? `demo:${String(body.demoWarning ?? '')}` : status.snapshot.cyclone
         return json(res, 201, await addReport(body, clientIp(req), warning)), true
       }
+    }
+    const del = url.pathname.match(/^\/api\/reports\/([0-9a-f-]{36})$/)
+    if (del && req.method === 'DELETE') {
+      const key = process.env.ADMIN_KEY
+      if (!key) return json(res, 403, { error: 'Deleting is off: set ADMIN_KEY in the server settings.' }), true
+      if (req.headers['x-admin-key'] !== key) return json(res, 401, { error: 'Wrong admin key.' }), true
+      return json(res, (await deleteReport(del[1])) ? 200 : 404, { ok: true }), true
     }
     if (url.pathname.startsWith('/api/reports/photo/')) {
       const photo = await getPhoto(url.pathname.split('/').pop() ?? '')

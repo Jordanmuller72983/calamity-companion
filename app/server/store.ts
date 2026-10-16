@@ -36,6 +36,20 @@ export async function setJson(key: string, value: unknown, ttlSeconds?: number):
   writeFileSync(file(key), JSON.stringify(value))
 }
 
+export async function del(key: string): Promise<void> {
+  if (redis) {
+    await redis.del(key)
+    return
+  }
+  if (isServerless) return
+  try {
+    const { rmSync } = await import('node:fs')
+    rmSync(file(key), { force: true })
+  } catch {
+    // nothing to delete
+  }
+}
+
 /** Count hits for a key within a window (rate limiting). */
 export async function hit(key: string, windowSeconds: number): Promise<number> {
   if (redis) {
