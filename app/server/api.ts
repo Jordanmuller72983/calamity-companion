@@ -5,7 +5,7 @@
 //   GET  /api/mms/menu                  the MMS website menu, read live
 //   GET  /api/mms/page?path=…           any page in that menu, as content blocks
 //   GET  /api/mms/image?src=…           MMS images (satellite, charts, icons)
-//   GET  /api/towns                     current weather for more towns (Open-Meteo model estimates)
+//   GET  /api/towns[?set=more]          current weather for more towns (Open-Meteo model estimates)
 //   GET  /api/news                      L'Express / Defimedia headlines and press-reported disruptions
 //   GET  /api/reports[?scope=demo]  POST /api/reports   community reports shown on the map
 //   DELETE /api/reports/<id>            remove a report (header x-admin-key = ADMIN_KEY env var)
@@ -61,6 +61,8 @@ export async function handleApi(req: IncomingMessage, res: ServerResponse): Prom
         return json(res, 200, await getLiveStatus(), cdn(120)), true
 
       case '/api/towns':
+        // ?set=more: the longer list, loaded only when someone uses the search; cached longer to spare Open-Meteo.
+        if (url.searchParams.get('set') === 'more') return json(res, 200, await getTowns('more'), cdn(1800)), true
         return json(res, 200, await getTowns(), cdn(900)), true
 
       case '/api/news':

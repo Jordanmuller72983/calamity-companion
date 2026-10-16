@@ -1,0 +1,106 @@
+/* Animated weather icons and card backdrops for the town cards. theme.css turns all motion off for
+   prefers-reduced-motion, which leaves the icons still. */
+.wx {
+  --wx-sun: #f59e0b;
+  --wx-sun-ray: #fbbf24;
+  --wx-moon: #6d7fb3;
+  --wx-moon-fill: #e6ebf7;
+  --wx-star: #8b9ccc;
+  --wx-cloud: #ffffff;
+  --wx-cloud-line: #9aa8bb;
+  --wx-cloud-wet: #dfe7f2;
+  --wx-rain: var(--rain);
+  --wx-bolt: #f5b301;
+  flex: none;
+  overflow: visible;
+}
+
+.wx-rays line { stroke: var(--wx-sun-ray); stroke-width: 2; stroke-linecap: round; }
+.wx-sun-core { fill: var(--wx-sun); }
+.wx-rays { animation: wx-spin 14s linear infinite; }
+.wx-sun-core { animation: wx-glow 3.2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+
+.wx-moon { fill: var(--wx-moon-fill); stroke: var(--wx-moon); stroke-width: 1.6; stroke-linejoin: round; }
+.wx-clear .wx-moon { animation: wx-bob 5s ease-in-out infinite; }
+.wx-star { fill: var(--wx-star); animation: wx-twinkle 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.wx-star-2 { animation-delay: 1.3s; }
+
+.wx-cloud { fill: var(--wx-cloud); stroke: var(--wx-cloud-line); stroke-width: 1.6; stroke-linejoin: round; }
+.wx-cloud-back { fill: var(--wx-cloud-wet); }
+.wx-cloud-wet { fill: var(--wx-cloud-wet); }
+.wx-drift { animation: wx-drift 6s ease-in-out infinite alternate; }
+.wx-drift-back { animation: wx-drift-back 7s ease-in-out infinite alternate; }
+
+.wx-fog line { stroke: var(--wx-cloud-line); stroke-width: 2.4; stroke-linecap: round; animation: wx-fog 4s ease-in-out infinite alternate; }
+.wx-fog line:nth-child(2) { animation-delay: -1.3s; }
+.wx-fog line:nth-child(3) { animation-delay: -2.6s; }
+
+.wx-drops line { stroke: var(--wx-rain); stroke-width: 1.8; stroke-linecap: round; animation: wx-fall 1s linear infinite; }
+.wx-drops-long line { stroke-width: 2; animation-duration: 0.7s; }
+.wx-heavyRain .wx-drops line { animation-duration: 0.5s; }
+
+.wx-bolt { fill: var(--wx-bolt); stroke: #b77900; stroke-width: 0.8; stroke-linejoin: round; animation: wx-flash 3.4s linear infinite; }
+
+@keyframes wx-spin { to { transform: rotate(360deg); } }
+@keyframes wx-glow { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+@keyframes wx-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-1.2px); } }
+@keyframes wx-twinkle { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.25; transform: scale(0.6); } }
+@keyframes wx-drift { from { transform: translateX(-1.5px); } to { transform: translateX(1.5px); } }
+@keyframes wx-drift-back { from { transform: translateX(1.5px); } to { transform: translateX(-2px); } }
+@keyframes wx-fog { from { transform: translateX(-2px); opacity: 0.55; } to { transform: translateX(2px); opacity: 1; } }
+@keyframes wx-fall {
+  0% { transform: translateY(-2px); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translateY(6px); opacity: 0; }
+}
+@keyframes wx-flash {
+  0%, 62%, 70%, 100% { opacity: 0.15; }
+  64%, 68% { opacity: 1; }
+  66% { opacity: 0.4; }
+}
+
+/* Card backdrops: a soft tint for the sky, plus rain streaks or wind gusts drawn behind the text. */
+.towns li.town { position: relative; overflow: hidden; isolation: isolate; }
+.towns li.town > * { position: relative; z-index: 1; }
+.town.sky-sun { background: linear-gradient(135deg, #fff7e6 0%, var(--page) 65%); }
+.town.sky-night { background: linear-gradient(135deg, #e9edf8 0%, var(--page) 70%); }
+.town.sky-wet { background: linear-gradient(160deg, #e6effa 0%, var(--page) 75%); }
+
+.town.wet::before,
+.town.windy::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+}
+/* Thin falling streaks: an SVG tile moved down by exactly its height, so the loop is seamless. */
+.town.wet::before {
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Cg stroke='%231d6fd1' stroke-width='1.3' stroke-linecap='round'%3E%3Cpath d='M7 2l-1.6 6M23 13l-1.6 6M14 25l-1.6 6M31 6l-1.6 6'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 36px 36px;
+  opacity: 0.22;
+  animation: wx-streaks 0.8s linear infinite;
+}
+.town.wet.light::before { opacity: 0.14; animation-duration: 1.4s; }
+.town.wet.heavy::before { opacity: 0.32; animation-duration: 0.5s; background-size: 24px 24px; animation-name: wx-streaks-dense; }
+.town.windy::after {
+  inset: 0;
+  background-image:
+    linear-gradient(90deg, transparent 0, rgb(91 103 112 / 0.34) 26px, transparent 52px, transparent 100%),
+    linear-gradient(90deg, transparent 0, rgb(91 103 112 / 0.26) 20px, transparent 40px, transparent 100%),
+    linear-gradient(90deg, transparent 0, rgb(91 103 112 / 0.3) 30px, transparent 60px, transparent 100%);
+  background-size: 180px 1.5px, 120px 1.5px, 240px 1.5px;
+  background-repeat: repeat-x;
+  background-position: 0 30%, 0 58%, 0 82%;
+  animation: wx-gusts 2.4s linear infinite;
+}
+
+@keyframes wx-streaks {
+  to { background-position: 0 36px; }
+}
+@keyframes wx-gusts {
+  to { background-position: 360px 30%, 360px 58%, 480px 82%; }
+}
+@keyframes wx-streaks-dense {
+  to { background-position: 0 24px; }
+}

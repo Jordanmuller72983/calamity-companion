@@ -91,6 +91,8 @@ export interface TownWeather {
   gustKmh: number
   rainMm: number
   humidity: number
+  /** Between sunrise and sunset (Open-Meteo). Missing in older cached data. */
+  isDay?: boolean
 }
 
 export interface TownsStatus {

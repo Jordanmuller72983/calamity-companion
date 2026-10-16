@@ -792,8 +792,6 @@ a.basis:hover { text-decoration: underline; }
 .call-fire { background: #fed7aa; color: #7c2d12; }
 .call-fire span { color: #7c2d12; }
 .metro-card { order: 5; }
-.fb-frame { display: block; width: 100%; max-width: 500px; height: 520px; border: 0; border-radius: 12px; overflow: hidden; }
-.fb-privacy { margin: 8px 0 0; font-size: 12px; color: var(--ink-3); }
 .cwa-card { order: 9; }
 
 /* Weather: MMS measurements, outer islands, more towns (model estimates) */
@@ -803,17 +801,18 @@ a.basis:hover { text-decoration: underline; }
 .towns { list-style: none; margin: 6px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
 .towns li {
   display: grid;
-  grid-template-columns: 1fr auto;
-  grid-template-areas: 'name temp' 'sky temp' 'wind wind';
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas: 'name name' 'sky now' 'wind wind';
   column-gap: 6px;
   padding: 8px 10px;
   border-radius: 10px;
   background: var(--page);
   min-width: 0;
 }
-.town-name { grid-area: name; font-weight: 500; font-size: 13.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.town-temp { grid-area: temp; font-size: 20px; font-weight: 300; align-self: center; }
-.town-sky { grid-area: sky; font-size: 12px; color: var(--ink-3); }
+.town-name { grid-area: name; font-weight: 500; font-size: 13.5px; line-height: 1.25; min-width: 0; }
+.town-now { grid-area: now; display: flex; align-items: center; gap: 1px; align-self: center; margin-right: -2px; }
+.town-temp { font-size: 20px; font-weight: 300; }
+.town-sky { grid-area: sky; font-size: 12px; color: var(--ink-3); align-self: center; }
 .town-wind { grid-area: wind; font-size: 11.5px; color: var(--ink-3); margin-top: 2px; }
 .town-wind.strong { color: var(--caution-ink); font-weight: 700; }
 .towns-note { margin: 8px 0 0; font-size: 11.5px; color: var(--ink-3); }
@@ -828,3 +827,22 @@ a.basis:hover { text-decoration: underline; }
 .key-src { font-size: 12.5px; opacity: 0.8; white-space: nowrap; }
 .key-src::before { content: '· '; }
 .key-note { margin-top: 8px; font-size: 12.5px; opacity: 0.85; }
+
+/* Weather: search any place, above the town cards */
+.towns-search {
+  width: 100%; box-sizing: border-box; margin: 0; padding: 8px 12px 8px 36px;
+  border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--ink); font: inherit; font-size: 14px;
+}
+.towns-search:focus { border-color: var(--swan-sky); outline: none; box-shadow: 0 0 0 3px rgb(0 163 224 / 0.18); }
+.towns-search-box { position: relative; margin: 6px 0 2px; }
+.towns-search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--ink-3); pointer-events: none; }
+.towns-search-box:focus-within .towns-search-icon { color: var(--swan-blue); }
+
+/* Official Facebook pages: a compact link, no embedded widget */
+.fb-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.fb-row .card-sub { margin: 0; flex: 1 1 220px; }
+.fb-open {
+  flex: none; display: inline-flex; align-items: center; gap: 4px; padding: 8px 14px; border-radius: 10px;
+  background: var(--info-soft); color: var(--swan-blue); font-size: 14px; font-weight: 600; text-decoration: none;
+}
+.fb-open:hover { background: #d9e8f8; }
