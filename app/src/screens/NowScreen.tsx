@@ -12,9 +12,10 @@ import type { ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 import { AreaTicker } from '../components/AreaTicker'
 import { Card } from '../components/Card'
+import { KeyHeadlines } from '../components/KeyHeadlines'
 import { PressCard } from '../components/PressCard'
 import { topicHeadline } from '../data/news'
-import { curfewReports, disruptionsByTopic, withDisruption } from '../data/disruptions'
+import { atLeast, curfewInForce, curfewReports, disruptionsByTopic, isWeekend, withDisruption } from '../data/disruptions'
 import { FacebookUpdates } from '../components/FacebookUpdates'
 import { HeroIcon, Wave, type HeroKind } from '../components/HeroIcon'
 import { HEAVY_MM, RainfallCard } from '../components/RainfallCard'
@@ -25,10 +26,11 @@ import { useWaterAlerts } from '../data/water'
 import { WeatherCard } from '../components/WeatherCard'
 import type { LiveStatus, NewsStatus, TownsStatus, WaterStatusLive } from '../data/liveTypes'
 import { stormCentre } from '../data/storm'
+import { usePressText } from '../data/pressText'
 import { useText } from '../i18n'
 import type { ResolvedWarning } from '../rules/resolve'
 import { rules } from '../rules/resolve'
-import { TOPICS, type TopicStatus } from '../rules/types'
+import { TOPICS, type Topic, type TopicStatus } from '../rules/types'
 import './NowScreen.css'
 
 export type DataMode = 'live' | 'belal' | 'demo'
@@ -98,8 +100,14 @@ export function NowScreen({ warning, fetchedAt, live, loading, offline, mode, no
   const rainChip = warning.rain === 'none' ? t('noRain') : tx(rules.warnings[warning.rain].shortName)
   const rainArea = mode === 'demo' ? undefined : live?.snapshot.rainArea
   // Non-weather disruptions reported in the press (live mode only).
-  const disrupted = mode === 'live' ? disruptionsByTopic(news) : {}
-  const curfew = mode === 'live' ? curfewReports(news) : []
+  const disrupted = mode === 'live' ? disruptionsByTopic(news, now) : {}
+  const curfew = mode === 'live' ? curfewReports(news, now) : []
+  // Plain-calendar facts and the curfew override the normal-day text, so a quiet weather day never says
+  // "Schools open" on a Saturday or "Safe to go out" under a curfew.
+  const overrides: Partial<Record<Topic, { min: TopicStatus; note: string; press?: boolean }>> = {}
+  if (mode === 'live' && isWeekend(now)) overrides.school = { min: 'stop', note: t('disruption.weekend') }
+  if (mode === 'live' && curfewInForce(curfew, now)) overrides.outside = { min: 'caution', note: t('disruption.curfewOutside'), press: true }
+  const { pressState } = usePressText()
   const heavyStations = (live?.rainfall.last3h?.stations ?? []).filter((s) => s.mm >= HEAVY_MM).sort((a, b) => b.mm - a.mm)
 
   return (
@@ -144,17 +152,7 @@ export function NowScreen({ warning, fetchedAt, live, loading, offline, mode, no
         </section>
 
         <div className="alerts">
-          {curfew.length > 0 && (
-            <Alert level="caution" icon={<ExclamationTriangleOutline />}>
-              <strong>{t('disruption.curfewTitle')}</strong>
-              {curfew.map((d) => (
-                <div key={d.url} className="curfew-line">
-                  <a href={d.url} target="_blank" rel="noreferrer">“{d.title}”</a> · {d.source}, {ago(d.publishedAt, now)}
-                </div>
-              ))}
-              <div className="curfew-note">{t('disruption.note')}</div>
-            </Alert>
-          )}
+          {mode === 'live' && <KeyHeadlines news={news} now={now} />}
           {warning.rainStillOn && (
             <Alert level="stop" icon={<ExclamationTriangleOutline />}>
               <strong>{t('rainStillOn')}</strong>
@@ -202,8 +200,12 @@ export function NowScreen({ warning, fetchedAt, live, loading, offline, mode, no
         <div className="tiles">
           {TOPICS.map((topic) => {
             const shown = withDisruption(warning.topics[topic], topic === 'school' || topic === 'transport' ? disrupted[topic] : undefined)
-            const { status, detail, basis, sources } = shown
+            const { detail, basis, sources } = shown
             const press = 'press' in shown ? shown.press : undefined
+            const override = overrides[topic]
+            const status = override ? atLeast(shown.status, override.min) : shown.status
+            // The rule's own text still matters when the weather alone already restricts this topic.
+            const ruleText = !override || warning.topics[topic].status !== 'ok' ? tx(detail) : undefined
             const StatusIcon = STATUS_ICON[status]
             const statusWord = t(`status.${topic}.${status}`)
             return (
@@ -218,12 +220,13 @@ export function NowScreen({ warning, fetchedAt, live, loading, offline, mode, no
                   <StatusIcon aria-hidden="true" />
                   <span>{statusWord}</span>
                 </div>
+                {override && <p className="tile-detail tile-override">{override.note}</p>}
                 {press ? (
                   <ul className="tile-disruptions">
                     {press.map((d) => (
                       <li key={d.url} className={`dis-${d.state}`}>
                         <strong>
-                          {t(`disruption.service.${d.service}`)}: {t(`disruption.state.${d.state}`)}
+                          {t(`disruption.service.${d.service}`)}: {pressState(d)}
                         </strong>
                         <a href={d.url} target="_blank" rel="noreferrer">
                           “{d.title}”
@@ -235,10 +238,10 @@ export function NowScreen({ warning, fetchedAt, live, loading, offline, mode, no
                     ))}
                   </ul>
                 ) : (
-                  <p className="tile-detail">{tx(detail)}</p>
+                  ruleText && <p className="tile-detail">{ruleText}</p>
                 )}
-                {press && <span className="basis basis-press">{t('disruption.basis')}</span>}
-                {!press && basis !== 'normal' &&
+                {(press || override?.press) && <span className="basis basis-press">{t('disruption.basis')}</span>}
+                {!press && !override?.press && basis !== 'normal' &&
                   (sources[0]?.url ? (
                     <a className={`basis basis-${basis}`} href={sources[0].url} target="_blank" rel="noreferrer" title={sources.map((s) => s.name).join('\n')}>
                       {t(`basis.${basis}`)}

@@ -783,13 +783,11 @@ a.basis:hover { text-decoration: underline; }
 .tile-disruptions strong { font-size: 14px; color: var(--ink); }
 .tile-disruptions .dis-stopped strong, .tile-disruptions .dis-early strong { color: var(--stop-ink); }
 .tile-disruptions .dis-resumed strong { color: var(--ok-ink); }
+.tile-override { font-weight: 600; color: var(--ink); }
 .tile-disruptions a { color: var(--ink-2); text-decoration: none; }
 .tile-disruptions a:hover { text-decoration: underline; }
 .tile-disruptions span { font-size: 11.5px; color: var(--ink-3); }
 .basis-press { background: var(--caution-soft); color: var(--caution-ink); }
-.curfew-line { margin-top: 4px; font-size: 14px; }
-.curfew-line a { color: inherit; }
-.curfew-note { margin-top: 6px; font-size: 12.5px; opacity: 0.85; }
 /* Fire: pastel orange */
 .call-fire { background: #fed7aa; color: #7c2d12; }
 .call-fire span { color: #7c2d12; }
@@ -820,3 +818,13 @@ a.basis:hover { text-decoration: underline; }
 .town-wind.strong { color: var(--caution-ink); font-weight: 700; }
 .towns-note { margin: 8px 0 0; font-size: 11.5px; color: var(--ink-3); }
 @media (min-width: 640px) and (max-width: 1023px) { .towns { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+/* Key headlines: always shown in live mode, above the tiles. */
+.key-headlines strong { display: block; margin-bottom: 2px; }
+.key-group { margin-top: 8px; }
+.key-fact { font-weight: 600; font-size: 14.5px; }
+.key-line { margin-top: 2px; font-size: 14px; line-height: 1.4; }
+.key-line a { color: inherit; }
+.key-src { font-size: 12.5px; opacity: 0.8; white-space: nowrap; }
+.key-src::before { content: '· '; }
+.key-note { margin-top: 8px; font-size: 12.5px; opacity: 0.85; }

@@ -429,25 +429,72 @@ async function getPage(path) {
   return page;
 }
 
+// src/data/disruptions.ts
+var MU_OFFSET_MS = 4 * 3600 * 1e3;
+var mauritiusDate = (ms) => new Date(ms + MU_OFFSET_MS).toISOString().slice(0, 10);
+
 // server/disruptions.ts
 var MAX_AGE_HOURS = 72;
 var SERVICE = {
   metro: /metro express|\bm[ée]tro\b|light rail/i,
   bus: /autobus|\bbus\b|\bnlta\b/i,
-  school: /écoles?\b|ecoles?\b|\bclasses\b|établissements scolaires|élèves|collèges?|universit/i,
+  // "classe" alone is too loose ("cyclone de classe 2"): only in phrases about lessons.
+  school: /écoles?\b|ecoles?\b|\bclasses\b|pas de classe\b|établissements scolaires|élèves|collèges?|universit/i,
   curfew: /couvre-feu|curfew/i
 };
 var STATES = [
-  ["stopped", /pas de service|pas de classes|pas d.école|ne circule(ra)? pas|à l.arrêt|reprise (des opérations )?prévue|reprendra (dans|lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche|la semaine)/i],
+  ["stopped", /pas de service|pas de classes?\b|pas d.école|ne circule(ra)? pas|à l.arrêt|reprise (des opérations )?prévue|reprendra (dans|lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche|la semaine)/i],
+  // "Les derniers autobus à 19 heures…, reprise à 5 heures": an early stop tonight, whatever restarts after.
+  ["early", /derni(er|ère)s? (autobus|bus|métros?|trams?|rames?)[^,]* à \d+ ?(h|heures)/i],
   // Whole words only: "entreprises" contains "reprise".
   ["resumed", /\breprise\b|\breprend(ront)?\b|\brouvr|réouverture|de nouveau en service|retour à la normale|levée du couvre-feu|praticables/i],
   ["early", /(prendront fin|cesseront|s.arrêteront|arrêt de tous les services[^,]*) à \d+ ?(h|heures)/i],
-  ["stopped", /à l.arrêt|\barrêt\b|suspendu|suspension|pas opérationnel|n.est pas opérationnel|ne circule|cesseront|prendront fin|fin des services|fermée?s?\b|pas de classes|pas d.école|interrompu|paralysé/i],
+  ["stopped", /à l.arrêt|\barrêt\b|suspendu|suspension|pas opérationnel|n.est pas opérationnel|ne circule|cesseront|prendront fin|fin des services|fermée?s?\b|\bfermeture\b|pas de classes?\b|pas d.école|interrompu|paralysé/i],
   ["limited", /au ralenti|perturbé|perturbation|réduit|partiel|limité/i],
   ["active", /prolongé|reconduit|maintenu|mainteni|dès \d+ ?h|instauré|décrété|en vigueur/i]
 ];
 var IGNORE = /pakistan|inde\b|france|réunion|madagascar|procès|tribunal|\bcour\b|arrêtée?s?\b|arrestations?|poursuivi|détention|infractions|non-respect/i;
 var stateOf = (text) => STATES.find(([, re]) => re.test(text))?.[0];
+var WEEKDAYS = ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"];
+var MONTHS2 = ["janvier", "f\xE9vrier", "mars", "avril", "mai", "juin", "juillet", "ao\xFBt", "septembre", "octobre", "novembre", "d\xE9cembre"];
+var DAY_RE = new RegExp(`\\b(demain|${WEEKDAYS.join("|")})(?:\\s+(\\d{1,2})(?:\\s+(${MONTHS2.join("|")}))?)?`, "gi");
+var RESUME_RE = /\breprise\b|\breprend(ra|ront)?\b|\brouvr|réouverture|de nouveau en service/i;
+var NORMAL_RE = /retour à la normale/i;
+var DAY_MS = 864e5;
+var addDays = (ymd, n) => new Date(Date.parse(ymd + "T00:00:00Z") + n * DAY_MS).toISOString().slice(0, 10);
+function datesIn(text, publishedAt) {
+  const pub = mauritiusDate(Date.parse(publishedAt));
+  const pubDay = /* @__PURE__ */ new Date(pub + "T00:00:00Z");
+  const out = [];
+  for (const m of text.matchAll(DAY_RE)) {
+    const word = m[1].toLowerCase();
+    if (word === "demain") {
+      out.push(addDays(pub, 1));
+    } else if (m[2]) {
+      const month = m[3] ? MONTHS2.indexOf(m[3].toLowerCase()) : pubDay.getUTCMonth();
+      const year = pubDay.getUTCFullYear() + (m[3] && month < pubDay.getUTCMonth() - 6 ? 1 : 0);
+      let d = Date.UTC(year, month, Number(m[2]));
+      if (!m[3] && d < pubDay.getTime() - 7 * DAY_MS) d = Date.UTC(year, month + 1, Number(m[2]));
+      out.push(new Date(d).toISOString().slice(0, 10));
+    } else {
+      out.push(addDays(pub, (WEEKDAYS.indexOf(word) - pubDay.getUTCDay() + 7) % 7));
+    }
+  }
+  return out;
+}
+function datesOf(title, publishedAt) {
+  const firstDayAfter = (re) => {
+    const m = title.match(re);
+    return m ? datesIn(title.slice(m.index + m[0].length), publishedAt)[0] : void 0;
+  };
+  const resumesOn = firstDayAfter(RESUME_RE);
+  if (resumesOn) {
+    const normalOn = firstDayAfter(NORMAL_RE);
+    return normalOn && normalOn > resumesOn ? { resumesOn, normalOn } : { resumesOn };
+  }
+  const days = datesIn(title, publishedAt).sort();
+  return days.length ? { until: days[days.length - 1] } : {};
+}
 function classifyDisruption(title) {
   if (IGNORE.test(title)) return [];
   const services = Object.keys(SERVICE).filter((s) => SERVICE[s].test(title));
@@ -464,18 +511,71 @@ function classifyDisruption(title) {
   }
   return out;
 }
+var two = (n) => (n ?? "00").padStart(2, "0");
+var HOURS_RE = /\b(\d{1,2}) ?h(?:eures?)? ?(\d{2})?(?!\d)\D{0,20}?\s(?:à|a|ek|-|–)\s+(\d{1,2}) ?h(?:eures?)? ?(\d{2})?(?!\d)/i;
+var UNTIL_RE = /jusqu.(?:à|au)\s/i;
+var WEEKEND_RE = /\bweek-?end\b/i;
+function curfewFacts(title, publishedAt) {
+  const out = {};
+  const h = title.match(HOURS_RE);
+  if (h && Number(h[1]) < 24 && Number(h[3]) < 24) out.hours = `${two(h[1])}:${two(h[2])}\u2013${two(h[3])}:${two(h[4])}`;
+  const u = title.match(UNTIL_RE);
+  const day = u ? datesIn(title.slice(u.index + u[0].length), publishedAt)[0] : void 0;
+  if (day) out.until = day;
+  else if (WEEKEND_RE.test(title)) out.until = datesIn("dimanche", publishedAt)[0];
+  return out;
+}
+var CURFEW_DECISION = /maintenu|mainteni|prolongé|reconduit|étendu|instauré|décrété|en vigueur|horaires|zones concernées|définitiv|supprimé|abrogé/i;
+var CURFEW_SIDE = /spectacle|concert|report[ée]|économie|vie nocturne|commer|\bloi\b|législation|sanctions|renforcement|business|entreprises|immersion|mobilis|incidents|autobus|passagers|recettes|\[live\]/i;
+var CURFEW_WINDOW_HOURS = 48;
+function pickCurfew(found) {
+  const informative = (d) => !!d.hours || !!d.until || CURFEW_DECISION.test(d.title);
+  const tiers = [
+    found.filter((d) => informative(d) && !CURFEW_SIDE.test(d.title)),
+    found.filter((d) => informative(d) && CURFEW_SIDE.test(d.title)),
+    found.filter((d) => !informative(d))
+  ].flat();
+  const first = tiers[0];
+  if (!first) return [];
+  const adds = (d) => !first.hours && !!d.hours || !first.until && !!d.until;
+  const second = tiers.find((d) => d !== first && adds(d)) ?? tiers.find((d) => d !== first);
+  return second ? [first, second] : [first];
+}
 function findDisruptions(items, now = Date.now()) {
   const since = now - MAX_AGE_HOURS * 3600 * 1e3;
+  const curfewSince = now - CURFEW_WINDOW_HOURS * 3600 * 1e3;
   const out = [];
+  const curfew = [];
   for (const i of [...items].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))) {
-    if (new Date(i.publishedAt).getTime() < since) continue;
+    const at = new Date(i.publishedAt).getTime();
+    if (at < since) continue;
     for (const c of classifyDisruption(i.title)) {
-      const already = out.filter((d) => d.service === c.service).length;
-      if (already >= (c.service === "curfew" ? 2 : 1)) continue;
-      out.push({ ...c, title: i.title, url: i.url, source: i.source, publishedAt: i.publishedAt });
+      const base = { ...c, title: i.title, url: i.url, source: i.source, publishedAt: i.publishedAt };
+      if (c.service === "curfew") {
+        if (at >= curfewSince) curfew.push({ ...base, ...curfewFacts(i.title, i.publishedAt) });
+        continue;
+      }
+      if (out.some((d) => d.service === c.service)) continue;
+      out.push({ ...base, ...datesOf(i.title, i.publishedAt) });
     }
   }
-  return out;
+  return [...out, ...pickCurfew(curfew)];
+}
+var KEY = new RegExp(
+  [
+    // An actual cut, not any story naming the CWA or CEB.
+    "coupures? d.eau|pas d.eau|eau coup\xE9e|interruption (de la )?(distribution|fourniture) d.eau",
+    "coupures? (de courant|d.\xE9lectricit\xE9)|pannes? (de courant|d.\xE9lectricit\xE9)|black-?out|d\xE9lestage",
+    "routes? (ferm\xE9e|bloqu\xE9e|coup\xE9e|inond\xE9e)s?|d\xE9viation|circulation (interdite|bloqu\xE9e|perturb\xE9e)",
+    "avis de (cyclone|fortes pluies|pluies torrentielles)|cyclone de classe|avertissement|bulletin de s\xE9curit\xE9|vigilance",
+    "\xE9vacu|centres? de refuge|\\bgr\xE8ve\\b|cong\xE9 public|jour f\xE9ri\xE9|\xE9tat d.urgence|confinement"
+  ].join("|"),
+  "i"
+);
+var KEY_MAX_AGE_HOURS = 24;
+function keyHeadlines(items, now = Date.now()) {
+  const since = now - KEY_MAX_AGE_HOURS * 3600 * 1e3;
+  return [...items].filter((i) => new Date(i.publishedAt).getTime() >= since && KEY.test(i.title) && !IGNORE.test(i.title)).filter((i) => !Object.values(SERVICE).some((re) => re.test(i.title))).sort((a, b) => b.publishedAt.localeCompare(a.publishedAt)).slice(0, 3);
 }
 
 // server/news.ts
@@ -490,7 +590,7 @@ var FEEDS = [
   },
   {
     source: "L'Express",
-    url: googleNews('site:lexpress.mu (metro OR m\xE9tro OR autobus OR NLTA OR couvre-feu OR \xE9coles OR "transport public") when:3d')
+    url: googleNews('site:lexpress.mu (metro OR m\xE9tro OR autobus OR NLTA OR couvre-feu OR \xE9coles OR "transport public" OR coupure OR CEB OR gr\xE8ve OR \xE9vacuation OR "cong\xE9 public") when:3d')
   }
 ];
 var WEATHER = /cyclone|classe\s*(1|2|3|4|i{1,3}|iv)\b|avertissement|avis de|pluies? torrentielles?|fortes pluies|averses|inondation|inond[ée]|crue|météo|meteo|\bmms\b|vents? violents?|rafales|houle|bulletin de sécurité|intempéries|glissement de terrain|réservoir|cwa|sécheresse|coupure d.eau/i;
@@ -558,6 +658,7 @@ async function getNews() {
     fetchedAt: (/* @__PURE__ */ new Date()).toISOString(),
     items: weatherItems(all).slice(0, 30),
     disruptions: findDisruptions(all),
+    key: keyHeadlines(all).map((i) => ({ ...i, topics: [] })),
     errors
   };
   cache = { at: Date.now(), status };

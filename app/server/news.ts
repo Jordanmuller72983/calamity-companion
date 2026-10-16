@@ -8,7 +8,7 @@
 // Neither changes the warning rules.
 
 import type { NewsItem, NewsStatus, NewsTopic } from '../src/data/liveTypes.ts'
-import { findDisruptions } from './disruptions.ts'
+import { findDisruptions, keyHeadlines } from './disruptions.ts'
 import { decodeEntities } from './mms.ts'
 
 const TTL = 10 * 60 * 1000
@@ -24,7 +24,7 @@ const FEEDS: { source: NewsItem['source']; url: string }[] = [
   },
   {
     source: "L'Express",
-    url: googleNews('site:lexpress.mu (metro OR métro OR autobus OR NLTA OR couvre-feu OR écoles OR "transport public") when:3d'),
+    url: googleNews('site:lexpress.mu (metro OR métro OR autobus OR NLTA OR couvre-feu OR écoles OR "transport public" OR coupure OR CEB OR grève OR évacuation OR "congé public") when:3d'),
   },
 ]
 
@@ -122,6 +122,7 @@ export async function getNews(): Promise<NewsStatus> {
     fetchedAt: new Date().toISOString(),
     items: weatherItems(all).slice(0, 30),
     disruptions: findDisruptions(all),
+    key: keyHeadlines(all).map((i) => ({ ...i, topics: [] })),
     errors,
   }
   cache = { at: Date.now(), status }

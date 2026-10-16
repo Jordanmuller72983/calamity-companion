@@ -1,4 +1,4 @@
-import type { WarningSnapshot } from '../rules/types'
+import type { WarningSnapshot } from '../rules/types.ts'
 
 // Shape of /api/status. Built server-side from MMS pages (server/status.ts).
 
@@ -124,12 +124,22 @@ export interface Disruption {
   url: string
   source: NewsItem['source']
   publishedAt: string
+  /** Mauritius date (YYYY-MM-DD) the service restarts on. Until then it is still stopped. */
+  resumesOn?: string
+  /** Full service from this day; between `resumesOn` and this day it runs a reduced service. */
+  normalOn?: string
+  /** Last day a closure, early stop or curfew applies to; after it the report is out of date. */
+  until?: string
+  /** Curfew hours named in the headline, e.g. "22:00–04:30". */
+  hours?: string
 }
 
 export interface NewsStatus {
   fetchedAt: string
   items: NewsItem[]
   disruptions: Disruption[]
+  /** Other headlines to act on today (water, power, roads, warnings…), from the last 24 hours. */
+  key?: NewsItem[]
   errors: string[]
 }
 
